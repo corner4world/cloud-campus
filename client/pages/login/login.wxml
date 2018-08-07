@@ -12,11 +12,11 @@
           <view class="input-group {{userid_focus ? 'active' : ''}}">
             <text class="input-label">帐号</text>
             <input type="number" cursor-spacing="30" id="userid" maxlength="11" 
-                   placeholder="请输入手机号" bindinput="useridInput" bindfocus="inputFocus"                      bindblur="inputBlur" /> 
+                   placeholder="请输入手机号" bindinput="useridInput"bindfocus="inputFocus"                    bindblur="inputBlur" /> 
           </view>
           <view class="input-group {{passwd_focus ? 'active' : ''}}">
             <text class="input-label">密码</text>
-            <input password="true" cursor-spacing="30" id="passwd" placeholder=""                                bindinput="passwdInput" bindfocus="inputFocus" bindblur="inputBlur" />
+            <input password="true" cursor-spacing="30" id="passwd" placeholder=""                             bindinput="passwdInput" bindfocus="inputFocus" bindblur="inputBlur" />
           </view>
           <view class="login-help" bindtap="showHelp">
             <text>帮助</text>
