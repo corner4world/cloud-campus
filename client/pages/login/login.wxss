@@ -1,4 +1,10 @@
 /**login.wxss**/
+@import "../common/weui.wxss";
+.picker{
+  padding: 19rpx 26rpx;
+  background-color: #FFFFFF;
+}
+
 .container {
   background: #7acfa6;
   align-items: stretch;

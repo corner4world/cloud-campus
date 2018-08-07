@@ -3,12 +3,16 @@ var app = getApp();
 
 Page({
   data: {
+    type_array: ['教师', '家长'],
+    level:0,
     help_status: false,
     userid_focus: false,
     passwd_focus: false,
     userid: '',
     passwd: '',
-    angle: 0
+    angle: 0,
+    phone:'',
+    password:''
   },
   onReady: function () {
     var that = this;
@@ -37,7 +41,7 @@ Page({
     wx.request({
       method: 'post',
       data: {
-        username: that.data.userid,
+        phone: that.data.userid,
         password: that.data.passwd
       },
       url: config.host + '/weapp/login',
@@ -117,5 +121,69 @@ Page({
     this.setData({
       'help_status': false
     });
+  },
+  bindPickerChange: function (e) {
+    this.setData({
+      level: e.detail.value
+    })
+  },
+  phoneInput:function(e){
+    this.setData({
+      phone:e.detail.value
+    })
+  },
+  passwordInput:function(e){
+    this.setData({
+      password: e.detail.value
+    })
+  },
+  register:function(){
+    var that = this;
+    if (!that.data.phone || !that.data.password) {
+      app.showErrorModal('账号及密码不能为空', '提醒');
+      return false;
+    }
+    app.showLoadToast('激活中');
+
+    //激活验证 添加用户
+    wx.request({
+      method: 'post',
+      data: {
+        level:that.data.level,
+        phone: that.data.phone,
+        password: that.data.password
+      },
+      url: config.host + '/weapp/register',
+      success: function (res) {
+        console.log(res)
+        var status = res.data.data.status
+        if (status == 1 && res.statusCode === 200 && res.data.code != -1) {
+          wx.showToast({
+            title: '激活成功!',
+            icon: 'none',
+            duration: 2000
+          })
+          that.hideHelp();
+        } 
+        else if (status == 0 && res.statusCode === 200 && res.data.code != -1){
+          wx.showToast({
+            title: '账号已经激活 请登录',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+        else {
+          wx.showToast({
+            title: '手机号未录入系统,请联系学校',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      },
+      fail: function (res) {
+        wx.hideToast();
+        app.showErrorModal(res.errMsg, '登录失败,服务器维护中');
+      }
+    })
   }
 });

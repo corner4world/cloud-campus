@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/login/login",
+    "pages/phone/phone",
+    
     "pages/index/index",
     "pages/news/news",
     "pages/news/jw/jw_detail",
@@ -8,7 +10,6 @@
     "pages/news/hy/hy_detail",
     "pages/news/jz/jz_detail",
     "pages/news/new/new_detail",
-    
     "pages/more/append",
     "pages/more/more",
     "pages/more/issues",
@@ -50,10 +51,10 @@
         "selectedIconPath": "images/index/index@active.png"
       },
       {
-        "pagePath": "pages/news/news",
-        "text": "资讯",
-        "iconPath": "images/index/news.png",
-        "selectedIconPath": "images/index/news@active.png"
+        "pagePath": "pages/phone/phone",
+        "text": "通讯录",
+        "iconPath": "images/phone/phone-list.png",
+        "selectedIconPath": "images/phone/phone-list@active.png"
       },
       {
         "pagePath": "pages/more/more",

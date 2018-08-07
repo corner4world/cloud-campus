@@ -1,9 +1,9 @@
 const { mysql } = require('../qcloud')
 module.exports = async ctx => {
   let query = ctx.request.body; 
-  let username = query.username
+  let phone = query.phone
   let password = query.password
   var result = await mysql("user").select('*')
-                  .where({username:username,password:password})
+                  .where({phone:phone,password:password})
   ctx.state.data = {result}
 }

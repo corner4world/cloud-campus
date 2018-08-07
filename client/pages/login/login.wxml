@@ -19,8 +19,8 @@
             <input password="true" cursor-spacing="30" id="passwd" placeholder=""                             bindinput="passwdInput" bindfocus="inputFocus" bindblur="inputBlur" />
           </view>
           <view class="login-help" bindtap="showHelp">
-            <text>帮助</text>
-            <image class="login-help-img" src="/images/login/help.png"></image>
+            <text>账号激活</text>
+            <image class="login-help-img" src="/images/login/active.png"></image>
           </view>
         </form>
         <view class="confirm-btn" bindtap="login">
@@ -28,25 +28,37 @@
         </view>
       </view>
 
+
       <view class="help" id="help" wx:if="{{help_status}}" bindtap="tapHelp">
         <view class="box">
           <view class="box-hd">
-            <text class="box-title">帮助</text>
-            <image class="box-close" src="/images/login/close.png" bindtap="hideHelp"></image>
+            <text class="box-title">账号激活</text>
+         <image class="box-close" src="/images/login/close.png"                  bindtap="hideHelp">  </image>
           </view>
           <view class="box-bd">
-            <view class="help-q">1.帐号和密码是什么？</view>
-            <view class="help-a">
-              <text>帐号：手机号</text>
-              <text>初始密码：手机号后六位</text>
+            <view class="input-group active">
+            <text class="input-label">类型</text>
+              <view class="weui-cell__bd">
+              <picker bindchange="bindPickerChange" value="{{level}}" range="{{type_array}}">
+              <view id="level" data-text="{{type_array[level]}}">{{type_array[level]}}</view>
+              </picker>
+              </view>
             </view>
-            <view class="help-q">2.忘记密码？</view>
-            <view class="help-a">
-              <text>请联系学校管理员</text>
+            <view class="input-group active">
+            <text class="input-label">帐号</text>
+            <input type="number" cursor-spacing="30" id="phone"  maxlength="11" 
+                   placeholder="手机号" bindinput="phoneInput" /> 
             </view>
+          <view class="input-group active">
+            <text class="input-label">密码</text>
+            <input password="true" cursor-spacing="30" id="password" placeholder=""                             placeholder="设置密码" bindinput="passwordInput"  />
           </view>
+          <view class="confirm-btn" bindtap="register">
+            <text>激活</text>
         </view>
-      </view>
+        </view>
+       </view>
+    </view>
 
     </view>
 </view>

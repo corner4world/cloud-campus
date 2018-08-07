@@ -10,12 +10,12 @@ const controllers = require('../controllers')
 // 这里展示如何使用 Koa 中间件完成登录态的颁发与验证
 const { auth: { authorizationMiddleware, validationMiddleware } } = require('../qcloud')
 
-// --- 登录与授权 Demo --- //
+//激活账号接口
+router.post('/register', controllers.register)
 // 登录接口
 router.post('/login', controllers.login)
 // 用户信息接口（可以用来验证登录态）
 router.get('/user', validationMiddleware, controllers.user)
-router.get('/demo', controllers.demo)
 // --- 图片上传 Demo --- //
 // 图片上传接口，小程序端可以直接将 url 填入 wx.uploadFile 中
 router.post('/upload', controllers.upload)
