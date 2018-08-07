@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/addCgi/addCgi"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "Wafer Quick Start",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7f848a",
+    "selectedColor": "#7acfa6",
+    "backgroundColor": "#f7f6fb",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/index/index.png",
+        "selectedIconPath": "images/index/index@active.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "通讯录",
+        "iconPath": "images/index/news.png",
+        "selectedIconPath": "images/index/news@active.png"
+      },
+      {
+        "pagePath": "pages/login/login",
+        "text": "个人中心",
+        "iconPath": "images/index/more.png",
+        "selectedIconPath": "images/index/more@active.png"
+      }
+    ]
+  }
+}

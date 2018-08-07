@@ -1,0 +1,52 @@
+<!--login.wxml-->
+<view class="container">
+    <image class="title" src="/images/login/title.png"></image>
+    <view class="content">
+      <view class="hd" style="transform:rotateZ({{angle}}deg);">
+          <image class="logo" src="/images/login/logo.png"></image>
+          <image class="wave" src="/images/login/wave.png" mode="aspectFill"></image>
+          <image class="wave wave-bg" src="/images/login/wave.png" mode="aspectFill"></image>
+      </view>
+      <view class="bd">
+        <form class="login-form">
+          <view class="input-group {{userid_focus ? 'active' : ''}}">
+            <text class="input-label">帐号</text>
+            <input type="number" cursor-spacing="30" id="userid" maxlength="11" 
+                   placeholder="请输入手机号" bindinput="useridInput" bindfocus="inputFocus"                      bindblur="inputBlur" /> 
+          </view>
+          <view class="input-group {{passwd_focus ? 'active' : ''}}">
+            <text class="input-label">密码</text>
+            <input password="true" cursor-spacing="30" id="passwd" placeholder=""                                bindinput="passwdInput" bindfocus="inputFocus" bindblur="inputBlur" />
+          </view>
+          <view class="login-help" bindtap="showHelp">
+            <text>帮助</text>
+            <image class="login-help-img" src="/images/login/help.png"></image>
+          </view>
+        </form>
+        <view class="confirm-btn" bindtap="login">
+            <text>登录</text>
+        </view>
+      </view>
+
+      <view class="help" id="help" wx:if="{{help_status}}" bindtap="tapHelp">
+        <view class="box">
+          <view class="box-hd">
+            <text class="box-title">帮助</text>
+            <image class="box-close" src="/images/login/close.png" bindtap="hideHelp"></image>
+          </view>
+          <view class="box-bd">
+            <view class="help-q">1.帐号和密码是什么？</view>
+            <view class="help-a">
+              <text>帐号：手机号</text>
+              <text>初始密码：手机号后六位</text>
+            </view>
+            <view class="help-q">2.忘记密码？</view>
+            <view class="help-a">
+              <text>请联系学校管理员</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+</view>
