@@ -14,6 +14,8 @@ const { auth: { authorizationMiddleware, validationMiddleware } } = require('../
 router.post('/register', controllers.register)
 // 登录接口
 router.post('/login', controllers.login)
+//首页导航功能接口
+router.post('/navigation', controllers.navigation)
 // 用户信息接口（可以用来验证登录态）
 router.get('/user', validationMiddleware, controllers.user)
 // --- 图片上传 Demo --- //

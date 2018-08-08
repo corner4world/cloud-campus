@@ -1,9 +1,8 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/login/login",
     "pages/phone/phone",
-    
-    "pages/index/index",
     "pages/news/news",
     "pages/news/jw/jw_detail",
     "pages/news/oa/oa_detail",
@@ -29,12 +28,16 @@
     "pages/core/cet/cet",
     "pages/core/cet/result",
     "pages/core/fw/fw",
-    "pages/more/help/volunteerHelp"
+    "pages/more/help/volunteerHelp",
+    "pages/demo/demo",
+    "pages/core/notice/notice",
+    "pages/core/notice/notice_detail",
+    "pages/core/homework/homework"
   ],
   "window": {
     "navigationBarBackgroundColor": "#7acfa6",
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "We重邮",
+    "navigationBarTitleText": "云校园",
     "backgroundColor": "#7acfa6",
     "backgroundTextStyle": "light",
     "enablePullDownRefresh": true

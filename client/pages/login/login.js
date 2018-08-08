@@ -143,6 +143,14 @@ Page({
       app.showErrorModal('账号及密码不能为空', '提醒');
       return false;
     }
+    if (that.data.phone.length < 11) {
+      app.showErrorModal('手机号格式不正确', '提醒');
+      return false;
+    }
+    if (that.data.password.length < 6) {
+      app.showErrorModal('密码至少6位', '提醒');
+      return false;
+    }
     app.showLoadToast('激活中');
 
     //激活验证 添加用户
@@ -174,7 +182,7 @@ Page({
         }
         else {
           wx.showToast({
-            title: '手机号未录入系统,请联系学校',
+            title: '手机号未录入系统 请联系学校',
             icon: 'none',
             duration: 2000
           })

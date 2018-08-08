@@ -162,7 +162,7 @@ Page({
         {
           name: '谢大佩',
           phone: 15388478188,
-           avatar: '../../images/phone/phone.png'
+          avatar: '../../images/phone/phone.png'
         }
       ]
     }

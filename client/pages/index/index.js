@@ -1,46 +1,19 @@
 //index.js
 //获取应用实例
+var config = require('../../config')
 var app = getApp();
 Page({
   data: {
     offline: false,
     remind: '加载中',
-    cores: [
-      [
-        { id: 'kb', name: '课表查询', disabled: false, teacher_disabled: false, offline_disabled: false },
-        { id: 'cj', name: '成绩查询', disabled: false, teacher_disabled: true, offline_disabled: false },
-        { id: 'ks', name: '考试安排', disabled: false, teacher_disabled: false, offline_disabled: false },
-        { id: 'kjs', name: '空教室', disabled: false, teacher_disabled: false, offline_disabled: true },
-        { id: 'xs', name: '学生查询', disabled: false, teacher_disabled: false, offline_disabled: true },
-        { id: 'ykt', name: '一卡通', disabled: false, teacher_disabled: false, offline_disabled: false },
-        { id: 'jy', name: '借阅信息', disabled: false, teacher_disabled: false, offline_disabled: false },
-        { id: 'xf', name: '学费信息', disabled: false, teacher_disabled: true, offline_disabled: false },
-        { id: 'sdf', name: '电费查询', disabled: false, teacher_disabled: true, offline_disabled: false },
-        { id: 'bx', name: '物业报修', disabled: false, teacher_disabled: false, offline_disabled: true }
-      ],[
-        { id: 'cet', name: '四六级', disabled: false, teacher_disabled: true, offline_disabled: true},
-        { id: 'fw', name: "志愿活动", disabled: false, teacher_disabled: true, offline_disabled: false}
-      ]
-    ],
+    cores: [],
     card: {
-      'kb': {
-        show: false,
-        time_list: [
-          { begin: '8:00', end: '8:45' },
-          { begin: '8:55', end: '9:40' },
-          { begin: '10:05', end: '10:50' },
-          { begin: '11:00', end: '11:45' },
-          { begin: '14:00', end: '14:45' },
-          { begin: '14:55', end: '15:40' },
-          { begin: '16:05', end: '16:50' },
-          { begin: '17:00', end: '17:45' },
-          { begin: '19:00', end: '19:45' },
-          { begin: '19:55', end: '20:40' },
-          { begin: '20:50', end: '21:35' },
-          { begin: '21:45', end: '22:30' }
+      'notice': [
+        { "id":"10001",
+          "title":"关于贸易战的通知",
+          "content":"美国是搬起石头砸自己的脚",
+          "summary":"说一句题外话。电影《一代宗师》中，叶问准备接宫老爷子武林泰斗的班。凭什么接？宫老爷子出题，“比想法”..."}
         ],
-        data: {}
-      },
       'ykt': {
         show: false,
         data: {
@@ -125,7 +98,35 @@ Page({
     }
   },
   onLoad: function(){
-    this.login();
+    //this.login();
+    //拉取导航功能
+    var that = this
+    wx.request({
+      method: 'post',
+      data: {
+        level: app.level
+      },
+      url: config.host + '/weapp/navigation',
+      success: function (res) {
+        console.log(res)
+        var navigation = res.data.data.result
+        if (navigation.length && res.statusCode === 200) {
+            that.setData({
+              cores: [navigation]
+            })
+        } else {
+          wx.showToast({
+            title: '服务器维护中..',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      },
+      fail: function (res) {
+        wx.hideToast();
+        app.showErrorModal(res.errMsg, '服务器维护中');
+      }
+    })
   },
   login: function(){
     var _this = this;
