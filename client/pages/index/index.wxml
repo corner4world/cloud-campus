@@ -53,6 +53,19 @@
         </view>
       </navigator>
     </view>
+    <!--今日作业-->
+    <view class="main-card-item" id="homework" wx:if="{{card.homework.length}}">
+      <navigator url="/pages/core/homework/homework_detail?id={{card.homework[0].id}}&content={{card.homework[0].content}}">
+        <view class="card-item-hd">
+          <image class="card-item-icon" src="/images/core/homework/homework_latest.png"></image>
+          <text class="card-item-name">今日作业</text>
+        </view>
+        <view class="card-item-bd kb-nothing">
+          <text>{{card.homework[0].title}}</text>
+          <text>{{card.homework[0].summary}}</text>
+        </view>
+      </navigator>
+    </view>
 
     <!--一卡通-->
     <view class="main-card-item" id="ykt" wx-if="{{card.ykt.show}}">

@@ -14,18 +14,13 @@ Page({
           "content":"美国是搬起石头砸自己的脚",
           "summary":"说一句题外话。电影《一代宗师》中，叶问准备接宫老爷子武林泰斗的班。凭什么接？宫老爷子出题，“比想法”..."}
         ],
-      'ykt': {
-        show: false,
-        data: {
-          'last_time': '',
-          'balance': 0,
-          'cost_status': false,
-          'today_cost': {
-            value: [],
-            total: 0
-          }
+      'homework': [
+        {"id": "10003",
+          "title": "2018年8月8号作业",
+          "content": "数学尖子生 第3页第1、2、3、4、5题",
+          "summary": "数学尖子生 第3页第1、2、3、4、5题 请各位家长监督"
         }
-      },
+      ],
       'jy': {
         show: false,
         data: {}
