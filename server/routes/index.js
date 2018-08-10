@@ -16,6 +16,9 @@ router.post('/register', controllers.register)
 router.post('/login', controllers.login)
 //首页导航功能接口
 router.post('/navigation', controllers.navigation)
+//家长电话
+router.post('/parent_phone', controllers.parent_phone)
+
 // 用户信息接口（可以用来验证登录态）
 router.get('/user', validationMiddleware, controllers.user)
 // --- 图片上传 Demo --- //

@@ -1,15 +1,50 @@
 <view class="flex box box-lr">
-  <scroll-view class="flex groups box box-tb" scroll-y="true" scroll-into-view="{{scrollIntoView}}">
-    <block wx:for="{{groups}}" wx:for-item="group" wx:key="{{this}}">
-      <view class="flex" id="{{group.groupName}}">
-        <view class="group-name">{{group.groupName}}</view>
+  <scroll-view class="flex groups box box-tb" scroll-y="true" scroll-into-view="{{scrollIntoView}}" >
+
+  <!-- search -->
+  <view class="weui-search-bar">
+   <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" placeholder="请输入查询内容" value="{{wxSearchData.value}}" bindinput="wxSearchInput" bindconfirm="wxSearchConfirm" />
+      <view class="weui-icon-clear" wx:if="{{wxSearchData.value.length > 0}}" bindtap="wxSearchClear">
+        <icon type="clear" size="14"></icon>
+      </view>
+    </view>
+  </view>
+  <!-- x
+    <view class="weui-search-bar__cancel-btn" bindtap="wxSearchConfirm">
+         <text wx:if="{{wxSearchData.value.length>0}}" data-key='search'>搜索</text>
+         <text wx:else data-key='back'>返回</text>
+     </view>
+    -->
+</view>
+
+<view>
+
+  <view class="wxSearchInner">
+    <!-- 搜索提示部分 -->
+    <view class="wxSearchMindKey">
+      <view class="wxSearchMindKeyList">
+        <block wx:for="{{wxSearchData.tipKeys}}" wx:key="">
+          <view class="wxSearchMindKeyItem" bindtap="call" id="{{item.phone}}">{{item.name}} {{item.phone}}</view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+  <!-- -->
+
+    <block wx:for="{{wxSortPickerData.textData}}" wx:for-item="item" wx:key="{{this}}">
+      <view class="flex" id="">
+        <view wx:if="{{item.textArray.length}}" class="group-name">{{item.tag}}</view>
         <view class="flex group-users">
-          <view wx:for="{{group.users}}" wx:for-item="user" wx:for-index="idx" class="user box box-lr" wx:key="{{this}}">
+          <view wx:for="{{item.textArray}}" wx:for-item="child" wx:for-index="idx" class="user box box-lr" wx:key="{{this}}">
             <view class="user-avatar box box-lr box-pack-center box-align-center">
-              <image class="user-avatar-img" src="{{user.avatar}}"></image>
+              <image class="user-avatar-img" src="../../images/phone/phone.png"></image>
             </view>
-            <view class="flex user-name" id='{{user.phone}}' 
-                  data-text="{{user.name}}" bindtap='call'>{{user.name}} {{user.phone}}</view>
+            <view class="flex user-name" id='{{child.phone}}' 
+                  data-text="{{child.name}}" bindtap='call'>{{child.name}} {{child.phone}}</view>
           </view>
         </view>
       </view>

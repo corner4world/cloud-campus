@@ -1,5 +1,5 @@
 /* pages/phone/phone.wxss */
-
+@import "../../utils/wxSearchView/wxSearchView.wxss";
 page {
   background-color: #fff;
   display: flex;
