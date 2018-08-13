@@ -19,6 +19,7 @@
   padding: 15rpx 10rpx 10rpx;
   min-height: 350rpx;
   overflow: hidden;
+  
 }
 .main-core-item{
   display: flex;

@@ -1,2 +1,45 @@
-<!--pages/core/notice/notice_detail.wxml-->
-<text>pages/core/notice/notice_detail.wxml</text>
+<!--pages/pageopen/pageopen.wxml-->
+
+<!--index.wxml-->
+<!--隔壁内容页头图  -->
+<image class="toutu" mode="aspectFill" src='http://img.zcool.cn/community/0142885afa4dd4a801216045a2977b.jpg@1280w_1l_2o_100sh.jpg'></image>
+
+<!--标题  -->
+<text class="biaoti">关于收看四川省第十三届运动会开幕式的通知</text>
+
+<!--标题分割线  -->
+<text class='line'></text>
+
+<!--发布者 调用后台作者-->
+<text class='writer'>发布者@刘校长</text>
+
+<!--内容板块  -->
+<view class="content">
+<text class='wenben1'>全院师生员工：
+    四川省第十三届运动会开幕式将于8月10日上午8：30在广元市澳元体育中心举行。开幕式文体展演《大蜀道》是由学校大型文体表演创研中心策划、创编，经过两个月的精心排练于明天上午正式演出，四川卫视将现场直播，请全院师生员工届时收看。</text>
+
+<image class='contentimg1' src='http://img.zcool.cn/community/016ffc5afcd662a801218cf47f1d73.jpg@800w_1l_2o_100sh.jpg'></image>
+<!-- 
+<text class='title1'>野兽的面孔下风骚操作</text>
+-->
+<text class='fengefu1'></text>
+
+<text class='wenben2'>全院师生员工：
+    四川省第十三届运动会开幕式将于8月10日上午8：30在广元市澳元体育中心举行。开幕式文体展演《大蜀道》是由学校大型文体表演创研中心策划、创编，经过两个月的精心排练于明天上午正式演出，四川卫视将现场直播，请全院师生员工届时收看。</text>
+
+<image class='contentimg2' src='http://img.zcool.cn/community/01aa445afadc3ea801207ab4eb90cc.jpg@1280w_1l_2o_100sh.jpg'></image>
+
+<text class='wenben3'>大奖撒的肩宽沙隆达你声卡大伤脑筋啊大的年纪但是你暗扣觉得你大奖撒南大街三都不爱丁堡啊都是第三季迪桑娜都不爱的你就仨都是第三季an的大的。</text>
+
+<text class='blank'></text>
+
+</view>
+
+
+<view class='endjojn'>
+
+
+<navigator class='add_symbol' url="/pages/join/join"></navigator>
+ <!-- <navigator class='backup' open-type="navigateBack">返回</navigator>  -->
+
+</view>

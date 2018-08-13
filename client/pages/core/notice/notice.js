@@ -1,66 +1,62 @@
-// pages/core/notice/notice.js
+var config = require('../../../config')
+var app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    title: '公告',
+    notice: [],
+    hidden: false
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
-  
+    this.fetchData();
+    wx.stopPullDownRefresh();
   },
+  // 跳转到详细页面
+  redictDetail: function (e) {
+    var id = e.currentTarget.id,
+      url = '../detail/detail?id=' + id;
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+    wx.navigateTo({
+      url: url
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  fetchData: function () {
+    var that = this;
+    that.setData({
+      hidden: false
+    })
+    wx.request({
+      method: 'post',
+      data: {
+        level: app.level
+      },
+      url: config.host + '/weapp/notice',
+      success: function (res) {
+        console.log(res)
+        var notice = res.data.data.result
+        if (notice.length && res.statusCode === 200 && res.data.code != -1) {
+          that.setData({
+            notice: notice
+          })
+          setTimeout(function () {
+            that.setData({
+              hidden: true
+            })
+          }, 300)
+        } else {
+          wx.showToast({
+            title: '服务器维护中..',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      },
+      fail: function (res) {
+        wx.hideToast();
+        app.showErrorModal(res.errMsg, '服务器维护中');
+      }
+    })
+  },
+  onLoad: function () {
+    this.fetchData();
   }
 })

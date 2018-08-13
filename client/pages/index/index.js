@@ -41,7 +41,7 @@ Page({
   //分享
   onShareAppMessage: function(){
     return {
-      title: 'We重邮',
+      title: '云校园',
       desc: '碎片化、一站式、一体化校园移动门户',
       path: '/pages/index/index'
     };

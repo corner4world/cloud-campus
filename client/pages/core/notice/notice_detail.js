@@ -1,4 +1,3 @@
-// pages/core/notice/notice_detail.js
 Page({
 
   /**
@@ -13,7 +12,6 @@ Page({
    */
   onLoad: function (options) {
     console.log(options.id)
-    console.log(options.content)
   },
 
   /**

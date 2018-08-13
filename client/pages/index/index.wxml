@@ -68,7 +68,7 @@
     </view>
 
     <!--一卡通-->
-    <view class="main-card-item" id="ykt" wx-if="{{card.ykt.show}}">
+    <view class="main-card-item" id="ykt" wx-if="{{0}}">
       <navigator url="/pages/core/ykt/ykt">
         <view class="card-item-hd">
           <image class="card-item-icon" src="/images/core/ykt.png"></image>
@@ -104,7 +104,7 @@
     </view>
     
     <!--借阅信息-->
-    <view class="main-card-item" id="jy" wx:if="{{card.jy.show}}">
+    <view class="main-card-item" id="jy" wx:if="{{0}}">
       <navigator url="/pages/core/jy/jy">
         <view class="card-item-hd">
           <image class="card-item-icon" src="/images/core/jy.png"></image>
@@ -147,7 +147,7 @@
     </view>
 
     <!--水电费-->
-    <view class="main-card-item" id="sdf" wx:if="{{card.sdf.show}}">
+    <view class="main-card-item" id="sdf" wx:if="{{0}}">
       <navigator url="/pages/core/sdf/sdf">
         <view class="card-item-hd">
           <image class="card-item-icon" src="/images/core/sdf.png"></image>

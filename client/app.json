@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/phone/phone",
     "pages/index/index",
+    "pages/core/notice/notice",
+    "pages/phone/phone",
+    
     "pages/login/login",
    
     "pages/news/news",
@@ -31,7 +33,7 @@
     "pages/core/fw/fw",
     "pages/more/help/volunteerHelp",
     "pages/demo/demo",
-    "pages/core/notice/notice",
+
     "pages/core/notice/notice_detail",
     "pages/core/homework/homework"
   ],

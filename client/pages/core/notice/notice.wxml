@@ -1,2 +1,66 @@
-<!--pages/core/notice/notice.wxml-->
-<text>pages/core/notice/notice.wxml</text>
+<!--index.wxml-->
+<view class="container">
+  <!--卡片的权限设置-->
+
+  <!--卡片列表-->
+  <!-- <view wx:else class="main-card">-->
+  <view class="main-card" >
+    <!--公告-->
+    <view class="main-card-item" id="notice" wx:for="{{notice}}">
+      <navigator url="/pages/core/notice/notice_detail?id={{item.id}}">
+        <view class="card-item-hd">
+          <image class="card-item-icon" src="/images/core/notice/notice_latest.png"></image>
+          <text class="node-name">  {{item.publisher}}</text>
+          <text class="card-item-name">{{item.title}}</text>
+        </view>
+        <view class="card-item-bd kb-nothing">
+          <text>发布时间:{{item.publish_date}}</text>
+          <text>{{item.summary}}...</text>
+        </view>
+      </navigator>
+    </view>
+    <view class="main-card-item" id="notice" wx:for="{{notice}}">
+      <navigator url="/pages/core/notice/notice_detail?id={{item.id}}">
+        <view class="card-item-hd">
+          <image class="card-item-icon" src="/images/core/notice/notice_latest.png"></image>
+          <text class="node-name">  {{item.publisher}}</text>
+          <text class="card-item-name">{{item.title}}</text>
+        </view>
+        <view class="card-item-bd kb-nothing">
+          <text>发布时间:{{item.publish_date}}</text>
+          <text>{{item.summary}}...</text>
+        </view>
+      </navigator>
+    </view>
+    <view class="main-card-item" id="notice" wx:for="{{notice}}">
+      <navigator url="/pages/core/notice/notice_detail?id={{item.id}}">
+        <view class="card-item-hd">
+          <image class="card-item-icon" src="/images/core/notice/notice_latest.png"></image>
+          <text class="node-name">  {{item.publisher}}</text>
+          <text class="card-item-name">{{item.title}}</text>
+        </view>
+        <view class="card-item-bd kb-nothing">
+          <text>发布时间:{{item.publish_date}}</text>
+          <text>{{item.summary}}...</text>
+        </view>
+      </navigator>
+    </view>
+    <view class="main-card-item" id="notice" wx:for="{{notice}}">
+      <navigator url="/pages/core/notice/notice_detail?id={{item.id}}">
+        <view class="card-item-hd">
+          <image class="card-item-icon" src="/images/core/notice/notice_latest.png"></image>
+          <text class="node-name">  {{item.publisher}}</text>
+          <text class="card-item-name">{{item.title}}</text>
+        </view>
+        <view class="card-item-bd kb-nothing">
+          <text>发布时间:{{item.publish_date}}</text>
+          <text>{{item.summary}}...</text>
+        </view>
+      </navigator>
+    </view>
+
+  </view>
+  <loading hidden="{{hidden}}">
+  加载中..
+  </loading>
+</view>
