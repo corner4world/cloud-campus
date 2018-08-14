@@ -1,2 +1,27 @@
-<!--pages/core/homework/homework.wxml-->
-<text>pages/core/homework/homework.wxml</text>
+<!--index.wxml-->
+<view class="container">
+  <view class="main-card" >
+    <!--作业-->
+    <view class="main-card-item" id="homework" wx:for="{{homework}}">
+      <navigator url="/pages/core/homework/homework_detail?id={{item.id}}">
+        <view class="card-item-hd">
+          <image class="card-item-icon" src="/images/core/homework/homework_latest.png"></image>
+          <text class="node-name">  {{item.publisher}}</text>
+          <text class="card-item-name">{{item.title}}</text>
+        </view>
+        <view class="card-item-bd kb-nothing">
+          <text>发布时间:{{item.publish_date}}</text>
+          <text>{{item.summary}}...</text>
+        </view>
+      </navigator>
+    </view>
+    
+   
+    
+
+  </view>
+  <loading hidden="{{hidden}}">
+  加载中..
+  </loading>
+</view>
+

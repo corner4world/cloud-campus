@@ -1,4 +1,4 @@
-<!--index.wxml-->
+  <!--index.wxml-->
 <view class="container">
     <view class="fix_tip {{offline?'active':''}}">
         <text>离线缓存模式</text>
@@ -191,3 +191,5 @@
   </view>
 
 </view>
+<navigator class="toWrite" url="/pages/publish/publish">
+</navigator>

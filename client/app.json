@@ -3,9 +3,7 @@
     "pages/index/index",
     "pages/core/notice/notice",
     "pages/phone/phone",
-    
     "pages/login/login",
-   
     "pages/news/news",
     "pages/news/jw/jw_detail",
     "pages/news/oa/oa_detail",
@@ -33,9 +31,10 @@
     "pages/core/fw/fw",
     "pages/more/help/volunteerHelp",
     "pages/demo/demo",
-
     "pages/core/notice/notice_detail",
-    "pages/core/homework/homework"
+    "pages/core/homework/homework",
+    "pages/core/homework/homework_detail",
+    "pages/publish/publish"
   ],
   "window": {
     "navigationBarBackgroundColor": "#7acfa6",

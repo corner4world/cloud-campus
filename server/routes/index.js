@@ -21,6 +21,8 @@ router.post('/parent_phone', controllers.parent_phone)
 
 //公告
 router.post('/notice', controllers.notice)
+//作业
+router.post('/homework', controllers.homework)
 
 // 用户信息接口（可以用来验证登录态）
 router.get('/user', validationMiddleware, controllers.user)
