@@ -5,10 +5,10 @@
     <view class="add_pic" bindtap="uploadPic" wx-if="{{!isSrc}}">
         <view>添加图片（选）</view>
     </view>
-    <view wx:if="{{isSrc}}" class="image_box">
-        <view  class="picPre">
-            <image src="{{src}}"  mode="aspectFill"></image>
-            <view bindtap="clearPic"></view>
+    <view wx:if="{{picSrc.length}}" class="image_box">
+        <view  class="picPre" wx:for="{{picSrc}}"  wx:key="{{this}}">
+            <image src="{{item.src}}"  mode="aspectFill"></image>
+            <view bindtap="clearPic" id="{{item.index}}"></view>
         </view>
     </view>
     

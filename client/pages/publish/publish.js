@@ -4,7 +4,7 @@ Page({
   onLoad: function (options) {
     that = this;
     that.setData({//初始化数据
-      src: "",
+      picSrc: [],
       isSrc: false,
       ishide: "0",
       autoFocus: true,
@@ -37,19 +37,26 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
+        var pics = that.data.picSrc
+        for(var index in tempFilePaths){
+          pics.push({"src":tempFilePaths[index]})
+        }
         that.setData({
           isSrc: true,
-          src: tempFilePaths
+          picSrc: pics
         })
       }
     })
   },
-  clearPic: function () {//删除图片
+  clearPic: function (e) {//删除图片
+    var that = this 
+    var index = e.target.id
+    var pics = that.data.picSrc
+    pics.splice(index,1)
     that.setData({
       isSrc: false,
-      src: ""
+      picSrc: pics
     })
   },
   changePublic: function (e) {//switch开关
