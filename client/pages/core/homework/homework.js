@@ -4,6 +4,7 @@ Page({
   data: {
     title: '作业',
     homework: [],
+    publish_type:"",
     hidden: false
   },
   onPullDownRefresh: function () {
@@ -27,7 +28,8 @@ Page({
     wx.request({
       method: 'post',
       data: {
-        level: app.level
+        //user:app.user,
+        //level: app.level,
       },
       url: config.host + '/weapp/homework',
       success: function (res) {
@@ -42,12 +44,21 @@ Page({
               hidden: true
             })
           }, 300)
-        } else {
+        } else if (homework.length < 1 && res.statusCode === 200 && res.data.code != -1){
+          that.setData({
+            hidden: true
+          })
           wx.showToast({
-            title: '服务器维护中..',
+            title: '暂无最新作业',
             icon: 'none',
             duration: 2000
           })
+          setTimeout(function () {
+            wx.navigateBack({
+              url: '../../index/index'
+            })
+          }, 2000)
+
         }
       },
       fail: function (res) {
@@ -56,7 +67,16 @@ Page({
       }
     })
   },
-  onLoad: function () {
+  previewImage(e) {
+    const { current } = e.currentTarget.dataset
+    var urls = e.currentTarget.id
+    urls = urls.split(",")
+    wx.previewImage({
+      current,
+      urls,
+    })
+  },
+  onLoad: function (options) {
     this.fetchData();
   }
 })

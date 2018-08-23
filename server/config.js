@@ -32,9 +32,9 @@ const CONF = {
          */
         region: 'ap-guangzhou',
         // Bucket 名称
-        fileBucket: 'qcloudtest',
+        fileBucket: 'uploadfiles',
         // 文件夹
-        uploadFolder: ''
+        uploadFolder: 'uploadfiles'
     },
 
     // 微信登录态有效期

@@ -1,22 +1,40 @@
 <!--index.wxml-->
 <view class="container">
   <view class="main-card" >
-    <!--作业-->
-    <view class="main-card-item" id="homework" wx:for="{{homework}}">
-      <navigator url="/pages/core/homework/homework_detail?id={{item.id}}">
-        <view class="card-item-hd">
-          <image class="card-item-icon" src="/images/core/homework/homework_latest.png"></image>
-          <text class="node-name">  {{item.publisher}}</text>
-          <text class="card-item-name">{{item.title}}</text>
-        </view>
-        <view class="card-item-bd kb-nothing">
-          <text>发布时间:{{item.publish_date}}</text>
-          <text>{{item.summary}}...</text>
-        </view>
-      </navigator>
-    </view>
-    
-   
+    <view wx:for="{{homework}}">
+        <wux-divider text="{{item.subject_name}}" />
+        <wux-wing-blank size="default" style="margin-top:50rpx">
+            <wux-card title="{{item.title}}" extra="{{item.publisher}}" thumb="/images/core/homework/homework.png">
+                <view slot="body">{{item.content}}
+                
+                <!-- 图片-->
+                  <view class="weui-cells weui-cells_after-title" wx:if="{{item.pictures.length}}">
+                    <view class="weui-cell">
+                        <view class="weui-cell__bd">
+                            <view class="weui-uploader">
+                                <view class="weui-uploader__bd">
+                                    <view class="weui-uploader__files" >
+                                        <block wx:for-items="{{ item.pictures}}" wx:for-item="pic" wx:key="{{ index }}">
+                                            <view class="weui-uploader__file" id="{{item.pictures}}" bindtap="previewImage" data-current="{{ pic }}">
+                                                <image class="weui-uploader__img" src="{{ pic }}" />
+                                            </view>
+                                        </block>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                
+                </view>
+
+            
+
+                <view slot="footer">{{item.publish_date}}</view>
+            </wux-card>
+        </wux-wing-blank>
+    </view>    
+
     
 
   </view>

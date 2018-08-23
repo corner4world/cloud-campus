@@ -1,1 +1,11 @@
-{}
+{
+  "usingComponents": {
+    "wux-checkbox-group": "../../ui/wux/checkbox-group/index",
+    "wux-checkbox": "../../ui/wux/checkbox/index",
+    "wux-cell-group": "../../ui/wux/cell-group/index",
+    "wux-cell": "../../ui/wux/cell/index",
+    "wux-select": "../../ui/wux/select/index",
+    "wux-upload": "../../ui/wux/upload/index"
+
+  }
+}

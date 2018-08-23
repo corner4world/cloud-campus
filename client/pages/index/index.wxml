@@ -191,5 +191,4 @@
   </view>
 
 </view>
-<navigator class="toWrite" url="/pages/publish/publish">
-</navigator>
+<wux-floating-button id="wux-floating-button" visible="{{ visible }}" position="{{ position }}" theme="{{ colors[2] }}" buttons="{{ buttons }}"  bind:click="buttonClicked" />

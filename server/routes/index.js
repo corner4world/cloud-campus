@@ -21,8 +21,19 @@ router.post('/parent_phone', controllers.parent_phone)
 
 //公告
 router.post('/notice', controllers.notice)
-//作业
+//作业 
 router.post('/homework', controllers.homework)
+//消息
+router.post('/class_inform', controllers.class_inform)
+//todo
+//最新的公告和作业
+router.post('/notice_homework', controllers.notice_homework)
+//班级
+router.post('/class_category', controllers.class_category)
+//科目类型
+router.post('/subject', controllers.subject)
+//信息发布
+router.post('/publish', controllers.publish)
 
 // 用户信息接口（可以用来验证登录态）
 router.get('/user', validationMiddleware, controllers.user)

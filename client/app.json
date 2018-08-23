@@ -1,9 +1,10 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/login/login",
+    "pages/publish/publish",
     "pages/core/notice/notice",
     "pages/phone/phone",
-    "pages/login/login",
     "pages/news/news",
     "pages/news/jw/jw_detail",
     "pages/news/oa/oa_detail",
@@ -33,8 +34,7 @@
     "pages/demo/demo",
     "pages/core/notice/notice_detail",
     "pages/core/homework/homework",
-    "pages/core/homework/homework_detail",
-    "pages/publish/publish"
+    "pages/core/class_inform/class_inform"
   ],
   "window": {
     "navigationBarBackgroundColor": "#7acfa6",

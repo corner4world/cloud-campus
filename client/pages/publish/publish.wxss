@@ -3,8 +3,8 @@
 .image_box{width:100%;background:#fff;margin-top:20rpx;margin-bottom:20rpx;padding:10px 40rpx 10rpx;}
 .add_title,.addConent{padding:8rpx 30rpx;color:#646464;background:#fff;}
 .add_title{border-bottom:1px solid #EAEAEA;height:88rpx;}
-.addConent textarea{width:100%;height:600rpx;}
-.addConent{padding-top:30rpx;height:600rpx;overflow:hidden;margin-bottom:30rpx;}
+.addConent textarea{width:100%;height:300rpx;}
+.addConent{padding-top:30rpx;height:300rpx;overflow:hidden;margin-bottom:30rpx;}
 label{color:#a0a0a0;padding-left:40rpx;}
 label text{padding-left:10rpx;}
 button{width:400rpx;height:80rpx;line-height:80rpx;text-align:center;font-size:16px;border:0 none;background:#BE925C;color:#fff;margin:30rpx auto}
@@ -12,3 +12,8 @@ button{width:400rpx;height:80rpx;line-height:80rpx;text-align:center;font-size:1
 .picPre image{width:100%;height:180rpx;}
 .picPre view{position: absolute;right:0px;top:-20rpx;width:15px;height:15px;background:url(http://bmob-cdn-7744.b0.upaiyun.com/2016/11/23/23e708d8401db28080a47d384712f765.png) no-repeat;background-size: cover;}
 .hidden{display:none;}
+.picker{
+    padding: 13px;
+    background-color: #FFFFFF;
+}
+
