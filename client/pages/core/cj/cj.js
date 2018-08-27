@@ -18,15 +18,15 @@ Page({
   },
   onLoad: function(){
     var _this = this;
-    if(!app._user.we.info.id || !app._user.we.info.name){
-      _this.setData({
-        remind: '未绑定'
-      });
-      return false;
-    }
+    // if(!app._user.we.info.id || !app._user.we.info.name){
+    //   _this.setData({
+    //     remind: '未绑定'
+    //   });
+    //   return false;
+    // }
     _this.setData({
-      id: app._user.we.info.id,
-      name: app._user.we.info.name
+      id: 1 ,//app._user.we.info.id,
+      name: 's',//app._user.we.info.name
     });
     //判断并读取缓存
     if(app.cache.cj){ cjRender(app.cache.cj); }

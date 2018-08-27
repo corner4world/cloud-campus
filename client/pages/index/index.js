@@ -7,22 +7,7 @@ Page({
     offline: false,
     remind: '加载中',
     cores: [],
-    card: {
-      'notice': [
-        { "id":"10001",
-          "title":"关于贸易战的通知",
-          "content":"美国是搬起石头砸自己的脚",
-          "summary":"说一句题外话。电影《一代宗师》中，叶问准备接宫老爷子武林泰斗的班。凭什么接？宫老爷子出题，“比想法”..."}
-        ],
-      'homework': [
-        {"id": "10003",
-          "title": "2018年8月8号作业",
-          "content": "数学尖子生 第3页第1、2、3、4、5题",
-          "summary": "数学尖子生 第3页第1、2、3、4、5题 请各位家长监督"
-        }
-      ],
-      
-    },
+    card: {},
     user: {},
     disabledItemTap: false, //点击了不可用的页面
     types: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'],
@@ -31,7 +16,7 @@ Page({
     colorIndex: 4,
     opened: false,
     buttons: [{
-      label: '学校公告',
+      label: '行政简讯',
       icon: "data:image/png;base64,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",
     },
     {
@@ -50,7 +35,7 @@ Page({
   buttonClicked(e) {
     const { index } = e.detail
     
-    //公告
+    //行政简讯
     index === 0 && wx.navigateTo({
       url: '/pages/publish/publish?publish_type=0'
     })
@@ -86,6 +71,7 @@ Page({
     //this.login();
     //拉取导航功能
     this.getNavigation()
+    this.getCardData()
   },
   //获取导航功能
   getNavigation:function(){
@@ -118,19 +104,20 @@ Page({
     })
   },
   //获得最新的公告和作业信息
-  getNoticeAndHomework:function(){
+  getCardData:function(){
     var that = this
     wx.request({
       method: 'post',
       data: {
         user: app.user
       },
-      url: config.host + '/weapp/notice_homework',
+      url: config.host + '/weapp/index_latest',
       success: function (res) {
-        console.log(res)
-        var navigation = res.data.data.result
-        if (navigation.length && res.statusCode === 200) {
-          
+        var card = res.data.data
+        if (card.length && res.statusCode === 200) {
+          that.setData({
+              card:card
+            })
         }
       },
       fail: function (res) {

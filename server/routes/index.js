@@ -21,13 +21,14 @@ router.post('/parent_phone', controllers.parent_phone)
 
 //公告
 router.post('/notice', controllers.notice)
+//行政简讯 notice_type:1
+router.post('/administrative', controllers.administrative)
 //作业 
 router.post('/homework', controllers.homework)
 //消息
 router.post('/class_inform', controllers.class_inform)
-//todo
-//最新的公告和作业
-router.post('/notice_homework', controllers.notice_homework)
+//首页卡片数据(最新)
+router.post('/index_latest', controllers.index_latest)
 //班级
 router.post('/class_category', controllers.class_category)
 //科目类型

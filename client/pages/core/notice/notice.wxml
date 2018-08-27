@@ -1,66 +1,35 @@
 <!--index.wxml-->
 <view class="container">
-  <!--卡片的权限设置-->
-
-  <!--卡片列表-->
-  <!-- <view wx:else class="main-card">-->
   <view class="main-card" >
-    <!--公告-->
-    <view class="main-card-item" id="notice" wx:for="{{notice}}">
-      <navigator url="/pages/core/notice/notice_detail?id={{item.id}}">
-        <view class="card-item-hd">
-          <image class="card-item-icon" src="/images/core/notice/notice_latest.png"></image>
-          <text class="node-name">  {{item.publisher}}</text>
-          <text class="card-item-name">{{item.title}}</text>
-        </view>
-        <view class="card-item-bd kb-nothing">
-          <text>发布时间:{{item.publish_date}}</text>
-          <text>{{item.summary}}...</text>
-        </view>
-      </navigator>
-    </view>
-    <view class="main-card-item" id="notice" wx:for="{{notice}}">
-      <navigator url="/pages/core/notice/notice_detail?id={{item.id}}">
-        <view class="card-item-hd">
-          <image class="card-item-icon" src="/images/core/notice/notice_latest.png"></image>
-          <text class="node-name">  {{item.publisher}}</text>
-          <text class="card-item-name">{{item.title}}</text>
-        </view>
-        <view class="card-item-bd kb-nothing">
-          <text>发布时间:{{item.publish_date}}</text>
-          <text>{{item.summary}}...</text>
-        </view>
-      </navigator>
-    </view>
-    <view class="main-card-item" id="notice" wx:for="{{notice}}">
-      <navigator url="/pages/core/notice/notice_detail?id={{item.id}}">
-        <view class="card-item-hd">
-          <image class="card-item-icon" src="/images/core/notice/notice_latest.png"></image>
-          <text class="node-name">  {{item.publisher}}</text>
-          <text class="card-item-name">{{item.title}}</text>
-        </view>
-        <view class="card-item-bd kb-nothing">
-          <text>发布时间:{{item.publish_date}}</text>
-          <text>{{item.summary}}...</text>
-        </view>
-      </navigator>
-    </view>
-    <view class="main-card-item" id="notice" wx:for="{{notice}}">
-      <navigator url="/pages/core/notice/notice_detail?id={{item.id}}">
-        <view class="card-item-hd">
-          <image class="card-item-icon" src="/images/core/notice/notice_latest.png"></image>
-          <text class="node-name">  {{item.publisher}}</text>
-          <text class="card-item-name">{{item.title}}</text>
-        </view>
-        <view class="card-item-bd kb-nothing">
-          <text>发布时间:{{item.publish_date}}</text>
-          <text>{{item.summary}}...</text>
-        </view>
-      </navigator>
-    </view>
+    <view wx:for="{{notice}}" wx:key="{{index}}">
+    <wux-divider text="" />
+        <wux-wing-blank size="default" style="margin-top:50rpx">
+            <wux-card title="{{item.title}}" extra="{{item.publisher}}" thumb="/images/core/notice/notice_latest.png">
+                <view slot="body">{{item.summary}}...</view>
+                <view slot="footer">{{item.publish_date}}</view>
+            </wux-card>
+        </wux-wing-blank>
+    </view>    
+<!--历史纪录-->
+   <wux-divider text="历史纪录" showText="{{historyData.length}}"/>  
+    <view wx:for="{{historyData}}" wx:key="{{index}}">
+        <wux-divider text="" />
+        <wux-wing-blank size="default" style="margin-top:50rpx">
+            <wux-card title="{{item.title}}" extra="{{item.publisher}}" thumb="/images/core/notice/notice_latest.png">
+                <view slot="body">{{item.summary}}...</view>
+                <view slot="footer">{{item.publish_date}}</view>
+            </wux-card>
+        </wux-wing-blank>
+    </view>    
+     <wux-divider text="加载历史纪录" bindtap="fetchHistoryData"/>  
+  </view><!-- main-card结束 -->
 
-  </view>
   <loading hidden="{{hidden}}">
   加载中..
   </loading>
+
+
 </view>
+
+<import src="../../../utils/wxParse/wxParse.wxml"/>
+<template is="wxParse" data="{{wxParseData:article.nodes}}"/>

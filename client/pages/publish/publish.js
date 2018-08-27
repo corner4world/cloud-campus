@@ -118,7 +118,26 @@ Page({
               icon: 'none',
               duration: 2000
             })
+            var url= ""
+            var publish_type = that.data.publish_type
+            switch (publish_type * 1){
+              case 0:
+                url ="/pages/core/administrative/administrative"
+                console.log(publish_type)
+                break
+              case 1:
+                url = "/pages/core/homework/homework"
+                break
+              case 2:
+                url = "/pages/core/class_inform/class_inform"
+                break
+              default:
+                url = "/pages/index/index"
+            }
             //跳转
+            wx.redirectTo({
+              url: url,
+            })
           }
           else if (status == 0 && res.statusCode === 200 && res.data.code != -1) {
             wx.showToast({

@@ -1,9 +1,5 @@
   <!--index.wxml-->
 <view class="container">
-    <view class="fix_tip {{offline?'active':''}}">
-        <text>离线缓存模式</text>
-    </view>
-
   <!--功能导航-->
   <swiper class="main-swpier" indicator-dots="true" indicator-active-color="#73b4ef">
   <swiper-item class="main-core" wx:for="{{cores}}"  wx:for-item="core" wx:key="id" >
@@ -12,183 +8,44 @@
         <image class="core-item-icon" src="{{item.img_active}}"></image>
         <text class="core-item-name">{{item.name}}</text>
       </navigator>
-      <!--功能不可用时 -->
-      <!-- 
-      <view wx:else class="main-core-item disabled" bindtap="disabled_item">
-        <image class="core-item-icon" src="/images/core/{{item.id}}@disabled.png"></image>
-        <text class="core-item-name">{{item.name}}</text>
-      </view>
-      -->
     </block>
   </swiper-item >
   </swiper>
-  <!--卡片的权限设置-->
-  <!-- 
-    <view class="fix_tip {{disabledItemTap?'active':''}}">
-        <text wx:if="{{remind == '未绑定'}}">请先绑定帐号</text>
-        <text wx:else>{{(user.teacher && !offline) ? '无权限' : '该服务不可用'}}</text>
-    </view>
-  <view wx:if="{{remind}}" class="remind-box">
-    <image wx:if="{{remind == '加载中'}}" class="remind-img" src="/images/index/loading.gif"></image>
-    <block wx:else>
-      <image class="remind-img" src="/images/index/nothing.png"></image>
-      <text class="remind-text">{{remind}}</text>
-      <navigator wx:if="{{remind == '未绑定'}}" url="/pages/more/login" class="remind-btn">前往绑定</navigator>
-    </block>
-  </view>
-  -->
+
   <!--卡片列表-->
   <!-- <view wx:else class="main-card">-->
   <view class="main-card">
-    <!--最新公告-->
-    <view class="main-card-item" id="notice" wx:if="{{card.notice.length}}">
-      <navigator url="/pages/core/notice/notice_detail?id={{card.notice[0].id}}&content={{card.notice[0].content}}">
-        <view class="card-item-hd">
-          <image class="card-item-icon" src="/images/core/notice/notice_latest.png"></image>
-          <text class="card-item-name">最新公告</text>
-        </view>
-        <view class="card-item-bd kb-nothing">
-          <text>{{card.notice[0].title}}</text>
-          <text>{{card.notice[0].summary}}</text>
-        </view>
-      </navigator>
-    </view>
-    <!--今日作业-->
-    <view class="main-card-item" id="homework" wx:if="{{card.homework.length}}">
-      <navigator url="/pages/core/homework/homework_detail?id={{card.homework[0].id}}&content={{card.homework[0].content}}">
-        <view class="card-item-hd">
-          <image class="card-item-icon" src="/images/core/homework/homework_latest.png"></image>
-          <text class="card-item-name">今日作业</text>
-        </view>
-        <view class="card-item-bd kb-nothing">
-          <text>{{card.homework[0].title}}</text>
-          <text>{{card.homework[0].summary}}</text>
-        </view>
-      </navigator>
-    </view>
+    <view wx:for="{{card}}" wx:key="{{index}}" style='margin-top:25rpx'>
 
-    <!--一卡通-->
-    <view class="main-card-item" id="ykt" wx-if="{{0}}">
-      <navigator url="/pages/core/ykt/ykt">
-        <view class="card-item-hd">
-          <image class="card-item-icon" src="/images/core/ykt.png"></image>
-          <text class="card-item-name">一卡通</text>
-        </view>
-        <view class="card-item-bd">
-          <view class="card-info-hd">
-            <view class="card-info-left">
-              <text class="ykt-title">余额：</text>
-            </view>
-            <view class="card-info-right">
-              <view>截至时间：{{card.ykt.data.last_time}}</view>
-            </view>
-          </view>
-          <view class="ykt-balance">
-            <text class="ykt-balance-value">{{card.ykt.data.balance}}</text>
-            <text class="ykt-balance-text">元</text>
-          </view>
-          <block wx:if="{{card.ykt.data.cost_status}}">
-            <text class="ykt-title">今日消费：</text>
-            <view class="ykt-cost">
-              <block wx:for="{{card.ykt.data.today_cost.value}}" wx:key="*this">
-                <text class="ykt-cost-value">{{item}}</text>
-                <text class="ykt-cost-text" wx:if="{{ index != card.ykt.data.today_cost.value.length - 1}}">+</text>
-              </block>
-              <text class="ykt-cost-text">=</text>
-              <text class="ykt-cost-total">{{card.ykt.data.today_cost.total}}</text>
-              <text class="ykt-cost-text">元</text>
-            </view>
-          </block>
-        </view>
-      </navigator>
-    </view>
-    
-    <!--借阅信息-->
-    <view class="main-card-item" id="jy" wx:if="{{0}}">
-      <navigator url="/pages/core/jy/jy">
-        <view class="card-item-hd">
-          <image class="card-item-icon" src="/images/core/jy.png"></image>
-          <text class="card-item-name">借阅信息</text>
-        </view>
-        <view class="card-item-bd">
-          <view class="card-info-hd">
-            <view class="card-info-left">
-              <text class="card-info-name">{{user.we.info.name}}</text>
-              <text class="card-info-number">{{user.we.info.id}}</text>
-            </view>
-            <view class="card-info-right">
-              <text>当前借阅：{{card.jy.data.books_num}}</text>
-              <text>欠费金额：{{card.jy.data.dbet}}</text>
-            </view>
-          </view>
-          <view class="jy-list">
-            <view class="jy-item" wx:for="{{card.jy.data.book_list}}" wx:key="book_name">
-              <view class="jy-book">
-                <view class="jy-pickup-time">
-                  <text class="jy-pickup-time-value">{{item.jsrq}}</text>
-                  <text class="jy-pickup-time-text">借</text>
+            <wux-card title="{{item.title}}" full="{{ true }}" extra="{{item.publisher}}" thumb="/images/index/latest.png">
+                <view slot="body">{{item.content}}
+                
+                <!-- 图片-->
+                  <view class="" wx:if="{{item.pictures.length}}">
+                    <view class="" style='margin-top:15rpx'>
+                        <view class="weui-cell__bd">
+                            <view class="weui-uploader">
+                                <view class="weui-uploader__bd">
+                                    <view class="weui-uploader__files" >
+                                        <block wx:for-items="{{ item.pictures}}" wx:for-item="pic" wx:key="{{ index }}">
+                                            <view class="weui-uploader__file" id="{{item.pictures}}" bindtap="previewImage" data-current="{{ pic }}">
+                                                <image class="weui-uploader__img" src="{{ pic }}" />
+                                            </view>
+                                        </block>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
                 </view>
-                <text class="jy-book-name">{{item.book}}</text>
-              </view>
-              <view class="jy-return-time">
-                <text class="jy-return-time-value">{{item.yhrq}}</text>
-                <text class="jy-return-time-text">还</text>
-              </view>
-              <view class="jy-timing">
-                <text class="jy-timing-text" wx:if="{{item.timing>=0}}">还有</text>
-                <text class="jy-timing-text" wx:else>已超过</text>
-                <text class="jy-timing-value">{{item.timing>=0?item.timing:-item.timing}}</text>
-                <text class="jy-timing-text">天</text>
-              </view>
-            </view>
-          </view>
-        </view>
-      </navigator>
-    </view>
+                
+                </view>
 
-    <!--水电费-->
-    <view class="main-card-item" id="sdf" wx:if="{{0}}">
-      <navigator url="/pages/core/sdf/sdf">
-        <view class="card-item-hd">
-          <image class="card-item-icon" src="/images/core/sdf.png"></image>
-          <text class="card-item-name">电费查询</text>
-        </view>
-        <view class="card-item-bd">
-          <view class="card-info-hd">
-            <view class="card-info-left">
-              <text class="card-info-name">{{card.sdf.data.room}}</text>
-            </view>
-            <view class="card-info-right">
-              <view>截至时间：{{card.sdf.data.record_time}}</view>
-            </view>
-          </view>
-          <text class="sdf-hd">当月用电：</text>
-          <view class="sdf-bd">
-            <view class="sdf-key">
-              <text class="sdf-value">{{card.sdf.data.spend}}</text>
-              <text class="sdf-text">度</text>
-            </view>
-            <view class="sdf-key" wx:if="{{card.sdf.data.cost<=0}}">
-              <text class="sdf-text">剩余</text>
-              <text class="sdf-value">{{-card.sdf.data.cost}}</text>
-              <text class="sdf-text">元</text>
-            </view>
-            <view class="sdf-key" wx:else>
-              <text class="sdf-text">用超</text>
-              <text class="sdf-value">{{card.sdf.data.cost}}</text>
-              <text class="sdf-text">元</text>
-            </view>
-          </view>
-        </view>
-      </navigator>
-    </view>
-  </view>
-
-  <view class="main-ending">
-    <view class="main-ending-line"></view>
-    <view class="main-ending-text">我是一个乖巧的结尾</view>
-    <view class="main-ending-line"></view>
-  </view>
+                <view slot="footer">{{item.publish_date}}</view>
+            </wux-card>
+        
+    </view>    
+  </view> <!-- main card -->
 
 </view>
 <wux-floating-button id="wux-floating-button" visible="{{ visible }}" position="{{ position }}" theme="{{ colors[2] }}" buttons="{{ buttons }}"  bind:click="buttonClicked" />

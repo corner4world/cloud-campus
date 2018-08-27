@@ -3,6 +3,7 @@ module.exports = async ctx => {
   let query = ctx.request.body;
   //let level = query.level
   //let user = query.user
+  let limit = query.limit * 1
   var class_list = []
   try {
     //var user_type = user.user_type * 1
@@ -18,9 +19,10 @@ module.exports = async ctx => {
     var sql = "select id,title,content,summary,publisher,level,DATE_FORMAT(publish_time, '%Y-%m-%d %H:%i:%S') as publish_date,pictures from homework_information " +
       " where publish_type=2" +
       " and id in (select homework_inform_id from homework_inform_class where class_id in ('25719710465130536'))" +
-      " order by publish_date desc limit 10"
+      " order by publish_date desc limit " +limit
     var result = await mysql.schema.raw(sql)
-    var result = result[0]
+    result = result[0]
+    //图片地址分割
     for (var index in result) {
       if (result[index].pictures == "") {
         result[index].pictures = []
@@ -28,7 +30,6 @@ module.exports = async ctx => {
       else {
         result[index].pictures = result[index].pictures.split(",")
       }
-
     }
     ctx.state.data = { result }
   }

@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: cloud-campus-admin
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: 80785
+Implementation-Vendor-Id: com.jp
+Build-Jdk: 1.8.0_91
+Implementation-URL: http://projects.spring.io/spring-boot/cloud-campus
+ -admin/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

@@ -1,3 +1,4 @@
+@import "../../../utils/wxParse/wxParse.wxss";
 /**index.wxss**/
 .container{
   padding-bottom: 0;

@@ -1,15 +1,14 @@
 <!--index.wxml-->
 <view class="container">
   <view class="main-card" >
-    <view wx:for="{{class_inform}}">
-        <wux-divider text="" />
-        <wux-wing-blank size="default" style="margin-top:50rpx">
-            <wux-card title="{{item.title}}" extra="{{item.publisher}}" thumb="/images/core/class_inform/class_inform.png">
+    <view wx:for="{{class_inform}}" wx:key="{{index}}" style='margin-top:25rpx'>
+
+            <wux-card title="{{item.title}}" full="{{ true }}" extra="{{item.publisher}}" thumb="{{index == 0?'/images/index/latest.png':'/images/index/previous.png'}}">
                 <view slot="body">{{item.content}}
                 
                 <!-- 图片-->
-                  <view class="weui-cells weui-cells_after-title" wx:if="{{item.pictures.length}}">
-                    <view class="weui-cell">
+                  <view class="" wx:if="{{item.pictures.length}}">
+                    <view class="" style='margin-top:15rpx'>
                         <view class="weui-cell__bd">
                             <view class="weui-uploader">
                                 <view class="weui-uploader__bd">
@@ -28,13 +27,13 @@
                 
                 </view>
 
-            
-
                 <view slot="footer">{{item.publish_date}}</view>
             </wux-card>
-        </wux-wing-blank>
+        
     </view>    
-
+<!-- -->
+<!--历史纪录-->   
+     <wux-divider text="加载更多" bindtap="fetchHistoryData"/>  
     
 
   </view>

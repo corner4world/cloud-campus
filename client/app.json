@@ -1,11 +1,23 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/news/news",
+    "pages/core/sdf/sdf",
+    "pages/core/xf/xf",
+    "pages/core/jy/jy",
+    "pages/core/xs/xs",
+    "pages/core/kjs/kjs",
+    "pages/core/ks/ks",
+    "pages/core/cj/cj",
+    
+    "pages/core/ykt/ykt",
+    
+    
+    "pages/core/kb/kb",
     "pages/login/login",
     "pages/publish/publish",
     "pages/core/notice/notice",
     "pages/phone/phone",
-    "pages/news/news",
     "pages/news/jw/jw_detail",
     "pages/news/oa/oa_detail",
     "pages/news/hy/hy_detail",
@@ -15,15 +27,14 @@
     "pages/more/more",
     "pages/more/issues",
     "pages/more/about",
-    "pages/core/kb/kb",
-    "pages/core/cj/cj",
-    "pages/core/ks/ks",
-    "pages/core/kjs/kjs",
-    "pages/core/xs/xs",
-    "pages/core/ykt/ykt",
-    "pages/core/jy/jy",
-    "pages/core/xf/xf",
-    "pages/core/sdf/sdf",
+    
+    
+    
+    
+    
+    
+    
+    
     "pages/core/bx/bx",
     "pages/core/bx/bx_apply",
     "pages/core/bx/bx_detail",
@@ -34,7 +45,9 @@
     "pages/demo/demo",
     "pages/core/notice/notice_detail",
     "pages/core/homework/homework",
-    "pages/core/class_inform/class_inform"
+    "pages/core/class_inform/class_inform",
+    "pages/campus-life/campus-life",
+    "pages/core/administrative/administrative"
   ],
   "window": {
     "navigationBarBackgroundColor": "#7acfa6",
@@ -62,8 +75,14 @@
         "selectedIconPath": "images/phone/phone-list@active.png"
       },
       {
+        "pagePath": "pages/campus-life/campus-life",
+        "text": "校园风采",
+        "iconPath": "images/campus-life/campus-life.png",
+        "selectedIconPath": "images/campus-life/campus-life@active.png"
+      },
+      {
         "pagePath": "pages/more/more",
-        "text": "更多",
+        "text": "",
         "iconPath": "images/index/more.png",
         "selectedIconPath": "images/index/more@active.png"
       }

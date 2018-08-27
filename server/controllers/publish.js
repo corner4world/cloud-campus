@@ -11,7 +11,7 @@ module.exports = async ctx => {
   let user = query.user
   switch (publish_type) {
     case 0:
-      var sql = "INSERT INTO notice (id, title, content, summary, publisher, level, publish_time, pictures) VALUES (UUID_SHORT(),'" + title + "', '" + content + "', '" + content.slice(0, 50) + "', '" + "user.username" + "', 0,  CURRENT_TIME(), '" + pictures+"')"
+      var sql = "INSERT INTO notice (id, title, content, summary, publisher, level, publish_time, pictures) VALUES (UUID_SHORT(),'" + title + "', '" + content + "', '" + content.slice(0, 50) + "', '" + "管理员" + "', 1,  CURRENT_TIME(), '" + pictures+"')"
         try {
           await mysql.schema.raw(sql)
           ctx.state.data = { status: 1 }
@@ -22,7 +22,7 @@ module.exports = async ctx => {
     case 1:
     case 2:
       var id = uuid.v1()
-      var sql = "INSERT INTO homework_information (id, title, content, summary, publisher, level, class_id,publish_time, pictures,publish_type,homework_type_value) VALUES ('"+id+"','" + title + "', '" + content + "', '" + content.slice(0, 50) + "', '" + "user.username" + "', 0,'" + class_value + "',  CURRENT_TIME(), '" + pictures + "','" + publish_type + "','" + homework_type_value+ "')"
+      var sql = "INSERT INTO homework_information (id, title, content, summary, publisher, level, class_id,publish_time, pictures,publish_type,homework_type_value) VALUES ('" + id + "','" + title + "', '" + content + "', '" + content.slice(0, 50) + "', '" + "管理员" + "', 0,'" + class_value + "',  CURRENT_TIME(), '" + pictures + "','" + publish_type + "','" + homework_type_value+ "')"
       var class_relation = "insert into homework_inform_class(id,homework_inform_id,class_id) values "
       var index = 0
       while(index < class_value.length - 1) {

@@ -14,7 +14,7 @@ Page({
     jyHistoryTap: false //点击历史借阅
   },
   onLoad: function() {
-    this.getData();
+    //this.getData();
   },
   onPullDownRefresh: function(){
     this.getData();

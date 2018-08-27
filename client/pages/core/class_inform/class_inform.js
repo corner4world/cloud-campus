@@ -4,22 +4,14 @@ Page({
   data: {
     title: '班级通知',
     class_inform: [],
-    hidden: false
+    hidden: false,
+    limit: 5,
   },
   onPullDownRefresh: function () {
-    this.fetchData();
+    this.fetchData(5);
     wx.stopPullDownRefresh();
   },
-  // 跳转到详细页面
-  redictDetail: function (e) {
-    var id = e.currentTarget.id,
-      url = '../detail/detail?id=' + id;
-
-    wx.navigateTo({
-      url: url
-    })
-  },
-  fetchData: function () {
+  fetchData: function (limit) {
     var that = this;
     that.setData({
       hidden: false
@@ -29,6 +21,7 @@ Page({
       data: {
         //user:app.user,
         //level: app.level,
+        limit:limit
       },
       url: config.host + '/weapp/class_inform',
       success: function (res) {
@@ -52,12 +45,6 @@ Page({
             icon: 'none',
             duration: 2000
           })
-          setTimeout(function () {
-            wx.navigateBack({
-              url: '../../index/index'
-            })
-          }, 2000)
-
         }
       },
       fail: function (res) {
@@ -76,6 +63,12 @@ Page({
     })
   },
   onLoad: function (options) {
-    this.fetchData();
+    this.fetchData(5);
+  },
+  fetchHistoryData: function () {
+    var limit = this.data.limit
+    limit = limit + 5
+    this.fetchData(limit)
+    this.setData({ limit: limit })
   }
 })
