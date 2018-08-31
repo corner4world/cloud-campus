@@ -7,10 +7,10 @@ module.exports = async ctx => {
 
   switch(level){
     case 0:
-      var result = await mysql("teacher").select('*')
+      var result = await mysql("client_teacher").select('*')
           .where({ phone: phone})
       if(result.length){
-        var sql = "INSERT INTO user (id, username,password,phone,level) " +
+        var sql = "INSERT INTO client_user (id, username,password,phone,level) " +
           "VALUES (UUID_SHORT(), '" + result[0].name + "', '" +
           password + "', '" + phone + "', " + level + ")"
         try{
@@ -25,10 +25,10 @@ module.exports = async ctx => {
       }
       break
     case 1:
-      var result = await mysql("parent").select('*')
+      var result = await mysql("client_parent").select('*')
         .where({ phone: phone })
       if (result.length) {
-        var sql = "INSERT INTO user(id, username,password,phone,level) " +
+        var sql = "INSERT INTO client_user(id, username,password,phone,level) " +
           "VALUES (UUID_SHORT(), '" + result[0].name + "', '" +
           password + "', '" + phone + "', " + level + ")"
         try {

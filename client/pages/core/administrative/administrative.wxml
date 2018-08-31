@@ -3,7 +3,7 @@
   <view class="main-card" >
     <view wx:for="{{administrative}}" wx:key="{{index}}" style='margin-top:25rpx'>
 
-            <wux-card title="{{item.title}}" full="{{ true }}" extra="{{item.publisher}}">
+            <wux-card title="{{item.title}}" full="{{ true }}" extra="{{item.publisher}}" thumb="{{index == 0?'/images/index/latest.png':'/images/index/previous.png'}}">
                 <view slot="body">{{item.content}}
                 <!-- 图片-->
                   <view class="" wx:if="{{item.pictures.length}}">

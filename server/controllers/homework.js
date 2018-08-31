@@ -17,19 +17,19 @@ module.exports = async ctx => {
        // class_list = await mysql.schema.raw("select class_id from parent phone = '" + user.phone + "'")
         break
     }*/
-    var sql = "select id,hi.title,content,summary,publisher,level,DATE_FORMAT(publish_time, '%Y-%m-%d %H:%i:%S') as publish_date,s.title as subject_name,pictures from homework_information as hi"+
-        " inner join subject as s on hi.homework_type_value = s.value"+
+    var sql = "select id,hi.title,content,summary,publisher,level,DATE_FORMAT(publish_time, '%Y-%m-%d %H:%i:%S') as publish_date,s.title as subject_name,pictures from client_homework_information as hi"+
+        " inner join client_subject as s on hi.homework_type_value = s.value"+
         " where publish_time > (SELECT DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s'))"+
         " and publish_type=1"+
-        " and id in (select homework_inform_id from homework_inform_class where class_id in ('25719710465130536'))"+
+        " and id in (select homework_inform_id from client_homework_inform_class where class_id in ('25719710465130536'))"+
         " order by publish_date desc"
     //历史纪录
     if(history){
-      sql = "select id,hi.title,content,summary,publisher,level,DATE_FORMAT(publish_time, '%Y-%m-%d %H:%i:%S') as publish_date,s.title as subject_name,pictures from homework_information as hi" +
-        " inner join subject as s on hi.homework_type_value = s.value" +
+      sql = "select id,hi.title,content,summary,publisher,level,DATE_FORMAT(publish_time, '%Y-%m-%d %H:%i:%S') as publish_date,s.title as subject_name,pictures from client_homework_information as hi" +
+        " inner join client_subject as s on hi.homework_type_value = s.value" +
         " where publish_time < (SELECT DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s'))" +
         " and publish_type=1" +
-        " and id in (select homework_inform_id from homework_inform_class where class_id in ('25719710465130536'))" +
+        " and id in (select homework_inform_id from client_homework_inform_class where class_id in ('25719710465130536'))" +
         " order by publish_date desc limit " +limit
     }
 

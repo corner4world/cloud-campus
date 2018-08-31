@@ -16,9 +16,9 @@ module.exports = async ctx => {
        // class_list = await mysql.schema.raw("select class_id from parent phone = '" + user.phone + "'")
         break
     }*/
-    var sql = "select id,title,content,summary,publisher,level,DATE_FORMAT(publish_time, '%Y-%m-%d %H:%i:%S') as publish_date,pictures from homework_information " +
+    var sql = "select id,title,content,summary,publisher,level,DATE_FORMAT(publish_time, '%Y-%m-%d %H:%i:%S') as publish_date,pictures from client_homework_information " +
       " where publish_type=2" +
-      " and id in (select homework_inform_id from homework_inform_class where class_id in ('25719710465130536'))" +
+      " and id in (select homework_inform_id from client_homework_inform_class where class_id in ('25719710465130536'))" +
       " order by publish_date desc limit " +limit
     var result = await mysql.schema.raw(sql)
     result = result[0]

@@ -1,1 +1,6 @@
-{}
+{
+  "usingComponents": {
+    "wux-divider": "../../ui/wux/divider/index",
+    "wux-media": "../../ui/wux/media/index"
+  }
+}

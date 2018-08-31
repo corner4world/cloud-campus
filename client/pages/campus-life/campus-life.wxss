@@ -1,1 +1,4 @@
-/* pages/campus-life/campus-life.wxss */
+.toutu {
+  width: 100%;
+  height: 400rpx;
+}

@@ -35,7 +35,9 @@ router.post('/class_category', controllers.class_category)
 router.post('/subject', controllers.subject)
 //信息发布
 router.post('/publish', controllers.publish)
-
+//校园风采
+router.post('/campus_life', controllers.campus_life)
+router.post('/campus_life_detail', controllers.campus_life_detail)
 // 用户信息接口（可以用来验证登录态）
 router.get('/user', validationMiddleware, controllers.user)
 // --- 图片上传 Demo --- //

@@ -4,7 +4,7 @@ module.exports = async ctx => {
   let phone = query.phone
   let password = query.password
   try{
-    var result = await mysql("user").select('*')
+    var result = await mysql("client_user").select('*')
       .where({ phone: phone, password: password })
     ctx.state.data = { result }
   }

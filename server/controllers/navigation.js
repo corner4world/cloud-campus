@@ -3,7 +3,7 @@ module.exports = async ctx => {
   let query = ctx.request.body;
   let level = query.level
   try {
-    var result = await mysql("navigation").select('*').where({state:"on"})
+    var result = await mysql("client_navigation").select('*').where({state:"on"})
       .where({ level:level,level:0 })
     ctx.state.data = { result }
   }

@@ -1,66 +1,74 @@
-// pages/campus-life/campus-life.js
+var config = require('../../config')
+var app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    title: '校园风采',
+    campus_life: [],
+    hidden: false,
+    limit: 5,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
-  
+    this.fetchData(5);
+    wx.stopPullDownRefresh();
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+  fetchData: function (limit) {
+    var that = this;
+    that.setData({
+      hidden: false
+    })
+    wx.request({
+      method: 'post',
+      data: {
+        //user:app.user,
+        //level: app.level,
+        limit: limit
+      },
+      url: config.host + '/weapp/campus_life',
+      success: function (res) {
+        console.log(res)
+        var campus_life = res.data.data.result
+        if (campus_life.length && res.statusCode === 200 && res.data.code != -1) {
+          that.setData({
+            campus_life: campus_life
+          })
+          setTimeout(function () {
+            that.setData({
+              hidden: true
+            })
+          }, 300)
+        } else if (campus_life.length < 1 && res.statusCode === 200 && res.data.code != -1) {
+          that.setData({
+            hidden: true
+          })
+          wx.showToast({
+            title: '暂无最新活动',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      },
+      fail: function (res) {
+        wx.hideToast();
+        app.showErrorModal(res.errMsg, '服务器维护中');
+      }
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  previewImage(e) {
+    const { current } = e.currentTarget.dataset
+    var urls = e.currentTarget.id
+    urls = urls.split(",")
+    wx.previewImage({
+      current,
+      urls,
+    })
+  },
+  onLoad: function (options) {
+    this.fetchData(5);
+  },
+  fetchHistoryData: function () {
+    var limit = this.data.limit
+    limit = limit + 5
+    this.fetchData(limit)
+    this.setData({ limit: limit })
   }
 })

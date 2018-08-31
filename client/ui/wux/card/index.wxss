@@ -54,11 +54,11 @@
 }
 .wux-card__thumb {
   display: inline-block;
-  width: 64rpx;
-  height: 64rpx;
+  width: 52rpx;
+  height: 52rpx;
   position: relative;
-  margin-left: auto;
-  margin-right: 10rpx;
+  margin-left: -10rpx;
+  margin-right: 6rpx;
   overflow: hidden;
   vertical-align: middle;
 }

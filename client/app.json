@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/campus-life/campus-life",
     "pages/index/index",
     "pages/news/news",
     "pages/core/sdf/sdf",
@@ -9,10 +10,7 @@
     "pages/core/kjs/kjs",
     "pages/core/ks/ks",
     "pages/core/cj/cj",
-    
     "pages/core/ykt/ykt",
-    
-    
     "pages/core/kb/kb",
     "pages/login/login",
     "pages/publish/publish",
@@ -27,14 +25,6 @@
     "pages/more/more",
     "pages/more/issues",
     "pages/more/about",
-    
-    
-    
-    
-    
-    
-    
-    
     "pages/core/bx/bx",
     "pages/core/bx/bx_apply",
     "pages/core/bx/bx_detail",
@@ -46,8 +36,8 @@
     "pages/core/notice/notice_detail",
     "pages/core/homework/homework",
     "pages/core/class_inform/class_inform",
-    "pages/campus-life/campus-life",
-    "pages/core/administrative/administrative"
+    "pages/core/administrative/administrative",
+    "pages/campus-life/detail/campus-life-detail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#7acfa6",
