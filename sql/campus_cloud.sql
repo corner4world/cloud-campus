@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : mysqlConnect
+ Source Server         : cd-cdb-o72e6rm0.sql.tencentcdb.com
  Source Server Type    : MySQL
- Source Server Version : 50096
- Source Host           : localhost:3306
- Source Schema         : campus_cloud_admin
+ Source Server Version : 50628
+ Source Host           : cd-cdb-o72e6rm0.sql.tencentcdb.com:63733
+ Source Schema         : campus_cloud
 
  Target Server Type    : MySQL
- Target Server Version : 50096
+ Target Server Version : 50628
  File Encoding         : 65001
 
- Date: 31/08/2018 10:27:56
+ Date: 01/09/2018 13:05:34
 */
 
 SET NAMES utf8mb4;
@@ -30,7 +30,7 @@ CREATE TABLE `blog_article`  (
   `category` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文章类型,radio,YES,false,true,true',
   `out_link_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '外链地址,input,YES,false,false,false',
   `resources` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '来源,input,YES,false,true,false',
-  `publist_time` datetime NULL DEFAULT NULL COMMENT '发布时间,timer,YES,false,true,true',
+  `publist_time` datetime(0) NULL DEFAULT NULL COMMENT '发布时间,timer,YES,false,true,true',
   `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '内容,editor,NO,false,true,true',
   `text` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '纯文字文章内容,textarea,YES,false,false,false',
   `click` int(11) NULL DEFAULT NULL COMMENT '浏览量,0,YES,false,false,false',
@@ -39,19 +39,19 @@ CREATE TABLE `blog_article`  (
   `is_top` bit(1) NULL DEFAULT NULL COMMENT '是否置顶,switch,YES,true,true,false',
   `is_recommend` bit(1) NULL DEFAULT NULL COMMENT '是否推荐,switch,YES,true,true,false',
   `status` int(11) NULL DEFAULT NULL COMMENT '文章状态,0,YES,false,false,false',
-  `create_date` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `create_date` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `create_by` bigint(20) NULL DEFAULT NULL COMMENT '创建人',
-  `update_date` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `update_date` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
   `update_by` bigint(20) NULL DEFAULT NULL COMMENT '修改人',
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `del_flag` tinyint(4) NULL DEFAULT NULL COMMENT '删除标记',
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '博客内容,1,uploadImg-showPic-YES,timer-publistTime-YES,editor-co' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of blog_article
 -- ----------------------------
-INSERT INTO `blog_article` VALUES (10, 'AAAAAAAA', NULL, NULL, NULL, '1', NULL, NULL, '2018-08-26 08:00:00', '<p style=\'text-align: center;\'><img src=\'http://192.168.137.1:8080/static/upload/793e9ff5-6efe-441d-9f4e-0cc7a9af797e.jpg\' style=\'max-width:100%;\'><br></p><p style=\'text-align: center;\'>nihao</p><p style=\'text-align: center;\'><br></p><p><video src=\'https://chimee.org/vod/1.mp4\' controls=\'\'>     您的浏览器不支持Video标签。 </video></p><p style=\'text-align: center;\'><br></p><p style=\'text-align: center;\'><br></p>', 'nihao     您的浏览器不支持Video标签。 ', NULL, 2, 0, b'0', b'0', NULL, '2018-08-26 14:16:03', 1, '2018-08-26 14:26:39', 1, NULL, 0);
+INSERT INTO `blog_article` VALUES (10, 'AAAAAAAA', NULL, '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。', NULL, '1', NULL, NULL, '2018-08-26 08:00:00', '<p style=\'text-align: center;\'><img src=\'http://pic.58pic.com/58pic/15/86/11/51Y58PICQHR_1024.jpg\' style=\'max-width:100%;\'><br></p><p style=\'text-align: center;\'>nihao</p><p style=\'text-align: center;\'><br></p><p><video style=\'width:100%\' src=\'https://chimee.org/vod/1.mp4\' controls=\'\'>     您的浏览器不支持Video标签。 </video></p><p style=\'text-align: center;\'><br></p><p style=\'text-align: center;\'><br></p>', 'nihao     您的浏览器不支持Video标签。 ', NULL, 2, 0, b'0', b'0', NULL, '2018-08-26 14:16:03', 1, '2018-08-26 14:26:39', 1, NULL, 0);
 
 -- ----------------------------
 -- Table structure for blog_article_tags
@@ -61,7 +61,7 @@ CREATE TABLE `blog_article_tags`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `article_id` bigint(20) NOT NULL COMMENT '文章ID,0,NO,false,false,false',
   `tags_id` bigint(20) NOT NULL COMMENT '标签ID,0,NO,false,false,false',
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '标签-文章关联表,3' ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -85,13 +85,13 @@ CREATE TABLE `blog_channel`  (
   `parent_ids` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '父节点联集',
   `level` bigint(2) NULL DEFAULT NULL COMMENT '层级深度',
   `sort` smallint(6) NULL DEFAULT NULL COMMENT '排序',
-  `create_date` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `create_date` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `create_by` bigint(20) NULL DEFAULT NULL COMMENT '创建人',
-  `update_date` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `update_date` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
   `update_by` bigint(20) NULL DEFAULT NULL COMMENT '修改人',
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `del_flag` tinyint(4) NULL DEFAULT NULL COMMENT '删除标记',
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '博客栏目,2,switch-baseChannel-YES-true-is_base_channel,switch-ca' ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -133,13 +133,13 @@ CREATE TABLE `blog_comment`  (
   `reply_id` bigint(20) NULL DEFAULT NULL COMMENT '回复评论ID,0,YES,false,false,false',
   `is_admin_reply` bit(1) NULL DEFAULT NULL COMMENT '管理员是否回复,switch,YES,true,true,true',
   `reply_content` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '管理员回复内容,textarea,YES,false,true,false',
-  `create_date` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `create_date` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `create_by` bigint(20) NULL DEFAULT NULL COMMENT '创建人',
-  `update_date` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `update_date` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
   `update_by` bigint(20) NULL DEFAULT NULL COMMENT '修改人',
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `del_flag` tinyint(4) NULL DEFAULT NULL COMMENT '删除标记',
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '博客评论,1,switch-adminReply-YES-true-is_admin_reply' ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -150,14 +150,289 @@ CREATE TABLE `blog_tags`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '标签名字,input,YES,false,true,true',
   `sort` int(11) NULL DEFAULT NULL COMMENT '排序,0,YES,false,false,false',
-  `create_date` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `create_date` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `create_by` bigint(20) NULL DEFAULT NULL COMMENT '创建人',
-  `update_date` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `update_date` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
   `update_by` bigint(20) NULL DEFAULT NULL COMMENT '修改人',
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `del_flag` tinyint(4) NULL DEFAULT NULL COMMENT '删除标记',
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '博客标签,1' ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for client_homework_inform_class
+-- ----------------------------
+DROP TABLE IF EXISTS `client_homework_inform_class`;
+CREATE TABLE `client_homework_inform_class`  (
+  `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `homework_inform_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `class_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of client_homework_inform_class
+-- ----------------------------
+INSERT INTO `client_homework_inform_class` VALUES ('25719710465130588', 'f2db89d0-a6dc-11e8-8807-2f1880f777d1', '25719710465130536');
+INSERT INTO `client_homework_inform_class` VALUES ('25719710465130589', '93cdee50-a6dd-11e8-a7e5-8fe7aa463428', '25719710465130536');
+INSERT INTO `client_homework_inform_class` VALUES ('25719710465130590', '993088a0-a6e0-11e8-894d-f1bb96268349', '25719710465130536');
+INSERT INTO `client_homework_inform_class` VALUES ('25719710465130593', '6ab14c70-a740-11e8-8dca-318f8e7e7a3e', '25719710465130537');
+INSERT INTO `client_homework_inform_class` VALUES ('25719710465130594', '72cea150-a740-11e8-8dca-318f8e7e7a3e', '25719710465130536');
+INSERT INTO `client_homework_inform_class` VALUES ('25719710465130595', '7e3a36d0-a740-11e8-8dca-318f8e7e7a3e', '25719710465130536');
+INSERT INTO `client_homework_inform_class` VALUES ('25719710465130596', '8814f320-a740-11e8-8dca-318f8e7e7a3e', '25719710465130536');
+INSERT INTO `client_homework_inform_class` VALUES ('25719710465130597', '91495d50-a740-11e8-8dca-318f8e7e7a3e', '25719710465130536');
+INSERT INTO `client_homework_inform_class` VALUES ('25719710465130598', '77ad81a0-a880-11e8-87fb-a97be195be2a', '25719710465130536');
+INSERT INTO `client_homework_inform_class` VALUES ('25719710465130608', '00849be0-aa01-11e8-84e0-43a3500297d2', '25719710465130536');
+
+-- ----------------------------
+-- Table structure for client_homework_information
+-- ----------------------------
+DROP TABLE IF EXISTS `client_homework_information`;
+CREATE TABLE `client_homework_information`  (
+  `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `summary` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `level` int(5) NOT NULL DEFAULT 1,
+  `publisher` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `class_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `publish_type` int(20) NOT NULL DEFAULT 0,
+  `homework_type_value` int(32) NOT NULL,
+  `publish_time` datetime(0) NULL DEFAULT NULL,
+  `pictures` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of client_homework_information
+-- ----------------------------
+INSERT INTO `client_homework_information` VALUES ('00849be0-aa01-11e8-84e0-43a3500297d2', '数学作业', '数学作业哈 数学作业', '数学作业哈 数学作业', 0, '管理员', '25719710465130536', 1, 2, '2018-08-27 21:56:31', '');
+INSERT INTO `client_homework_information` VALUES ('6ab14c70-a740-11e8-8dca-318f8e7e7a3e', 'A', 'A', 'A', 0, '管理员', '25719710465130537', 2, 1, '2018-08-25 09:52:54', '');
+INSERT INTO `client_homework_information` VALUES ('72cea150-a740-11e8-8dca-318f8e7e7a3e', 'b', 'B', 'B', 0, '管理员', '25719710465130536', 2, 2, '2018-08-26 09:53:08', '');
+INSERT INTO `client_homework_information` VALUES ('77ad81a0-a880-11e8-87fb-a97be195be2a', '123465', '123465', '123465', 0, '管理员', '25719710465130536', 2, 0, '2018-08-26 00:03:55', 'https://uploadfiles-1252875786.cos.ap-guangzhou.myqcloud.com/uploadfiles/1535212933112-bzrwhFqca.jpg,https://uploadfiles-1252875786.cos.ap-guangzhou.myqcloud.com/uploadfiles/1535212934123-Ss7QpcS8d.jpg,https://uploadfiles-1252875786.cos.ap-guangzhou.myqcloud.com/uploadfiles/1535212934932-hZZwKOWLA.jpg,https://uploadfiles-1252875786.cos.ap-guangzhou.myqcloud.com/uploadfiles/1535212935670-E7KsTdnCW.jpg,https://uploadfiles-1252875786.cos.ap-guangzhou.myqcloud.com/uploadfiles/1535212936374-XFKOmTmFJs.jpg,https://uploadfiles-1252875786.cos.ap-guangzhou.myqcloud.com/uploadfiles/1535212937028-VlUUUerLS.jpg');
+INSERT INTO `client_homework_information` VALUES ('7e3a36d0-a740-11e8-8dca-318f8e7e7a3e', 'c', 'c', 'c', 0, '管理员', '25719710465130536', 2, 3, '2018-08-23 09:53:27', '');
+INSERT INTO `client_homework_information` VALUES ('8814f320-a740-11e8-8dca-318f8e7e7a3e', 'd', 'd', 'd', 0, '管理员', '25719710465130536', 2, 4, '2018-08-23 09:53:43', '');
+INSERT INTO `client_homework_information` VALUES ('91495d50-a740-11e8-8dca-318f8e7e7a3e', 'q', 'q', 'q', 0, '管理员', '25719710465130536', 2, 5, '2018-08-16 09:53:59', '');
+INSERT INTO `client_homework_information` VALUES ('93cdee50-a6dd-11e8-a7e5-8fe7aa463428', 'AAA', '啊啊啊啊啊', '啊啊啊啊啊', 0, '管理员', '25719710465130536', 2, 0, '2018-08-23 22:05:23', '');
+INSERT INTO `client_homework_information` VALUES ('993088a0-a6e0-11e8-894d-f1bb96268349', '毕业照已发布', '请大家查看自己的毕业照', '请大家查看自己的毕业照', 0, '管理员', '25719710465130536', 2, 0, '2018-08-23 22:27:00', 'https://uploadfiles-1252875786.cos.ap-guangzhou.myqcloud.com/uploadfiles/1535034393503-5UHPa7y_Z.jpg');
+INSERT INTO `client_homework_information` VALUES ('f2db89d0-a6dc-11e8-8807-2f1880f777d1', 'test', 'test', 'test', 0, '管理员', '25719710465130536', 1, 1, '2018-08-23 22:00:53', '');
+
+-- ----------------------------
+-- Table structure for client_lass_category
+-- ----------------------------
+DROP TABLE IF EXISTS `client_lass_category`;
+CREATE TABLE `client_lass_category`  (
+  `value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`value`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of client_lass_category
+-- ----------------------------
+INSERT INTO `client_lass_category` VALUES ('25719710465130536', '1年级1班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130537', '1年级2班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130538', '1年级3班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130539', '2年级1班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130540', '2年级2班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130541', '2年级3班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130542', '3年级1班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130543', '3年级2班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130544', '3年级3班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130545', '4年级1班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130546', '4年级2班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130547', '4年级3班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130548', '5年级1班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130549', '5年级2班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130550', '5年级3班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130551', '6年级1班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130552', '6年级2班');
+INSERT INTO `client_lass_category` VALUES ('25719710465130553', '6年级3班');
+
+-- ----------------------------
+-- Table structure for client_navigation
+-- ----------------------------
+DROP TABLE IF EXISTS `client_navigation`;
+CREATE TABLE `client_navigation`  (
+  `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `key_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `level` int(5) NOT NULL,
+  `state` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'on',
+  `nav_order` int(10) NOT NULL,
+  `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `img_active` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `name`(`name`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of client_navigation
+-- ----------------------------
+INSERT INTO `client_navigation` VALUES ('25719710465130510', 'administrative', '行政简讯', '/pages/core/administrative/administrative', 0, 'on', 1, '/images/core/administrative/administrative.png', '/images/core/administrative/administrative@active.png');
+INSERT INTO `client_navigation` VALUES ('25719710465130511', 'notice', '公告新闻', '/pages/core/notice/notice', 0, 'on', 2, '/images/core/notice/notice.png', '/images/core/notice/notice@active.png');
+INSERT INTO `client_navigation` VALUES ('25719710465130513', 'homework', '班级作业', '/pages/core/homework/homework', 0, 'on', 3, '/images/core/homework/homework.png', '/images/core/homework/homework@active.png');
+INSERT INTO `client_navigation` VALUES ('25719710465130514', 'class_inform', '班级消息', '/pages/core/class_inform/class_inform', 0, 'on', 4, '/images/core/class_inform/class_inform.png', '/images/core/class_inform/class_inform@active.png');
+
+-- ----------------------------
+-- Table structure for client_notice
+-- ----------------------------
+DROP TABLE IF EXISTS `client_notice`;
+CREATE TABLE `client_notice`  (
+  `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `summary` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `publisher` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `level` int(5) NOT NULL,
+  `publish_time` datetime(0) NULL,
+  `pictures` varchar(600) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `notice_type` int(5) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of client_notice
+-- ----------------------------
+INSERT INTO `client_notice` VALUES ('25719710465130512', '关于贸易战的通知', '说一句题外话。电影《一代宗师》中，叶问准备接宫老爷子武林泰斗的班。凭什么接？宫老爷子出题，“比想法”。高手过招，先比想法。拳分南北，国能分南北吗？比的是家国观念和大局意识，是近代中国在列强环伺之下，武术界有没有凝聚人心的胸怀和能力。\r\n\r\n其实，热兵器时代，一炮轰来，遍地狼烟，再好的拳脚也都是些小打小闹。《一代宗师》讲的道理，是只要人心不散、想法不乱，国家民族就有希望。', '说一句题外话。电影《一代宗师》中，叶问准备接宫老爷子武林泰斗的班。凭什么接？', 'admin', 999, '2018-08-13 02:00:00', '', 1);
+INSERT INTO `client_notice` VALUES ('25719710465130599', '停气通知', '明天早上八点到晚上六点停气 请各位班主任注意', '明天早上八点到晚上六点停气 请各位班主任注意', '管理员', 1, '2018-08-27 17:23:19', '', 1);
+INSERT INTO `client_notice` VALUES ('25719710465130607', '各单位注意', '军训正式开始', '军训正式开始', '管理员', 1, '2018-08-27 21:17:51', 'https://uploadfiles-1252875786.cos.ap-guangzhou.myqcloud.com/uploadfiles/1535375860116-GLxGPTeT3.jpg', 1);
+
+-- ----------------------------
+-- Table structure for client_parent
+-- ----------------------------
+DROP TABLE IF EXISTS `client_parent`;
+CREATE TABLE `client_parent`  (
+  `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `class_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `phone`(`phone`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of client_parent
+-- ----------------------------
+INSERT INTO `client_parent` VALUES ('25719710465130500', '张华', '15388478188', '张强的家长', '25719710465130536');
+INSERT INTO `client_parent` VALUES ('25719710465130516', '小林', '15388478189', '李华的家长', '25719710465130538');
+INSERT INTO `client_parent` VALUES ('25719710465130517', '张强', '15388478185', '张思思的家长', '25719710465130538');
+
+-- ----------------------------
+-- Table structure for client_student
+-- ----------------------------
+DROP TABLE IF EXISTS `client_student`;
+CREATE TABLE `client_student`  (
+  `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `class_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `parent_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for client_subject
+-- ----------------------------
+DROP TABLE IF EXISTS `client_subject`;
+CREATE TABLE `client_subject`  (
+  `value` int(32) NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`value`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of client_subject
+-- ----------------------------
+INSERT INTO `client_subject` VALUES (0, '消息');
+INSERT INTO `client_subject` VALUES (1, '语文');
+INSERT INTO `client_subject` VALUES (2, '数学');
+INSERT INTO `client_subject` VALUES (3, '英语');
+INSERT INTO `client_subject` VALUES (4, '美术');
+INSERT INTO `client_subject` VALUES (5, '计算机');
+
+-- ----------------------------
+-- Table structure for client_teacher
+-- ----------------------------
+DROP TABLE IF EXISTS `client_teacher`;
+CREATE TABLE `client_teacher`  (
+  `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `teacher_type` int(11) NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `phone`(`phone`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of client_teacher
+-- ----------------------------
+INSERT INTO `client_teacher` VALUES ('25719710465130501', '李林', '15388478188', 1, '校长');
+
+-- ----------------------------
+-- Table structure for client_teacher_class
+-- ----------------------------
+DROP TABLE IF EXISTS `client_teacher_class`;
+CREATE TABLE `client_teacher_class`  (
+  `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `teacher_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `class_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of client_teacher_class
+-- ----------------------------
+INSERT INTO `client_teacher_class` VALUES ('25719710465130554', '15388478188', '25719710465130501', '25719710465130536');
+INSERT INTO `client_teacher_class` VALUES ('25719710465130556', '15388478188', '25719710465130501', '25719710465130537');
+INSERT INTO `client_teacher_class` VALUES ('25719710465130557', '15388478188', '25719710465130501', '25719710465130538');
+
+-- ----------------------------
+-- Table structure for client_type_level
+-- ----------------------------
+DROP TABLE IF EXISTS `client_type_level`;
+CREATE TABLE `client_type_level`  (
+  `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `user_type` int(5) NOT NULL,
+  `level` int(5) NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of client_type_level
+-- ----------------------------
+INSERT INTO `client_type_level` VALUES ('25719710465130529', 0, 0, '管理员');
+INSERT INTO `client_type_level` VALUES ('25719710465130531', 1, 2, '普通教师');
+INSERT INTO `client_type_level` VALUES ('25719710465130532', 1, 1, '行政');
+INSERT INTO `client_type_level` VALUES ('25719710465130533', 1, 3, '代课教师');
+INSERT INTO `client_type_level` VALUES ('25719710465130534', 1, 4, '临时工');
+INSERT INTO `client_type_level` VALUES ('25719710465130535', 2, 1, '家长');
+
+-- ----------------------------
+-- Table structure for client_user
+-- ----------------------------
+DROP TABLE IF EXISTS `client_user`;
+CREATE TABLE `client_user`  (
+  `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `username` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `user_type` int(5) NOT NULL,
+  `level` int(5) NULL DEFAULT 4,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `id`(`id`) USING BTREE,
+  UNIQUE INDEX `username`(`username`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户表' ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of client_user
+-- ----------------------------
+INSERT INTO `client_user` VALUES ('25719710465130502', '张华', '111111', '15388478181', 1, 0);
+INSERT INTO `client_user` VALUES ('25719710465130503', '李林', '222222', '15388478188', 1, 1);
 
 -- ----------------------------
 -- Table structure for hat_area
@@ -168,7 +443,7 @@ CREATE TABLE `hat_area`  (
   `areaID` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `area` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `father` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -226,8 +501,8 @@ CREATE TABLE `qrtz_blob_triggers`  (
   `TRIGGER_NAME` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `TRIGGER_GROUP` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `BLOB_DATA` blob NULL,
-  PRIMARY KEY USING BTREE (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`),
-  INDEX `SCHED_NAME` USING BTREE(`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`),
+  PRIMARY KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) USING BTREE,
+  INDEX `SCHED_NAME`(`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) USING BTREE,
   CONSTRAINT `QRTZ_BLOB_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `qrtz_triggers` (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'InnoDB free: 93184 kB; (`SCHED_NAME` `TRIGGER_NAME` `TRIGGER_GROUP`) REFER `camp' ROW_FORMAT = Compact;
 
@@ -239,7 +514,7 @@ CREATE TABLE `qrtz_calendars`  (
   `SCHED_NAME` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `CALENDAR_NAME` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `CALENDAR` blob NOT NULL,
-  PRIMARY KEY USING BTREE (`SCHED_NAME`, `CALENDAR_NAME`)
+  PRIMARY KEY (`SCHED_NAME`, `CALENDAR_NAME`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -252,7 +527,7 @@ CREATE TABLE `qrtz_cron_triggers`  (
   `TRIGGER_GROUP` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `CRON_EXPRESSION` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `TIME_ZONE_ID` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`),
+  PRIMARY KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) USING BTREE,
   CONSTRAINT `QRTZ_CRON_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `qrtz_triggers` (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'InnoDB free: 93184 kB; (`SCHED_NAME` `TRIGGER_NAME` `TRIGGER_GROUP`) REFER `camp' ROW_FORMAT = Compact;
 
@@ -280,13 +555,13 @@ CREATE TABLE `qrtz_fired_triggers`  (
   `JOB_GROUP` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `IS_NONCONCURRENT` tinyint(1) NULL DEFAULT NULL,
   `REQUESTS_RECOVERY` tinyint(1) NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`SCHED_NAME`, `ENTRY_ID`),
-  INDEX `IDX_QRTZ_FT_TRIG_INST_NAME` USING BTREE(`SCHED_NAME`, `INSTANCE_NAME`),
-  INDEX `IDX_QRTZ_FT_INST_JOB_REQ_RCVRY` USING BTREE(`SCHED_NAME`, `INSTANCE_NAME`, `REQUESTS_RECOVERY`),
-  INDEX `IDX_QRTZ_FT_J_G` USING BTREE(`SCHED_NAME`, `JOB_NAME`, `JOB_GROUP`),
-  INDEX `IDX_QRTZ_FT_JG` USING BTREE(`SCHED_NAME`, `JOB_GROUP`),
-  INDEX `IDX_QRTZ_FT_T_G` USING BTREE(`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`),
-  INDEX `IDX_QRTZ_FT_TG` USING BTREE(`SCHED_NAME`, `TRIGGER_GROUP`)
+  PRIMARY KEY (`SCHED_NAME`, `ENTRY_ID`) USING BTREE,
+  INDEX `IDX_QRTZ_FT_TRIG_INST_NAME`(`SCHED_NAME`, `INSTANCE_NAME`) USING BTREE,
+  INDEX `IDX_QRTZ_FT_INST_JOB_REQ_RCVRY`(`SCHED_NAME`, `INSTANCE_NAME`, `REQUESTS_RECOVERY`) USING BTREE,
+  INDEX `IDX_QRTZ_FT_J_G`(`SCHED_NAME`, `JOB_NAME`, `JOB_GROUP`) USING BTREE,
+  INDEX `IDX_QRTZ_FT_JG`(`SCHED_NAME`, `JOB_GROUP`) USING BTREE,
+  INDEX `IDX_QRTZ_FT_T_G`(`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) USING BTREE,
+  INDEX `IDX_QRTZ_FT_TG`(`SCHED_NAME`, `TRIGGER_GROUP`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -304,9 +579,9 @@ CREATE TABLE `qrtz_job_details`  (
   `IS_UPDATE_DATA` tinyint(1) NOT NULL,
   `REQUESTS_RECOVERY` tinyint(1) NOT NULL,
   `JOB_DATA` blob NULL,
-  PRIMARY KEY USING BTREE (`SCHED_NAME`, `JOB_NAME`, `JOB_GROUP`),
-  INDEX `IDX_QRTZ_J_REQ_RECOVERY` USING BTREE(`SCHED_NAME`, `REQUESTS_RECOVERY`),
-  INDEX `IDX_QRTZ_J_GRP` USING BTREE(`SCHED_NAME`, `JOB_GROUP`)
+  PRIMARY KEY (`SCHED_NAME`, `JOB_NAME`, `JOB_GROUP`) USING BTREE,
+  INDEX `IDX_QRTZ_J_REQ_RECOVERY`(`SCHED_NAME`, `REQUESTS_RECOVERY`) USING BTREE,
+  INDEX `IDX_QRTZ_J_GRP`(`SCHED_NAME`, `JOB_GROUP`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -322,7 +597,7 @@ DROP TABLE IF EXISTS `qrtz_locks`;
 CREATE TABLE `qrtz_locks`  (
   `SCHED_NAME` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `LOCK_NAME` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY USING BTREE (`SCHED_NAME`, `LOCK_NAME`)
+  PRIMARY KEY (`SCHED_NAME`, `LOCK_NAME`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -338,7 +613,7 @@ DROP TABLE IF EXISTS `qrtz_paused_trigger_grps`;
 CREATE TABLE `qrtz_paused_trigger_grps`  (
   `SCHED_NAME` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `TRIGGER_GROUP` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY USING BTREE (`SCHED_NAME`, `TRIGGER_GROUP`)
+  PRIMARY KEY (`SCHED_NAME`, `TRIGGER_GROUP`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -350,7 +625,7 @@ CREATE TABLE `qrtz_scheduler_state`  (
   `INSTANCE_NAME` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `LAST_CHECKIN_TIME` bigint(19) NOT NULL,
   `CHECKIN_INTERVAL` bigint(19) NOT NULL,
-  PRIMARY KEY USING BTREE (`SCHED_NAME`, `INSTANCE_NAME`)
+  PRIMARY KEY (`SCHED_NAME`, `INSTANCE_NAME`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -369,7 +644,7 @@ CREATE TABLE `qrtz_simple_triggers`  (
   `REPEAT_COUNT` bigint(7) NOT NULL,
   `REPEAT_INTERVAL` bigint(12) NOT NULL,
   `TIMES_TRIGGERED` bigint(10) NOT NULL,
-  PRIMARY KEY USING BTREE (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`),
+  PRIMARY KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) USING BTREE,
   CONSTRAINT `QRTZ_SIMPLE_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `qrtz_triggers` (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'InnoDB free: 93184 kB; (`SCHED_NAME` `TRIGGER_NAME` `TRIGGER_GROUP`) REFER `camp' ROW_FORMAT = Compact;
 
@@ -392,7 +667,7 @@ CREATE TABLE `qrtz_simprop_triggers`  (
   `DEC_PROP_2` decimal(13, 4) NULL DEFAULT NULL,
   `BOOL_PROP_1` tinyint(1) NULL DEFAULT NULL,
   `BOOL_PROP_2` tinyint(1) NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`),
+  PRIMARY KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) USING BTREE,
   CONSTRAINT `QRTZ_SIMPROP_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `qrtz_triggers` (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'InnoDB free: 93184 kB; (`SCHED_NAME` `TRIGGER_NAME` `TRIGGER_GROUP`) REFER `camp' ROW_FORMAT = Compact;
 
@@ -417,19 +692,19 @@ CREATE TABLE `qrtz_triggers`  (
   `CALENDAR_NAME` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `MISFIRE_INSTR` smallint(2) NULL DEFAULT NULL,
   `JOB_DATA` blob NULL,
-  PRIMARY KEY USING BTREE (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`),
-  INDEX `IDX_QRTZ_T_J` USING BTREE(`SCHED_NAME`, `JOB_NAME`, `JOB_GROUP`),
-  INDEX `IDX_QRTZ_T_JG` USING BTREE(`SCHED_NAME`, `JOB_GROUP`),
-  INDEX `IDX_QRTZ_T_C` USING BTREE(`SCHED_NAME`, `CALENDAR_NAME`),
-  INDEX `IDX_QRTZ_T_G` USING BTREE(`SCHED_NAME`, `TRIGGER_GROUP`),
-  INDEX `IDX_QRTZ_T_STATE` USING BTREE(`SCHED_NAME`, `TRIGGER_STATE`),
-  INDEX `IDX_QRTZ_T_N_STATE` USING BTREE(`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`, `TRIGGER_STATE`),
-  INDEX `IDX_QRTZ_T_N_G_STATE` USING BTREE(`SCHED_NAME`, `TRIGGER_GROUP`, `TRIGGER_STATE`),
-  INDEX `IDX_QRTZ_T_NEXT_FIRE_TIME` USING BTREE(`SCHED_NAME`, `NEXT_FIRE_TIME`),
-  INDEX `IDX_QRTZ_T_NFT_ST` USING BTREE(`SCHED_NAME`, `TRIGGER_STATE`, `NEXT_FIRE_TIME`),
-  INDEX `IDX_QRTZ_T_NFT_MISFIRE` USING BTREE(`SCHED_NAME`, `MISFIRE_INSTR`, `NEXT_FIRE_TIME`),
-  INDEX `IDX_QRTZ_T_NFT_ST_MISFIRE` USING BTREE(`SCHED_NAME`, `MISFIRE_INSTR`, `NEXT_FIRE_TIME`, `TRIGGER_STATE`),
-  INDEX `IDX_QRTZ_T_NFT_ST_MISFIRE_GRP` USING BTREE(`SCHED_NAME`, `MISFIRE_INSTR`, `NEXT_FIRE_TIME`, `TRIGGER_GROUP`, `TRIGGER_STATE`),
+  PRIMARY KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) USING BTREE,
+  INDEX `IDX_QRTZ_T_J`(`SCHED_NAME`, `JOB_NAME`, `JOB_GROUP`) USING BTREE,
+  INDEX `IDX_QRTZ_T_JG`(`SCHED_NAME`, `JOB_GROUP`) USING BTREE,
+  INDEX `IDX_QRTZ_T_C`(`SCHED_NAME`, `CALENDAR_NAME`) USING BTREE,
+  INDEX `IDX_QRTZ_T_G`(`SCHED_NAME`, `TRIGGER_GROUP`) USING BTREE,
+  INDEX `IDX_QRTZ_T_STATE`(`SCHED_NAME`, `TRIGGER_STATE`) USING BTREE,
+  INDEX `IDX_QRTZ_T_N_STATE`(`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`, `TRIGGER_STATE`) USING BTREE,
+  INDEX `IDX_QRTZ_T_N_G_STATE`(`SCHED_NAME`, `TRIGGER_GROUP`, `TRIGGER_STATE`) USING BTREE,
+  INDEX `IDX_QRTZ_T_NEXT_FIRE_TIME`(`SCHED_NAME`, `NEXT_FIRE_TIME`) USING BTREE,
+  INDEX `IDX_QRTZ_T_NFT_ST`(`SCHED_NAME`, `TRIGGER_STATE`, `NEXT_FIRE_TIME`) USING BTREE,
+  INDEX `IDX_QRTZ_T_NFT_MISFIRE`(`SCHED_NAME`, `MISFIRE_INSTR`, `NEXT_FIRE_TIME`) USING BTREE,
+  INDEX `IDX_QRTZ_T_NFT_ST_MISFIRE`(`SCHED_NAME`, `MISFIRE_INSTR`, `NEXT_FIRE_TIME`, `TRIGGER_STATE`) USING BTREE,
+  INDEX `IDX_QRTZ_T_NFT_ST_MISFIRE_GRP`(`SCHED_NAME`, `MISFIRE_INSTR`, `NEXT_FIRE_TIME`, `TRIGGER_GROUP`, `TRIGGER_STATE`) USING BTREE,
   CONSTRAINT `QRTZ_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `JOB_NAME`, `JOB_GROUP`) REFERENCES `qrtz_job_details` (`SCHED_NAME`, `JOB_NAME`, `JOB_GROUP`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'InnoDB free: 93184 kB; (`SCHED_NAME` `JOB_NAME` `JOB_GROUP`) REFER `campus_cloud' ROW_FORMAT = Compact;
 
@@ -451,13 +726,13 @@ CREATE TABLE `quartz_task`  (
   `trget_method` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '执行方法,input,YES,false,true,false',
   `params` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '执行参数,textarea,YES,false,false,false',
   `status` int(11) NULL DEFAULT NULL COMMENT '任务状态,radio,YES,false,true,true',
-  `create_date` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `create_date` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `create_by` bigint(20) NULL DEFAULT NULL COMMENT '创建人',
-  `update_date` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `update_date` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
   `update_by` bigint(20) NULL DEFAULT NULL COMMENT '修改人',
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `del_flag` tinyint(4) NULL DEFAULT NULL COMMENT '删除标记',
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务,1' ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -480,13 +755,13 @@ CREATE TABLE `quartz_task_log`  (
   `status` int(11) NULL DEFAULT NULL COMMENT '任务状态,0,YES,false,false,false',
   `error` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '异常消息,textarea,YES,false,false,false',
   `times` int(11) NULL DEFAULT NULL COMMENT '执行时间,input,YES,false,true,false',
-  `create_date` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `create_date` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `create_by` bigint(20) NULL DEFAULT NULL COMMENT '创建人',
-  `update_date` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `update_date` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
   `update_by` bigint(20) NULL DEFAULT NULL COMMENT '修改人',
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `del_flag` tinyint(4) NULL DEFAULT NULL COMMENT '删除标记',
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '任务执行日志,1' ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -502,15 +777,15 @@ CREATE TABLE `sys_dict`  (
   `sort` int(10) NULL DEFAULT NULL COMMENT '排序（升序）',
   `parent_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT '0' COMMENT '父级编号',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '创建者',
-  `create_date` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `create_date` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '更新者',
-  `update_date` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `update_date` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '备注信息',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '0' COMMENT '删除标记',
-  PRIMARY KEY USING BTREE (`id`),
-  INDEX `sys_dict_value` USING BTREE(`value`),
-  INDEX `sys_dict_label` USING BTREE(`label`),
-  INDEX `sys_dict_del_flag` USING BTREE(`del_flag`)
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `sys_dict_value`(`value`) USING BTREE,
+  INDEX `sys_dict_label`(`label`) USING BTREE,
+  INDEX `sys_dict_del_flag`(`del_flag`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 125 CHARACTER SET = utf8 COLLATE = utf8_bin COMMENT = '字典表,测试表' ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -539,12 +814,12 @@ CREATE TABLE `sys_group`  (
   `parent_ids` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分组序列号',
   `sort` smallint(6) NULL DEFAULT NULL COMMENT '分组排序值',
   `create_by` bigint(20) NULL DEFAULT NULL,
-  `create_date` datetime NULL DEFAULT NULL,
+  `create_date` datetime(0) NULL DEFAULT NULL,
   `update_by` bigint(20) NULL DEFAULT NULL,
-  `update_date` datetime NULL DEFAULT NULL,
+  `update_date` datetime(0) NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `del_flag` tinyint(2) NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -555,7 +830,7 @@ CREATE TABLE `sys_group_ur`  (
   `group_id` bigint(20) NOT NULL COMMENT '分组ID',
   `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户ID',
   `role_id` bigint(20) NULL DEFAULT NULL COMMENT '角色ID',
-  PRIMARY KEY USING BTREE (`group_id`)
+  PRIMARY KEY (`group_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -582,16 +857,16 @@ CREATE TABLE `sys_log`  (
   `isp` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '网络服务提供商',
   `exception` text CHARACTER SET utf8 COLLATE utf8_bin NULL COMMENT '异常信息',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '创建者',
-  `create_date` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `create_date` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` bigint(64) NULL DEFAULT NULL,
-  `update_date` datetime NULL DEFAULT NULL,
+  `update_date` datetime(0) NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `del_flag` bit(1) NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`),
-  INDEX `sys_log_create_by` USING BTREE(`create_by`),
-  INDEX `sys_log_request_uri` USING BTREE(`request_uri`),
-  INDEX `sys_log_type` USING BTREE(`type`),
-  INDEX `sys_log_create_date` USING BTREE(`create_date`)
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `sys_log_create_by`(`create_by`) USING BTREE,
+  INDEX `sys_log_request_uri`(`request_uri`) USING BTREE,
+  INDEX `sys_log_type`(`type`) USING BTREE,
+  INDEX `sys_log_create_date`(`create_date`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 352 CHARACTER SET = utf8 COLLATE = utf8_bin COMMENT = '系统日志' ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -967,12 +1242,12 @@ CREATE TABLE `sys_menu`  (
   `is_show` tinyint(2) NULL DEFAULT NULL COMMENT '是否显示',
   `permission` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '权限标识',
   `create_by` bigint(20) NULL DEFAULT NULL,
-  `create_date` datetime NULL DEFAULT NULL,
+  `create_date` datetime(0) NULL DEFAULT NULL,
   `update_by` bigint(20) NULL DEFAULT NULL,
-  `update_date` datetime NULL DEFAULT NULL,
+  `update_date` datetime(0) NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `del_flag` tinyint(2) NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 63 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -1054,13 +1329,13 @@ CREATE TABLE `sys_rescource`  (
   `file_size` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文件大小',
   `file_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文件类型',
   `original_net_url` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `create_date` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `create_date` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `create_by` bigint(20) NULL DEFAULT NULL COMMENT '创建人',
-  `update_date` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `update_date` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
   `update_by` bigint(20) NULL DEFAULT NULL COMMENT '修改人',
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `del_flag` tinyint(4) NULL DEFAULT NULL COMMENT '删除标记',
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统资源' ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -1076,13 +1351,13 @@ DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '角色名称',
-  `create_date` datetime NULL DEFAULT NULL,
+  `create_date` datetime(0) NULL DEFAULT NULL,
   `create_by` bigint(20) NULL DEFAULT NULL,
-  `update_date` datetime NULL DEFAULT NULL,
+  `update_date` datetime(0) NULL DEFAULT NULL,
   `update_by` bigint(20) NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `del_flag` tinyint(2) NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -1098,7 +1373,7 @@ DROP TABLE IF EXISTS `sys_role_menu`;
 CREATE TABLE `sys_role_menu`  (
   `role_id` bigint(20) NOT NULL,
   `menu_id` bigint(20) NOT NULL,
-  PRIMARY KEY USING BTREE (`role_id`, `menu_id`)
+  PRIMARY KEY (`role_id`, `menu_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -1204,12 +1479,12 @@ CREATE TABLE `sys_site`  (
   `powerby` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `record` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `create_by` bigint(20) NULL DEFAULT NULL,
-  `create_date` datetime NULL DEFAULT NULL,
+  `create_date` datetime(0) NULL DEFAULT NULL,
   `update_by` bigint(20) NULL DEFAULT NULL,
-  `update_date` datetime NULL DEFAULT NULL,
+  `update_date` datetime(0) NULL DEFAULT NULL,
   `remarks` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `del_flag` bit(1) NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -1231,13 +1506,13 @@ CREATE TABLE `sys_user`  (
   `tel` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号码',
   `email` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱地址',
   `locked` tinyint(2) NULL DEFAULT NULL COMMENT '是否锁定',
-  `create_date` datetime NULL DEFAULT NULL,
+  `create_date` datetime(0) NULL DEFAULT NULL,
   `create_by` bigint(20) NULL DEFAULT NULL,
-  `update_date` datetime NULL DEFAULT NULL,
+  `update_date` datetime(0) NULL DEFAULT NULL,
   `update_by` bigint(20) NULL DEFAULT NULL,
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `del_flag` tinyint(4) NULL DEFAULT NULL,
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -1252,7 +1527,7 @@ DROP TABLE IF EXISTS `sys_user_role`;
 CREATE TABLE `sys_user_role`  (
   `user_id` bigint(20) NOT NULL,
   `role_id` bigint(20) NOT NULL,
-  PRIMARY KEY USING BTREE (`user_id`, `role_id`)
+  PRIMARY KEY (`user_id`, `role_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -1282,13 +1557,13 @@ CREATE TABLE `upload_info`  (
   `oss_key_secret` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `oss_endpoint` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `oss_test_access` bit(1) NULL DEFAULT NULL,
-  `create_date` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `create_date` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `create_by` bigint(20) NULL DEFAULT NULL COMMENT '创建人',
-  `update_date` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `update_date` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
   `update_by` bigint(20) NULL DEFAULT NULL COMMENT '修改人',
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `del_flag` tinyint(4) NULL DEFAULT NULL COMMENT '删除标记',
-  PRIMARY KEY USING BTREE (`id`)
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------

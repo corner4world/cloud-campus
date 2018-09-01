@@ -27,13 +27,13 @@ Page({
       },
       url: config.host + '/weapp/campus_life_detail',
       success: function (res) {
-        console.log(res)
         var activity = res.data.data.result
         if (activity.length && res.statusCode === 200 && res.data.code != -1) {
           that.setData({
             activity: activity[0]
           })
           var content = activity[0].content
+          
           WxParse.wxParse('article', 'html', content, that, 0);
           setTimeout(function () {
             that.setData({

@@ -1,5 +1,5 @@
 <!--隔壁内容页头图  -->
-<image class="toutu" mode="aspectFill" src="{{item.show_pic == null ?'http://pic.58pic.com/58pic/15/86/11/51Y58PICQHR_1024.jpg':item.show_pic}}"></image>
+<image class="toutu" mode="aspectFill" src="{{activity.show_pic == null ?'http://pic.58pic.com/58pic/15/86/11/51Y58PICQHR_1024.jpg':activity.show_pic}}"></image>
 
 <!--标题  -->
 <text class="biaoti">{{activity.title}}</text>
@@ -11,7 +11,8 @@
 <text class='writer'>发布者@管理员</text>
 
 <!--内容板块  -->
-<view class="content"></view>
+<view class="content">
+</view>
 <import src="../../../utils/wxParse/wxParse.wxml"/>
 <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
 
