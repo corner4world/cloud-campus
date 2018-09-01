@@ -1,20 +1,73 @@
-<!--隔壁内容页头图  -->
 <image class="toutu" mode="aspectFill" src="{{activity.show_pic == null ?'http://pic.58pic.com/58pic/15/86/11/51Y58PICQHR_1024.jpg':activity.show_pic}}"></image>
-
 <!--标题  -->
 <text class="biaoti">{{activity.title}}</text>
 
 <!--标题分割线  -->
 <text class='line'></text>
-
-<!--发布者 调用后台作者-->
-<text class='writer'>发布者@管理员</text>
-
 <!--内容板块  -->
 <view class="content">
 </view>
 <import src="../../../utils/wxParse/wxParse.wxml"/>
 <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+<!--引入加载更多模版-->
+<import src="../../../template/loading" />
 
+<!--详情页-->
+<view class="container">
+  <view class="c-top">
+    <!--简介-->
+    <view class="t-info">
+      <view class="ti-content">
 
+      </view>
+      <view class="ti-bottom">
+        <view>
+          <text class="iconfont icon-my"></text><text>牧民新歌</text>
+        </view>
+        <view>
+          <text class="iconfont icon-xihuan"></text><text>50,000喜欢</text>
+        </view>
+        <view>
+          <text class="iconfont icon-pinglun1"></text><text>1000+评论</text>
+        </view>
+      </view>
+    </view>
+  </view>
 
+  <!--评论列表-->
+  <view class="comments">
+    <view class="item touch-active" wx:for="{{comments}}" wx:key="" wx:for-item="c">
+      <view class="i-left">
+        <image class="c-u-img" src="{{c.avatar}}"></image>
+      </view>
+      <view class="i-right">
+        <view class="top">
+          <text class="u-name">{{c.uName}}</text>
+          <text class="time">{{c.create_date}}</text>
+        </view>
+
+        <!--评论内容-->
+        <view class="content">
+          {{c.content}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--加载更多模版-->
+  <block wx:if="{{isLoading}}">
+    <template is="loading" />
+  </block>
+  <block wx:else>
+    <template is="nodata" />
+  </block>
+  
+  <!--评论盒子-->
+  <view class="comment-fixed">
+    <view class="cf-box">
+      <textarea class="cf-content" maxlength="200" bindblur="textAreaBlur" auto-height  />
+      <text class="cf-send touch-active" bindtap="send">发送</text>
+    </view>
+  </view>
+
+</view>

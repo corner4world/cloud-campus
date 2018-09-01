@@ -8,7 +8,25 @@
 <wux-divider text="校园活动" />  
 <view wx:for="{{campus_life}}" wx:key="{{index}}">
   <navigator url="/pages/campus-life/detail/campus-life-detail?id={{item.id}}">
-      <wux-media thumb="{{item.show_pic == null ?'/images/campus-life/activity.png':item.show_pic}}" align="left" title="{{item.title}}" label="{{item.marks}}"></wux-media>
+      <wux-media thumb="{{item.show_pic == null ?'/images/campus-life/activity.png':item.show_pic}}" align="left" title="{{item.title}}" label="{{item.marks}}">
+      </wux-media>
+      <!--评论 -->
+      <view class="content">
+          <view class="c-bottom">
+              <view class="user">
+                  <image class="u-img" src="http://img.zcool.cn/community/0142885afa4dd4a801216045a2977b.jpg@1280w_1l_2o_100sh.jpg"></image>
+                  <view class="u-box">
+                      <text class="u-name">麦田的守望者</text>
+                      <!--<text class="u-time">{{v.time}}</text>-->
+                  </view>
+              </view>
+              <view class="right">
+                  <text class="iconfont icon-liulan1 r-icon-browse"> 123</text>
+                  <text class="iconfont icon-xihuan r-icon-like"> 333</text>
+                  <text class="iconfont icon-pinglun1 r-icon-comment"> 34</text>
+              </view>
+          </view>
+      </view>
   </navigator>
 </view>
 
