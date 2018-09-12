@@ -7,8 +7,8 @@
                 <view slot="body">{{item.content}}
                 
                 <!-- 图片-->
-                  <view class="weui-cells weui-cells_after-title" wx:if="{{item.pictures.length}}">
-                    <view class="weui-cell">
+                  <view class="" wx:if="{{item.pictures.length}}">
+                    <view class="" style='margin-top:15rpx'>
                         <view class="weui-cell__bd">
                             <view class="weui-uploader">
                                 <view class="weui-uploader__bd">

@@ -10,14 +10,19 @@ const controllers = require('../controllers')
 // 这里展示如何使用 Koa 中间件完成登录态的颁发与验证
 const { auth: { authorizationMiddleware, validationMiddleware } } = require('../qcloud')
 
-//激活账号接口
+//学校
+router.post('/school', controllers.school)
+//激活账号接口 -todo 暂未使用
 router.post('/register', controllers.register)
 // 登录接口
 router.post('/login', controllers.login)
 //首页导航功能接口
 router.post('/navigation', controllers.navigation)
-//家长电话
-router.post('/parent_phone', controllers.parent_phone)
+//首页发布按钮
+router.post('/floating_button', controllers.floating_button)
+
+//电话
+router.post('/phone', controllers.phone)
 
 //公告
 router.post('/notice', controllers.notice)
@@ -38,7 +43,7 @@ router.post('/publish', controllers.publish)
 //校园风采
 router.post('/campus_life', controllers.campus_life)
 router.post('/campus_life_detail', controllers.campus_life_detail)
-router.post('/comment', controllers.comment)
+router.post('/like_comment', controllers.like_comment)
 
 // 用户信息接口（可以用来验证登录态）
 router.get('/user', validationMiddleware, controllers.user)

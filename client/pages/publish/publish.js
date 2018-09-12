@@ -25,7 +25,8 @@ Page({
       class_category:[],
       homework_type:[],
     })
-    if (options.publish_type == 1){
+    console.log(options.publish_type)
+    if (options.publish_type == 2){
       this.setData({
         class_hidden: false,
         homework_type_hidden:false
@@ -33,7 +34,7 @@ Page({
       this.getClass()
       this.getHomeworkType()
     }
-    if (options.publish_type == 2) {
+    if (options.publish_type == 3) {
       this.setData({
         class_hidden: false,
       })
@@ -53,13 +54,12 @@ Page({
       },
       url: config.host + '/weapp/class_category',
       success: function (res) {
-        console.log(res)
         var class_category = res.data.data.result[0]
         if (class_category.length && res.statusCode === 200) {
           that.setData({
             class_category:class_category
           })
-        }
+        } 
       },
       fail: function (res) {
         wx.hideToast();
@@ -71,7 +71,6 @@ Page({
       method: 'post',
       url: config.host + '/weapp/subject',
       success: function (res) {
-        console.log(res)
         var homework_type = res.data.data.result[0]
         if (homework_type.length && res.statusCode === 200) {
           that.setData({
@@ -87,8 +86,13 @@ Page({
   sendNewMood: function (e) {
     var content = e.detail.value.content;
     var title = e.detail.value.title;
+    var class_value = that.data.class_value
     if (content == "" || title == "") {
       app.showErrorModal('标题和正文正文不能为空', '提醒');
+    }
+    var publish_type = that.data.publish_type
+    if ((publish_type == 2 || publish_type == 3) && class_value == ""){
+      app.showErrorModal('班级不能为空', '提醒');
     }
     else {
       that.setData({
@@ -110,7 +114,6 @@ Page({
         },
         url: config.host + '/weapp/publish',
         success: function (res) {
-          console.log(res)
           var status = res.data.data.status
           if (status == 1 && res.statusCode === 200 && res.data.code != -1) {
             wx.showToast({
@@ -123,12 +126,14 @@ Page({
             switch (publish_type * 1){
               case 0:
                 url ="/pages/core/administrative/administrative"
-                console.log(publish_type)
                 break
               case 1:
-                url = "/pages/core/homework/homework"
+                url = "/pages/core/notice/notice"
                 break
               case 2:
+                url = "/pages/core/homework/homework"
+                break
+              case 3:
                 url = "/pages/core/class_inform/class_inform"
                 break
               default:
@@ -168,7 +173,6 @@ Page({
       multiple: true,
       options: this.data.class_category,
       onConfirm: (value, index, options) => {
-        console.log(value, index, options)
         this.setData({
           class_value: value,
           class_title: index.map((n) => options[n].title),
@@ -200,7 +204,7 @@ Page({
   },
   onComplete(e) {
     var data = e.detail.data
-    var data = JSON.parse(data)
+    data = JSON.parse(data)
     that.data.pictures.push(data.data.imgUrl)
     wx.hideLoading()
   },

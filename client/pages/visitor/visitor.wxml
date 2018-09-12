@@ -1,20 +1,13 @@
 
 <!--内容页头图  -->
+<image class="toutu" mode="aspectFill" src='http://img.zcool.cn/community/0142885afa4dd4a801216045a2977b.jpg@1280w_1l_2o_100sh.jpg'></image>
 
-<swiper indicator-dots="true" style='height:390rpx;'>
-  <swiper-item >
-    <image class="toutu" mode="aspectFill" src='http://img.zcool.cn/community/0142885afa4dd4a801216045a2977b.jpg@1280w_1l_2o_100sh.jpg'></image>
-  </swiper-item >
-    <swiper-item >
-    <image class="toutu" mode="aspectFill" src='http://img.zcool.cn/community/0142885afa4dd4a801216045a2977b.jpg@1280w_1l_2o_100sh.jpg'></image>
-  </swiper-item >
- </swiper>
 <wux-media thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="学校简介" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
 <wux-media thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="校园设施" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
 
 <wux-divider text="校园活动" />  
 <view wx:for="{{campus_life}}" wx:key="{{index}}">
-  <navigator url="/pages/campus-life/detail/campus-life-detail?id={{item.id}}">
+  <navigator url="/pages/visitor/detail/visitor-detail?id={{item.id}}">
       <wux-media thumb="{{item.show_pic == null ?'/images/campus-life/activity.png':item.show_pic}}" align="left" title="{{item.title}}" label="{{item.marks}}">
       </wux-media>
       <!--评论 -->
@@ -36,15 +29,6 @@
       </view>
   </navigator>
 </view>
-
-
-
-
-
-
-
-
-
 
 
 

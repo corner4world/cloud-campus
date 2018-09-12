@@ -1,15 +1,15 @@
-var config = require('../../../config')
+var config = require('../../config')
 var app = getApp();
 Page({
   data: {
-    title: '公告新闻',
-    notice: [],
+    title: '校园风采',
+    campus_life: [],
     hidden: false,
     limit: 5,
   },
   onPullDownRefresh: function () {
     this.fetchData(5);
-    //wx.stopPullDownRefresh();
+    wx.stopPullDownRefresh();
   },
   fetchData: function (limit) {
     var that = this;
@@ -19,27 +19,29 @@ Page({
     wx.request({
       method: 'post',
       data: {
-        user:app.user,
+        //user:app.user,
+        //level: app.level,
         limit: limit
       },
-      url: config.host + '/weapp/notice',
+      url: config.host + '/weapp/campus_life',
       success: function (res) {
-        var notice = res.data.data.result
-        if (notice.length && res.statusCode === 200 && res.data.code != -1) {
+        console.log(res)
+        var campus_life = res.data.data.result
+        if (campus_life.length && res.statusCode === 200 && res.data.code != -1) {
           that.setData({
-            notice: notice
+            campus_life: campus_life
           })
           setTimeout(function () {
             that.setData({
               hidden: true
             })
           }, 300)
-        } else if (notice.length < 1 && res.statusCode === 200 && res.data.code != -1) {
+        } else if (campus_life.length < 1 && res.statusCode === 200 && res.data.code != -1) {
           that.setData({
             hidden: true
           })
           wx.showToast({
-            title: '暂无最新公告和新闻',
+            title: '暂无最新活动',
             icon: 'none',
             duration: 2000
           })

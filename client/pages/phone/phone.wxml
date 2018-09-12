@@ -27,13 +27,19 @@
     <view class="wxSearchMindKey">
       <view class="wxSearchMindKeyList">
         <block wx:for="{{wxSearchData.tipKeys}}" wx:key="">
-          <view class="wxSearchMindKeyItem" bindtap="call" id="{{item.phone}}">{{item.name}} {{item.phone}}</view>
+          <view class="wxSearchMindKeyItem" bindtap="call" id="{{item.phone}}">{{item.username}} {{item.phone}}</view>
         </block>
       </view>
     </view>
   </view>
 </view>
   <!-- -->
+<!-- tab -->
+    <wux-tabs default-current="teacher" bindchange="onChange">
+                <wux-tab key="teacher" title="教师"></wux-tab>
+                <wux-tab key="parent" title="家长"></wux-tab>
+    </wux-tabs>
+<!-- end tab -->
 
     <block wx:for="{{wxSortPickerData.textData}}" wx:for-item="item" wx:key="{{this}}">
       <view class="flex" id="">
@@ -44,11 +50,12 @@
               <image class="user-avatar-img" src="../../images/phone/phone.png"></image>
             </view>
             <view class="flex user-name" id='{{child.phone}}' 
-                  data-text="{{child.name}}" bindtap='call'>{{child.name}} {{child.phone}}</view>
+                  data-text="{{child.name}}" bindtap='call'>{{child.username}} {{child.phone}} - {{child.description}}</view>
           </view>
         </view>
       </view>
     </block>
+
   </scroll-view>
 
   <view class="nav box box-tb" bindtouchmove="touchmove" bindtouchcancel="touchcancel" bindtouchend="touchend">

@@ -3,21 +3,21 @@ var WxParse = require('../../../utils/wxParse/wxParse.js');
 var app = getApp();
 Page({
   data: {
-    id:"",
+    id: "",
     activity: "",
-    likes:0,//点赞数,
-    like_enabled:true,
+    likes: 0,//点赞数,
+    like_enabled: true,
     content: "",//评论框的内容
     isLoading: true,//是否显示加载数据提示
     disabled: true,
-    limit:5,
-    offset:0,
+    limit: 5,
+    offset: 0,
     comments: [
       {
         avatar: "http://pbqg2m54r.bkt.clouddn.com/logo.png",
         uName: "😝雨碎江南",
         create_date: "2016-12-11",
-        content: "点赞"
+        content: "九九八十一难，最难过的，其实是女儿国这一关，因为比起其他的艰难困苦来说，此时的唐僧是真的动心了。"
       },
     ],
   },
@@ -29,7 +29,7 @@ Page({
     var id = options.id
     this.click()
     this.fetchData(id)
-    this.fetchComment(0,5)
+    this.fetchComment(0, 5)
   },
   onPullDownRefresh: function () {
     wx.stopPullDownRefresh();
@@ -47,7 +47,7 @@ Page({
         if (activity.length && res.statusCode === 200 && res.data.code != -1) {
           that.setData({
             activity: activity[0],
-            likes:activity[0].likes
+            likes: activity[0].likes
           })
           var content = activity[0].content
           WxParse.wxParse('article', 'html', content, that, 0);
@@ -78,11 +78,11 @@ Page({
     var conArr = [], that = this;
     var offset = that.data.offset
     var limit = that.data.limit + 5
-    that.fetchComment(offset,limit)
+    that.fetchComment(offset, limit)
     that.setData({
-      limit:limit
+      limit: limit
     })
-    if (that.data.comments.length <= that.data.activity.comments){
+    if (that.data.comments.length <= that.data.activity.comments) {
       that.setData({
         isLoading: false
       })
@@ -92,6 +92,7 @@ Page({
   //文本域失去焦点时 事件处理
   textAreaBlur: function (e) {
     //获取此时文本域值
+    console.log(e.detail.value)
     this.setData({
       content: e.detail.value
     })
@@ -101,20 +102,21 @@ Page({
   send: function () {
     var that = this, conArr = [];
     var content = that.data.content.trim()
-    if (content == ""){
-        app.showErrorModal('内容不能为空', '提醒');
-      }
-    else{
+    if (content == "") {
+      app.showErrorModal('内容不能为空', '提醒');
+    }
+    else {
       wx.request({
         method: 'post',
         data: {
           id: that.data.id,
           //user:app.user,
           content: content,
-          operation:"comment_insert"
+          operation: "comment_insert"
         },
         url: config.host + '/weapp/like_comment',
         success: function (res) {
+          console.log(res)
           var status = res.data.data.status
           if (status == 1 && res.statusCode === 200 && res.data.code != -1) {
             wx.showToast({
@@ -132,7 +134,7 @@ Page({
               comments: that.data.comments.concat(conArr),
               content: "",//清空文本域值
             })
-          } else if (status !=1 && res.statusCode === 200 && res.data.code != -1) {
+          } else if (status != 1 && res.statusCode === 200 && res.data.code != -1) {
             wx.showToast({
               title: '未知错误,评论失败,请稍后重试',
               icon: 'none',
@@ -147,14 +149,14 @@ Page({
       })
     }
   },
-  fetchComment:function(offset,limit){
+  fetchComment: function (offset, limit) {
     var that = this
     wx.request({
       method: 'post',
       data: {
         id: that.data.id,
-        offset:offset,
-        limit:limit,
+        offset: offset,
+        limit: limit,
         operation: "comment_select"
       },
       url: config.host + '/weapp/like_comment',
@@ -172,9 +174,9 @@ Page({
       }
     })
   },
-  like:function(){
+  like: function () {
     var that = this
-    if(that.data.like_enabled){
+    if (that.data.like_enabled) {
       wx.request({
         method: 'post',
         data: {
@@ -190,7 +192,7 @@ Page({
             var likes = that.data.likes + 1
             that.setData({
               likes: likes,
-              like_enabled:false
+              like_enabled: false
             })
           } else if (status != 1 && res.statusCode === 200 && res.data.code != -1) {
             wx.showToast({
@@ -206,7 +208,7 @@ Page({
         }
       })
     }
-    else{
+    else {
       wx.showToast({
         title: '您已赞过',
         icon: 'none',
@@ -215,15 +217,15 @@ Page({
     }
   },
   click: function () {
-      var that = this
-      wx.request({
-        method: 'post',
-        data: {
-          id: that.data.id,
-          //user:app.user,
-          operation: "click"
-        },
-        url: config.host + '/weapp/like_comment'
-      })
+    var that = this
+    wx.request({
+      method: 'post',
+      data: {
+        id: that.data.id,
+        //user:app.user,
+        operation: "click"
+      },
+      url: config.host + '/weapp/like_comment'
+    })
   },
 })

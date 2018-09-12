@@ -155,7 +155,7 @@ form {
 .input-group picker.placeholder {
   color: #ccc;
 }
-.login-help {
+.visitor {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -163,7 +163,7 @@ form {
   font-size: 10pt;
   color: #bbb;
 }
-.login-help-img {
+.visitor-img {
   width: 11pt;
   height: 11pt;
   margin: 0 5rpx;

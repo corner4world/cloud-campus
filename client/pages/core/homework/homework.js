@@ -13,7 +13,7 @@ Page({
   },
   onPullDownRefresh: function () {
     this.fetchData();
-    wx.stopPullDownRefresh();
+    //wx.stopPullDownRefresh();
   },
   fetchData: function (history,limit) {
     var that = this;
@@ -23,14 +23,13 @@ Page({
     wx.request({
       method: 'post',
       data: {
-        //user:app.user,
-        //level: app.level,
+        user:app.user,
+        level: app.level,
         history:history,
         limit:limit
       },
       url: config.host + '/weapp/homework',
       success: function (res) {
-        console.log(res)
         var homework = res.data.data.result
         if (homework.length && res.statusCode === 200 && res.data.code != -1) {
           if(history){

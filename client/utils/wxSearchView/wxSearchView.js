@@ -61,7 +61,7 @@ function wxSearchInput(e) {
   var tipKeys = [];
   if (inputValue && inputValue.length > 0) {
     for (var i = 0; i < __tipKeys.length; i++) {
-      var mindKey = __tipKeys[i].name;
+      var mindKey = __tipKeys[i].username;
       // 包含字符串
       if (mindKey.indexOf(inputValue) != -1) {
         tipKeys.push(__tipKeys[i]);

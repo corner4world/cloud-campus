@@ -48,4 +48,6 @@
   </view> <!-- main card -->
 
 </view>
-<wux-floating-button id="wux-floating-button" visible="{{ visible }}" position="{{ position }}" theme="{{ colors[2] }}" buttons="{{ buttons }}"  bind:click="buttonClicked" />
+<view hidden='{{buttons_hidden}}'>
+<wux-floating-button id="wux-floating-button"  visible="{{ visible }}" position="{{ position }}" theme="{{ colors[2] }}" buttons="{{ buttons }}"  bind:click="buttonClicked" />
+</view>

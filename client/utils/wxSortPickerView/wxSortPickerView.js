@@ -126,7 +126,7 @@ function buildTextData(that, json){
     var temABC = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '#'];
 
   for (var index = 0; index < json.length; index++) {
-    var key = json[index].name;
+        var key = json[index].username;
         var firstChar = key.substr(0, 1);
         var reg = query(firstChar)[0];
         var temIndex = temABC.indexOf(reg);

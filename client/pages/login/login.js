@@ -3,8 +3,9 @@ var app = getApp();
 
 Page({
   data: {
-    type_array: ['教师', '家长'],
-    level:0,
+    school: [],
+    index:0,
+    school_code:"100001",
     help_status: false,
     userid_focus: false,
     passwd_focus: false,
@@ -13,6 +14,9 @@ Page({
     angle: 0,
     phone:'',
     password:''
+  },
+  onLoad:function(){
+    this.fetch_school()
   },
   onReady: function () {
     var that = this;
@@ -42,18 +46,17 @@ Page({
       method: 'post',
       data: {
         phone: that.data.userid,
-        password: that.data.passwd
+        password: that.data.passwd,
+        school_code:that.data.school_code
       },
       url: config.host + '/weapp/login',
       success: function (res) {
         var user = res.data.data.result
         if (user.length && res.statusCode === 200) {
-          //清除缓存
-          app.cache = {};
-          wx.clearStorage();
+          //清除缓存 todo
           //登录成功跳转
           app.user = user[0]
-          app.login = true
+          app.level = user[0].level
           wx.reLaunch({
             url: '/pages/index/index'
           })
@@ -67,7 +70,7 @@ Page({
       },
       fail: function (res) {
         wx.hideToast();
-        app.showErrorModal(res.errMsg, '登录失败,服务器维护中');
+        app.showErrorModal(res.errMsg, '登录失败,网络故障或服务器维护中');
       }
     })
 
@@ -123,8 +126,11 @@ Page({
     });
   },
   bindPickerChange: function (e) {
+    var index = e.detail.value * 1
+    var school_code = this.data.school[index].school_code
     this.setData({
-      level: e.detail.value
+      index:index,
+      school_code: school_code
     })
   },
   phoneInput:function(e){
@@ -137,6 +143,32 @@ Page({
       password: e.detail.value
     })
   },
+  fetch_school:function(){
+    var that = this
+    wx.request({
+      method: 'post',
+      data: {},
+      url: config.host + '/weapp/school',
+      success: function (res) {
+        var result = res.data.data.result
+        if (result.length && res.statusCode === 200 && res.data.code != -1) {
+          that.setData({
+            school:result
+          })
+        }
+      },
+      fail: function (res) {
+        wx.hideToast();
+        app.showErrorModal(res.errMsg, '获取学校列表失败,服务器维护中');
+      }
+    })
+  },
+  visitor:function(){
+    wx.navigateTo({
+      url: '/pages/visitor/visitor',
+    })
+  },
+  //激活验证 添加用户 //todo 方法迁移至个人中心 修改密码
   register:function(){
     var that = this;
     if (!that.data.phone || !that.data.password) {
@@ -152,8 +184,6 @@ Page({
       return false;
     }
     app.showLoadToast('激活中');
-
-    //激活验证 添加用户
     wx.request({
       method: 'post',
       data: {
@@ -163,7 +193,6 @@ Page({
       },
       url: config.host + '/weapp/register',
       success: function (res) {
-        console.log(res)
         var status = res.data.data.status
         if (status == 1 && res.statusCode === 200 && res.data.code != -1) {
           wx.showToast({

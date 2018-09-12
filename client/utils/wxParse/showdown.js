@@ -419,7 +419,7 @@ showdown.validateExtension = function (ext) {
 
   var validateExtension = validate(ext, null);
   if (!validateExtension.valid) {
-    console.warn(validateExtension.error);
+    //console.warn(validateExtension.error);
     return false;
   }
   return true;

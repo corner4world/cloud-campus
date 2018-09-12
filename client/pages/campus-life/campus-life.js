@@ -9,7 +9,7 @@ Page({
   },
   onPullDownRefresh: function () {
     this.fetchData(5);
-    wx.stopPullDownRefresh();
+    //wx.stopPullDownRefresh();
   },
   fetchData: function (limit) {
     var that = this;
@@ -25,7 +25,6 @@ Page({
       },
       url: config.host + '/weapp/campus_life',
       success: function (res) {
-        console.log(res)
         var campus_life = res.data.data.result
         if (campus_life.length && res.statusCode === 200 && res.data.code != -1) {
           that.setData({

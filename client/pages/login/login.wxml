@@ -9,6 +9,14 @@
       </view>
       <view class="bd">
         <form class="login-form">
+          <view class="input-group">
+            <text class="input-label">学校</text>
+            <view class="weui-cell__bd">
+              <picker bindchange="bindPickerChange" value="{{index}}" range="{{school}}" range-key="{{'school_name'}}">
+              <view data-text="{{school[index].school_code}}">{{school[index].school_name}}</view>
+              </picker>
+            </view> 
+          </view>
           <view class="input-group {{userid_focus ? 'active' : ''}}">
             <text class="input-label">帐号</text>
             <input type="number" cursor-spacing="30" id="userid" maxlength="11" 
@@ -18,9 +26,9 @@
             <text class="input-label">密码</text>
             <input password="true" cursor-spacing="30" id="passwd" placeholder=""                             bindinput="passwdInput" bindfocus="inputFocus" bindblur="inputBlur" />
           </view>
-          <view class="login-help" bindtap="showHelp">
-            <text>账号激活</text>
-            <image class="login-help-img" src="/images/login/active.png"></image>
+          <view class="visitor" bindtap="visitor">
+            <text>游客模式</text>
+            <image class="visitor-img" src="/images/login/active.png"></image>
           </view>
         </form>
         <view class="confirm-btn" bindtap="login">
@@ -28,12 +36,12 @@
         </view>
       </view>
 
-
+<!--//todo 方法迁移至个人中心 修改密码 -->
       <view class="help" id="help" wx:if="{{help_status}}" bindtap="tapHelp">
         <view class="box">
           <view class="box-hd">
             <text class="box-title">账号激活</text>
-         <image class="box-close" src="/images/login/close.png"                  bindtap="hideHelp">  </image>
+         <image class="box-close" src="/images/login/close.png"  bindtap="hideHelp">  </image>
           </view>
           <view class="box-bd">
             <view class="input-group active">
@@ -51,7 +59,7 @@
             </view>
           <view class="input-group active">
             <text class="input-label">密码</text>
-            <input password="true" cursor-spacing="30" id="password" placeholder=""                             placeholder="设置密码" bindinput="passwordInput"  />
+            <input password="true" cursor-spacing="30" id="password" placeholder=""    placeholder="设置密码" bindinput="passwordInput"  />
           </view>
           <view class="confirm-btn" bindtap="register">
             <text>激活</text>

@@ -1,6 +1,6 @@
 #公共配置
 server:
-    port: 80
+    port: 8080
     tomcat:
       uri-encoding: UTF-8
 spring:
@@ -106,7 +106,7 @@ spring:
         min-idle: 5       # 连接池中的最小空闲连接
   # 数据源配置
   datasource:
-    url: jdbc:mysql://cd-cdb-o72e6rm0.sql.tencentcdb.com:63733/campus_cloud?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true
+    url: jdbc:mysql://campus-cloud.xyz:3306/campus_cloud?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true
     username: root
     password: 1qaz!QAZ
 
@@ -185,9 +185,9 @@ spring:
         min-idle: 5       # 连接池中的最小空闲连接
   # 数据源配置
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/mysiteforme?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true
+    url: jdbc:mysql://campus-cloud.xyz:3306/campus_cloud?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true
     username: root
-    password: 123456
+    password: 1qaz!QAZ
 
 #日志
 logging:

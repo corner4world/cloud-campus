@@ -9,9 +9,13 @@ module.exports = async ctx => {
   let publish_type = query.publish_type * 1
   let homework_type_value = query.homework_type_value || 0
   let user = query.user
+  var level = 0
   switch (publish_type) {
     case 0:
-      var sql = "INSERT INTO client_notice (id, title, content, summary, publisher, level, publish_time, pictures) VALUES (UUID_SHORT(),'" + title + "', '" + content + "', '" + content.slice(0, 50) + "', '" + "管理员" + "', 1,  CURRENT_TIME(), '" + pictures+"')"
+    case 1:
+      if (publish_type == 0) { level = 2}
+      if (publish_type == 1) { level = 5}
+      var sql = "INSERT INTO client_notice (id, title, content, summary, publisher, notice_type,level,school_code, publish_time, pictures) VALUES (UUID_SHORT(),'" + title + "', '" + content + "', '" + content.slice(0, 50) + "', '" + user.username + "', " + publish_type+","+level+",'"+user.school_code+"',CURRENT_TIME(), '" + pictures+"')"
         try {
           await mysql.schema.raw(sql)
           ctx.state.data = { status: 1 }
@@ -19,10 +23,10 @@ module.exports = async ctx => {
           ctx.state.data = { status: err }
         }
       break
-    case 1:
     case 2:
+    case 3:
       var id = uuid.v1()
-      var sql = "INSERT INTO client_homework_information (id, title, content, summary, publisher, level, class_id,publish_time, pictures,publish_type,homework_type_value) VALUES ('" + id + "','" + title + "', '" + content + "', '" + content.slice(0, 50) + "', '" + "管理员" + "', 0,'" + class_value + "',  CURRENT_TIME(), '" + pictures + "','" + publish_type + "','" + homework_type_value+ "')"
+      var sql = "INSERT INTO client_homework_information (id, title, content, summary, publisher, level,school_code,publish_time, pictures,publish_type,homework_type_value) VALUES ('" + id + "','" + title + "', '" + content + "', '" + content.slice(0, 50) + "', '" + user.username + "', 3,'"+user.school_code+"',CURRENT_TIME(), '" + pictures + "','" + publish_type + "','" + homework_type_value+ "')"
       var class_relation = "insert into client_homework_inform_class(id,homework_inform_id,class_id) values "
       var index = 0
       while(index < class_value.length - 1) {
