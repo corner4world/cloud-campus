@@ -7,6 +7,9 @@ module.exports = async ctx => {
       " where del_flag=0 and id=" +id
     var result = await mysql.schema.raw(sql)
     result = result[0]
+    for(var index in result){
+      result[index].content = result[index].content.replace(/'/g, '"')
+    }
     ctx.state.data = { result }
   }
   catch (err) {

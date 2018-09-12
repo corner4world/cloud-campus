@@ -1,3 +1,4 @@
+<!-- -->
 <image class="toutu" mode="aspectFill" src="{{activity.show_pic == null ?'http://pic.58pic.com/58pic/15/86/11/51Y58PICQHR_1024.jpg':activity.show_pic}}"></image>
 <!--标题  -->
 <text class="biaoti">{{activity.title}}</text>

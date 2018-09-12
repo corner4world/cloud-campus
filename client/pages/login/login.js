@@ -57,6 +57,7 @@ Page({
           //登录成功跳转
           app.user = user[0]
           app.level = user[0].level
+          app.school_code = user[0].school_code
           wx.reLaunch({
             url: '/pages/index/index'
           })
@@ -132,6 +133,7 @@ Page({
       index:index,
       school_code: school_code
     })
+    app.school_code = school_code
   },
   phoneInput:function(e){
     this.setData({

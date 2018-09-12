@@ -17,7 +17,7 @@ Page({
         avatar: "http://pbqg2m54r.bkt.clouddn.com/logo.png",
         uName: "😝雨碎江南",
         create_date: "2016-12-11",
-        content: "九九八十一难，最难过的，其实是女儿国这一关，因为比起其他的艰难困苦来说，此时的唐僧是真的动心了。"
+        content: "点赞"
       },
     ],
   },
@@ -92,7 +92,6 @@ Page({
   //文本域失去焦点时 事件处理
   textAreaBlur: function (e) {
     //获取此时文本域值
-    console.log(e.detail.value)
     this.setData({
       content: e.detail.value
     })
@@ -116,7 +115,6 @@ Page({
         },
         url: config.host + '/weapp/like_comment',
         success: function (res) {
-          console.log(res)
           var status = res.data.data.status
           if (status == 1 && res.statusCode === 200 && res.data.code != -1) {
             wx.showToast({

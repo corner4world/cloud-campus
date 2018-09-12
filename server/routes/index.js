@@ -44,7 +44,7 @@ router.post('/publish', controllers.publish)
 router.post('/campus_life', controllers.campus_life)
 router.post('/campus_life_detail', controllers.campus_life_detail)
 router.post('/like_comment', controllers.like_comment)
-
+router.post('/campus_top_img', controllers.campus_top_img)
 // 用户信息接口（可以用来验证登录态）
 router.get('/user', validationMiddleware, controllers.user)
 // --- 图片上传 Demo --- //

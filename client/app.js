@@ -54,5 +54,6 @@ App({
   enCodeBase64:function(data){ return this.util.base64.encode(data)},
   cache: {},
   user:{},
-  level:5 
+  level:5,
+  school_code:"100001"
 });

@@ -80,13 +80,15 @@ Page({
     var limit = that.data.limit + 5
     that.fetchComment(offset,limit)
     that.setData({
-      limit:limit
+      limit:limit,
+      isLoading: false
     })
+    /*
     if (that.data.comments.length <= that.data.activity.comments){
       that.setData({
         isLoading: false
       })
-    }
+    }*/
   },
 
   //文本域失去焦点时 事件处理

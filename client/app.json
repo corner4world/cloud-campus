@@ -1,8 +1,7 @@
 {
   "pages": [
-    "pages/campus-life/campus-life",
     "pages/login/login",
-    
+    "pages/campus-life/campus-life",
     "pages/phone/phone",
     "pages/index/index",
     "pages/news/news",

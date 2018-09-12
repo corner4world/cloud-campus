@@ -1,4 +1,6 @@
 /* pages/details/detail.wxss */
+
+
 .toutu {
   width: 100%;
   height: 400rpx;
@@ -50,7 +52,6 @@
 
 video {
   width: 100%;
-  height: 100%;
 }
 
 .i-img {
@@ -218,3 +219,4 @@ video {
     padding-left: 15px;
   }
 }
+@import '../../../utils/wxParse/wxParse.wxss';
