@@ -1,12 +1,14 @@
 <!--login.wxml-->
 <view class="container">
-    <image class="title" src="/images/login/title.png"></image>
+    <image class="title" src="/images/login/title.png" ></image>
     <view class="content">
+    <!-- 
       <view class="hd" style="transform:rotateZ({{angle}}deg);">
           <image class="logo" src="/images/login/logo.png"></image>
           <image class="wave" src="/images/login/wave.png" mode="aspectFill"></image>
           <image class="wave wave-bg" src="/images/login/wave.png" mode="aspectFill"></image>
       </view>
+      -->
       <view class="bd">
         <form class="login-form">
           <view class="input-group">
