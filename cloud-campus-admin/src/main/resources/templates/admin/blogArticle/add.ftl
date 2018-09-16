@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>博客内容添加--${site.name}</title>
+    <title>文章内容添加--${site.name}</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -54,24 +54,24 @@
 <body class="childrenBody">
 <form class="layui-form" style="width:80%;">
     <div class="layui-form-item">
-        <label class="layui-form-label">标题</label>
+        <label class="layui-form-label">文章标题</label>
         <div class="layui-input-block">
 
-            <input  type="text"  class="layui-input" name="title" lay-verify="required" placeholder="请输入标题">
+            <input  type="text"  class="layui-input" name="title" lay-verify="required" placeholder="">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">副标题</label>
         <div class="layui-input-block">
 
-            <input  type="text"  class="layui-input" name="subTitle"  placeholder="请输入副标题">
+            <input  type="text"  class="layui-input" name="subTitle"  placeholder="可不填">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">所属栏目</label>
         <div class="layui-input-block">
             <input type="hidden" name="channelId" >
-            <input  type="text"  class="layui-input layui-disabled" disabled  placeholder="请选择一个父栏目" id="channelNameShow">
+            <input  type="text"  class="layui-input layui-disabled" disabled  id="channelNameShow">
             <div class="grid-demo grid-demo-bg1"><ul id="treeDemo" class="ztree"></ul></div>
         </div>
     </div>
@@ -79,16 +79,16 @@
         <label class="layui-form-label">摘要</label>
         <div class="layui-input-block">
 
-            <textarea name="marks"  placeholder="请输入摘要" class="layui-textarea"></textarea>
+            <textarea name="marks"   class="layui-textarea"></textarea>
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">显示图片</label>
+        <label class="layui-form-label">封面图片</label>
         <div class="layui-input-block">
 
             <input type="hidden" class="layui-input" name="showPic" id="showPic" >
             <div class="layui-upload">
-                <button type="button" class="layui-btn" id="test_showPic">上传显示图片</button>
+                <button type="button" class="layui-btn" id="test_showPic">上传封面</button>
                 <div class="layui-upload-list">
                     <img class="layui-upload-img" id="demo_showPic">
                     <p id="demoText_showPic"></p>
@@ -110,12 +110,13 @@
     <div id="outLinkUrl">
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">来源</label>
+        <label class="layui-form-label">发布者</label>
         <div class="layui-input-block">
 
-            <input  type="text"  class="layui-input" name="resources"  placeholder="请输入来源">
+            <input  type="text"  class="layui-input" name="resources" >
         </div>
     </div>
+    <!-- 
     <div class="layui-form-item">
         <label class="layui-form-label">文章标签</label>
         <div class="layui-input-block">
@@ -135,6 +136,7 @@
             </fieldset>
         </div>
     </div>
+    -->
     <div class="layui-form-item">
         <label class="layui-form-label">发布时间</label>
         <div class="layui-input-block">
@@ -155,6 +157,7 @@
 
         </div>
     </div>
+    <!-- 
     <div class="layui-form-item">
         <label class="layui-form-label">是否推荐</label>
         <div class="layui-input-block">
@@ -163,9 +166,10 @@
 
         </div>
     </div>
+    -->
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit="" lay-filter="addBlogArticle">立即提交</button>
+            <button class="layui-btn" lay-submit="" lay-filter="addBlogArticle">发布</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
@@ -371,7 +375,7 @@
                 layer.msg("文章类型不能为空",{time:1000});
                 return false;
             }
-            //博客标签数据
+            //文章标签数据
             var d = [];
             $(".multiSelect").children("a").each(function () {
                 d.push({id:$(this).data("id")});
@@ -391,7 +395,7 @@
                 success: function(res){
                     layer.close(loadIndex);
                     if(res.success){
-                        parent.layer.msg("博客内容添加成功！",{time:1000},function(){
+                        parent.layer.msg("文章内容添加成功！",{time:1000},function(){
                             parent.layer.close(parent.addIndex);
                             //刷新父页面
                             parent.location.reload();

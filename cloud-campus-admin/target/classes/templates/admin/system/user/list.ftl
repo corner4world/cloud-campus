@@ -77,9 +77,10 @@
                 {type:'checkbox'},
                 {field:'loginName', title: '登录名称'},
                 {field:'nickName',  title: '昵称',    width:'10%'},
-                {field:'email',     title: '邮箱',    width:'16%' },
-                {field:'tel',       title: '电话',    width:'12%'},
-                {field:'locked',    title: '会员状态',width:'12%',templet:'#userStatus'},
+                {field:'school_code', title: '学校代码',    width:'10%' },
+                {field:'email',     title: '邮箱',    width:'10%' },
+                {field:'tel',       title: '电话',    width:'10%'},
+                {field:'locked',    title: '会员状态',width:'6%',templet:'#userStatus'},
                 {field:'createDate',  title: '创建时间',width:'18%',templet:'<div>{{ layui.laytpl.toDateString(d.createDate) }}</div>',unresize: true}, //单元格内容水平居中
                 {fixed: 'right',    width: '15%', align: 'center',toolbar: '#barDemo'}
             ]]

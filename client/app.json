@@ -1,9 +1,12 @@
 {
   "pages": [
     "pages/login/login",
+    "pages/user/account/account",
+    
+    "pages/user/user",
+    "pages/index/index",
     "pages/campus-life/campus-life",
     "pages/phone/phone",
-    "pages/index/index",
     "pages/news/news",
     "pages/core/kb/kb",
     "pages/publish/publish",
@@ -24,12 +27,11 @@
     "pages/campus-life/detail/campus-life-detail",
     "pages/visitor/visitor",
     "pages/visitor/detail/visitor-detail"
-    
   ],
   "window": {
     "navigationBarBackgroundColor": "#7acfa6",
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "云校园",
+    "navigationBarTitleText": "家校零距离",
     "backgroundColor": "#7acfa6",
     "backgroundTextStyle": "light",
     "enablePullDownRefresh": true
@@ -56,6 +58,12 @@
         "text": "校园风采",
         "iconPath": "images/campus-life/campus-life.png",
         "selectedIconPath": "images/campus-life/campus-life@active.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "个人中心",
+        "iconPath": "images/user/user.png",
+        "selectedIconPath": "images/user/user@active.png"
       }
     ]
   },

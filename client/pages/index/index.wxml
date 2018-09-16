@@ -18,7 +18,7 @@
     <view wx:for="{{card}}" wx:key="{{index}}" style='margin-top:25rpx'>
 
             <wux-card title="{{item.title}}" full="{{ true }}" extra="{{item.publisher}}" thumb="/images/index/latest.png">
-                <view slot="body">{{item.content}}
+                <view slot="body"><text>{{item.summary}}</text>
                 
                 <!-- 图片-->
                   <view class="" wx:if="{{item.pictures.length}}">

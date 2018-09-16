@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>博客内容--${site.name}</title>
+    <title>文章内容--${site.name}</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -73,7 +73,7 @@
 </div>
 <div class="layui-col-xs10">
     <fieldset class="layui-elem-field">
-        <legend>博客内容检索</legend>
+        <legend>文章内容检索</legend>
         <div class="layui-field-box">
             <form class="layui-form" id="searchForm">
                 <div class="layui-inline" style="margin-left: 15px">
@@ -118,7 +118,7 @@
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
                 <div class="layui-inline">
-                    <a class="layui-btn layui-btn-normal" data-type="addBlogArticle">添加博客内容</a>
+                    <a class="layui-btn layui-btn-normal" data-type="addBlogArticle">添加文章内容</a>
                 </div>
             </form>
         </div>
@@ -259,12 +259,12 @@
             var data = obj.data;
             if(obj.event === 'edit'){
                 var editIndex = layer.open({
-                    title : "编辑博客内容",
+                    title : "编辑文章内容",
                     type : 2,
                     content : "${base}/admin/blogArticle/edit?id="+data.id,
                     success : function(layero, index){
                         setTimeout(function(){
-                            layer.tips('点击此处返回博客内容列表', '.layui-layer-setwin .layui-layer-close', {
+                            layer.tips('点击此处返回文章内容列表', '.layui-layer-setwin .layui-layer-close', {
                                 tips: 3
                             });
                         },500);
@@ -277,7 +277,7 @@
                 layer.full(editIndex);
             }
             if(obj.event === "del"){
-                layer.confirm("你确定要删除该博客内容么？",{btn:['是的,我确定','我再想想']},
+                layer.confirm("你确定要删除该文章内容么？",{btn:['是的,我确定','我再想想']},
                         function(){
                             $.post("${base}/admin/blogArticle/delete",{"id":data.id},function (res){
                                 if(res.success){
@@ -346,12 +346,12 @@
                     }
                 }
                 var addIndex = layer.open({
-                    title : "添加博客内容",
+                    title : "添加文章内容",
                     type : 2,
                     content : url,
                     success : function(layero, addIndex){
                         setTimeout(function(){
-                            layer.tips('点击此处返回博客内容列表', '.layui-layer-setwin .layui-layer-close', {
+                            layer.tips('点击此处返回文章内容列表', '.layui-layer-setwin .layui-layer-close', {
                                 tips: 3
                             });
                         },500);

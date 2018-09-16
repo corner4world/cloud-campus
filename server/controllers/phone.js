@@ -12,9 +12,13 @@ module.exports = async ctx => {
         sql = sql + "and user_type=1 and school_code='"+user.school_code+"'"
         break
       case 2: //家长
-        sql = sql + "and user_type=2 and school_code='" + user.school_code + "'"+
-        " and id in (select user_id from client_user_class where user_id <>'"+user.id+"' and class_id in  "+
-                       "(select class_id from client_user_class where user_id='"+user.id+"'))"
+        if(level == 1){
+          sql = sql + "and user_type=2 and school_code='" + user.school_code + "'"
+        }else{
+          sql = sql + "and user_type=2 and school_code='" + user.school_code + "'" +
+            " and id in (select user_id from client_user_class where user_id <>'" + user.id + "' and class_id in  " +
+            "(select class_id from client_user_class where user_id='" + user.id + "'))"
+        }
         break
     }
     var result = await mysql.schema.raw(sql)

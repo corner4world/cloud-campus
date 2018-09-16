@@ -8,6 +8,9 @@ Page({
     top_img: [{"img_url":"http://img.zcool.cn/community/0142885afa4dd4a801216045a2977b.jpg@1280w_1l_2o_100sh.jpg"}],
     hidden: false,
     limit: 5,
+    autoplay: true,
+    interval: 1000,
+    duration: 1000
   },
   onPullDownRefresh: function () {
     this.fetchData(5);

@@ -39,36 +39,7 @@
       </view>
 
 <!--//todo 方法迁移至个人中心 修改密码 -->
-      <view class="help" id="help" wx:if="{{help_status}}" bindtap="tapHelp">
-        <view class="box">
-          <view class="box-hd">
-            <text class="box-title">账号激活</text>
-         <image class="box-close" src="/images/login/close.png"  bindtap="hideHelp">  </image>
-          </view>
-          <view class="box-bd">
-            <view class="input-group active">
-            <text class="input-label">类型</text>
-              <view class="weui-cell__bd">
-              <picker bindchange="bindPickerChange" value="{{level}}" range="{{type_array}}">
-              <view id="level" data-text="{{type_array[level]}}">{{type_array[level]}}</view>
-              </picker>
-              </view>
-            </view>
-            <view class="input-group active">
-            <text class="input-label">帐号</text>
-            <input type="number" cursor-spacing="30" id="phone"  maxlength="11" 
-                   placeholder="手机号" bindinput="phoneInput" /> 
-            </view>
-          <view class="input-group active">
-            <text class="input-label">密码</text>
-            <input password="true" cursor-spacing="30" id="password" placeholder=""    placeholder="设置密码" bindinput="passwordInput"  />
-          </view>
-          <view class="confirm-btn" bindtap="register">
-            <text>激活</text>
-        </view>
-        </view>
-       </view>
-    </view>
+      
 
     </view>
 </view>

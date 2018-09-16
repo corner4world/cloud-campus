@@ -1,0 +1,77 @@
+<view class="container">
+	<view class="info_list">
+		<view class="weui-cells">
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{ items }}" wx:key="" data-field="{{ item.field }}" data-value='{{item.value}}' data-index="{{index}}" data-text="{{ item.text }}" bindtap="modify">
+                <view class="weui-cell__hd">
+                    <image src="{{ item.icon }}" style="margin-bottom: 2px;margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">{{ item.text }}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">
+                	<text>{{ item.value }}</text>
+                </view>
+            </view>
+      </view>
+      <!-- 密码重置 -->
+      <view class="weui-cells">
+			<view class="weui-cell weui-cell_access" hover-class="weui-cell_active" data-field="password"  bindtap="pwd_modify">
+                <view class="weui-cell__hd">
+                    <image src="https://uploadfiles-1252875786.cos.ap-guangzhou.myqcloud.com/uploadfiles/campus-client/password.png" style="margin-bottom: 2px;margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">密码重置</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">
+                	<text></text>
+                </view>
+            </view>
+      </view>
+  </view>  
+</view>
+
+<view class="help" style='margin-top:300rpx' wx:if="{{is_modify}}" >
+        <view class="box">
+          <view class="box-hd">
+            <text class="box-title">编辑</text>
+            <image class="box-close" src="/images/login/close.png"  bindtap="hideModify">  </image>
+          </view>
+          <view class="box-bd">
+            <view class="input-group active">
+              <text class="input-label">{{text}}</text>
+              <input type="text" cursor-spacing="30" id="modify" value='{{value}}' bindinput="valueInput"  /> 
+            </view>
+            <view class="confirm-btn" bindtap="modify_info">
+              <text>确定</text>
+            </view>
+         </view>
+       </view>
+</view>
+
+<form bindsubmit="modify_password">
+<view class="help" style='margin-top:300rpx' wx:if="{{is_pwdmodify}}" >
+        <view class="box">
+          <view class="box-hd">
+            <text class="box-title">密码重置</text>
+            <image class="box-close" src="/images/login/close.png"  bindtap="hideModify">  </image>
+          </view>
+          <view class="box-bd">
+            
+            <view class="input-group active">
+              <text class="input-label">旧密码</text>
+              <input type="password" cursor-spacing="30" id="modify" value='' name="old_pwd"  /> 
+            </view>
+            
+            <view class="input-group active">
+              <text class="input-label">新密码</text>
+              <input type="password" cursor-spacing="30" id="modify" value='' name="new_pwd"  /> 
+            </view>
+            
+            <view class="input-group active">
+              <text class="input-label">再确认</text>
+              <input type="password" cursor-spacing="30" id="modify" value='' name="confirm_pwd"  /> 
+            </view>
+
+            <view>
+              <button formType="submit" class="confirm-btn">确定</button>
+            </view>
+         </view>
+       </view>
+</view>
+</form>

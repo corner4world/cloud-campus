@@ -21,16 +21,41 @@ Page({
     })
     var current = this.data.current
     this.fetch_phone(current)
+    
   },
   onLoad: function (options) {
     this.fetch_phone("teacher")
   },
   fetch_phone:function(current){
+    var that = this;
+    wx.getStorage({
+      key: current+'_phones',
+      success: function(res) {
+        app.showLoadToast('加载中');
+        var phones = res.data
+        WxSearch.init(
+          that,
+          [],
+          phones,// 搜索匹配，[]表示不使用
+          that.mySearchFunction, // 提供一个搜索回调函数
+          that.myGobackFunction //提供一个返回回调函数
+        );
+        //电话列表初始化
+        wxSortPickerView.init(phones, that);
+        wx.hideToast();
+      },
+      fail:function(){
+        that.feachData(current)
+      }
+    })
+  },
+  feachData:function(current) {
+    var that = this;
     var user_type = 1
-    if(current == "parent"){
+    if (current == "parent") {
       user_type = 2
     }
-    var that = this;
+    app.showLoadToast('加载中');
     wx.request({
       method: 'post',
       data: {
@@ -45,7 +70,11 @@ Page({
           that.setData({
             phones: phones
           })
-        } else if(phones.length == 0 && res.statusCode === 200){
+          wx.setStorage({
+            key: current + '_phones',
+            data: phones,
+          })
+        } else if (phones.length == 0 && res.statusCode === 200) {
           that.setData({
             phones: phones
           })
@@ -64,6 +93,7 @@ Page({
         );
         //电话列表初始化
         wxSortPickerView.init(phones, that);
+        wx.hideToast();
       },
       fail: function (res) {
         wx.hideToast();

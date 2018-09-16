@@ -58,7 +58,8 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
 			@CachePut(value = "user", key = "'user_id_'+T(String).valueOf(#result.id)",condition = "#result.id != null and #result.id != 0"),
 			@CachePut(value = "user", key = "'user_name_'+#user.loginName", condition = "#user.loginName !=null and #user.loginName != ''"),
 			@CachePut(value = "user", key = "'user_email_'+#user.email", condition = "#user.email != null and #user.email != ''"),
-			@CachePut(value = "user", key = "'user_tel_'+#user.tel", condition = "#user.tel != null and #user.tel != ''")
+			@CachePut(value = "user", key = "'user_tel_'+#user.tel", condition = "#user.tel != null and #user.tel != ''"),
+			@CachePut(value = "user", key = "'user_school_code_'+#user.school_code", condition = "#user.school_code != null and #user.school_code != ''")
 	})
 	@Transactional(readOnly = false, rollbackFor = Exception.class)
 	public User saveUser(User user) {
@@ -76,6 +77,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
 			@CacheEvict(value = "user", key = "'user_name_'+#user.loginName", condition = "#user.loginName !=null and #user.loginName != ''"),
 			@CacheEvict(value = "user", key = "'user_email_'+#user.email", condition = "#user.email != null and #user.email != ''"),
 			@CacheEvict(value = "user", key = "'user_tel_'+#user.tel", condition = "#user.tel != null and #user.tel != ''" ),
+			@CacheEvict(value = "user", key = "'user_school_code_'+#user.school_code", condition = "#user.school_code != null and #user.school_code != ''" ),
 	})
 	@Transactional(readOnly = false, rollbackFor = Exception.class)
 	public User updateUser(User user) {
@@ -112,7 +114,8 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
 			@CacheEvict(value = "user", key = "'user_id_'+T(String).valueOf(#user.id)",condition = "#user.id != null and #user.id != 0"),
 			@CacheEvict(value = "user", key = "'user_name_'+#user.loginName", condition = "#user.loginName !=null and #user.loginName != ''"),
 			@CacheEvict(value = "user", key = "'user_email_'+#user.email", condition = "#user.email != null and #user.email != ''"),
-			@CacheEvict(value = "user", key = "'user_tel_'+#user.tel", condition = "#user.tel != null and #user.tel != ''" )
+			@CacheEvict(value = "user", key = "'user_tel_'+#user.tel", condition = "#user.tel != null and #user.tel != ''" ),
+			@CacheEvict(value = "user", key = "'user_school_code_'+#user.school_code", condition = "#user.school_code != null and #user.school_code != ''" )
 	})
 	public void deleteUser(User user) {
 		user.setDelFlag(true);

@@ -2,14 +2,14 @@
 <html class="loginHtml">
 <head>
     <meta charset="utf-8">
-    <title>MySiteForMe系统后台--孤独的旅行家</title>
+    <title>家校零距离</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-    <link rel="icon" href="https://static.mysiteforme.com/866ac55f-b471-40cf-a794-db73128c8fcd.ico">
+    <link rel="icon" href="${base}/static/images/favicon.ico">
     <link rel="stylesheet" href="${base}/static/layui/css/layui.css" media="all" />
     <link rel="stylesheet" href="${base}/static/css/login.css?t=${.now?long}" media="all" />
     <style type="text/css">
@@ -34,7 +34,7 @@
 <body>
 <div id="bg-body"></div>
 <div class="login">
-    <h1>孤独的旅行家</h1>
+    <h1></h1>
     <form class="layui-form" action="${base}/login/main" method="post">
         <div class="layui-form-item">
             <input class="layui-input" name="username" placeholder="用户名" lay-verify="required" type="text" autocomplete="off">
@@ -52,9 +52,7 @@
         <button class="layui-btn login_btn" lay-submit="" lay-filter="login">登录</button>
     </form>
 </div>
-<div class="loginTip">
-    <span>用户名:admin &nbsp;&nbsp;&nbsp;密码:123456</span>
-</div>
+
 <script type="text/javascript" src="${base}/static/layui/layui.js"></script>
 <script type="text/javascript" src="${base}/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="${base}/static/js/jquery.bcat.bgswitcher.js"></script>
@@ -65,10 +63,7 @@
                 form = layui.form;
 
         $(document).ready(function() {
-            var srcBgArray = ["https://static.mysiteforme.com/chun.jpg",
-                "https://static.mysiteforme.com/xia.jpg",
-                "https://static.mysiteforme.com/qiu.jpg",
-                "https://static.mysiteforme.com/dong.jpg"];
+            var srcBgArray = ["${base}/static/images/bg3.jpeg"];
             $('#bg-body').bcatBGSwitcher({
                 timeout:5000,
                 urls: srcBgArray,

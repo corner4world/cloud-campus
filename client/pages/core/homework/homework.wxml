@@ -4,7 +4,7 @@
     <view wx:for="{{homework}}" wx:key="{{index}}">
         <wux-divider text="{{item.subject_name}}" />
             <wux-card title="{{item.title}}" full="{{ true }}" extra="{{item.publisher}}" thumb="/images/core/homework/homework.png">
-                <view slot="body">{{item.content}}
+                <view slot="body"><text>{{item.content}}</text>
                 
                 <!-- 图片-->
                   <view class="" wx:if="{{item.pictures.length}}">

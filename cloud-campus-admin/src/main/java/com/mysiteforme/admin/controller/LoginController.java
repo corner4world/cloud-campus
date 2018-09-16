@@ -169,7 +169,7 @@ public class LoginController extends BaseController {
 	 */
 	@GetMapping(value = "")
 	public String index() {
-		LOGGER.info("这事空地址在请求路径");
+		LOGGER.info("空地址请求");
 		Subject s = SecurityUtils.getSubject();
 		return s.isAuthenticated() ? "redirect:index" : "login";
 	}

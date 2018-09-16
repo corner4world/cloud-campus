@@ -53,7 +53,7 @@ App({
   key: function(data){ return this.util.key(data) },
   enCodeBase64:function(data){ return this.util.base64.encode(data)},
   cache: {},
-  user:{},
+  user:null,
   level:5,
   school_code:"100001"
 });

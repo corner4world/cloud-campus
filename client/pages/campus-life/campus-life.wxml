@@ -1,7 +1,7 @@
 
 <!--内容页头图  -->
 
-<swiper indicator-dots="true" style='height:390rpx;'>
+<swiper indicator-dots="true" style='height:390rpx;' autoplay="true" interval="2000" circular="true">
   <swiper-item wx:for="{{top_img}}" wx:key="{{this}}">
     <image class="toutu" mode="aspectFill" src='{{item.img_url}}'></image>
   </swiper-item >

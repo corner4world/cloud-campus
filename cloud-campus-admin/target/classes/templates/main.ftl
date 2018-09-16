@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>首页--layui后台管理模板</title>
+    <title>首页</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -31,6 +31,8 @@
         </#list>
     </#if>
 </div>
+
+<!-- 
 <div class="row">
     <div id="container" style="height: 500px"></div>
     <script type="text/javascript" src="${base}/static/js/jquery.min.js"></script>
@@ -95,7 +97,9 @@
         });
     </script>
 </div>
+-->
 <div class="row">
+	<!--
     <div class="sysNotice col">
         <blockquote class="layui-elem-quote title">更新日志</blockquote>
         <div class="layui-elem-quote layui-quote-nm">
@@ -108,6 +112,7 @@
             </@ar>
         </div>
     </div>
+     
     <div class="sysNotice col">
         <blockquote class="layui-elem-quote title">系统基本参数</blockquote>
         <table class="layui-table">
@@ -177,6 +182,7 @@
             </tbody>
         </table>
     </div>
+    -->
 </div>
 
 <script type="text/javascript" src="${base}/static/layui/layui.js"></script>

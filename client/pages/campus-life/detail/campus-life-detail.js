@@ -12,6 +12,7 @@ Page({
     disabled: true,
     limit:5,
     offset:0,
+    is_hidden:true,
     comments: [
       {
         avatar: "http://pbqg2m54r.bkt.clouddn.com/logo.png",
@@ -23,6 +24,11 @@ Page({
   },
   onLoad: function (options) {
     var that = this
+    if (app.user != null) {
+      that.setData({
+        is_hidden: false
+      })
+    }
     that.setData({
       id: options.id
     })

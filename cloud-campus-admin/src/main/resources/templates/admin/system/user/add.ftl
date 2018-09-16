@@ -36,26 +36,32 @@
     <div class="layui-form-item">
         <label class="layui-form-label">登录名</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input" name="loginName" lay-verify="required" placeholder="请输入登录名">
+            <input type="text" class="layui-input" name="loginName" lay-verify="required">
         </div>
     </div>
     <div class="layui-form-item">
         <div class="layui-inline">
             <label class="layui-form-label">昵称</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" name="nickName" placeholder="请输入昵称">
+                <input type="text" class="layui-input" name="nickName">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">学校代码</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" name="school_code" lay-verify="school_code" >
             </div>
         </div>
         <div class="layui-inline">
             <label class="layui-form-label">邮箱</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" name="email" lay-verify="email" placeholder="请输入邮箱">
+                <input type="text" class="layui-input" name="email" lay-verify="email" >
             </div>
         </div>
         <div class="layui-inline">
             <label class="layui-form-label">手机</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" name="tel" lay-verify="phone" placeholder="请输入邮箱">
+                <input type="text" class="layui-input" name="tel" lay-verify="phone" >
             </div>
         </div>
     </div>

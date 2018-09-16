@@ -42,6 +42,12 @@
             </div>
         </div>
         <div class="layui-inline">
+            <label class="layui-form-label">学校代码</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" name="school_code" lay-verify="school_code"  value="${localuser.school_code}">
+            </div>
+        </div>
+        <div class="layui-inline">
             <label class="layui-form-label">邮箱</label>
             <div class="layui-input-block">
                 <input type="text" class="layui-input" name="email" lay-verify="email" placeholder="请输入邮箱" value="${localuser.email}">
@@ -82,8 +88,8 @@
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit="" lay-filter="addUser">我要修改</button>
-            <button class="layui-btn"   class="layui-btn layui-btn-primary">我不改了</button>
+            <button class="layui-btn" lay-submit="" lay-filter="addUser">修改</button>
+            <button class="layui-btn"   class="layui-btn layui-btn-primary">取消</button>
         </div>
     </div>
 </form>
