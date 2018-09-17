@@ -6,7 +6,7 @@ module.exports = async ctx => {
   let notice_type = query.notice_type * 1
   let level = user.level * 1 
   try {
-    var sql = "select id,title,summary,content,publisher,level,DATE_FORMAT(publish_time, '%Y-%m-%d %H:%i:%S') as publish_date ,pictures from client_notice"
+    var sql = "select id,title,summary,content,publisher,publisher_avatar,level,DATE_FORMAT(publish_time, '%Y-%m-%d %H:%i:%S') as publish_date ,pictures from client_notice"
     switch(notice_type){
       case 0:
         sql = sql + " where school_code='" + user.school_code + "' and level >=" + level + " and notice_type = 0 order by publish_date desc LIMIT " + limit

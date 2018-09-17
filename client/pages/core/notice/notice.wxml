@@ -8,7 +8,7 @@
       <view class="content">
           <view class="c-bottom">
               <view class="user">
-                  <image class="u-img" src="http://img.zcool.cn/community/0142885afa4dd4a801216045a2977b.jpg@1280w_1l_2o_100sh.jpg"></image>
+                  <image class="u-img" src="{{item.publisher_avatar}}"></image>
                   <view class="u-box">
                       <text class="u-name">{{item.publisher}}</text>
                   </view>

@@ -6,7 +6,7 @@ module.exports = async ctx => {
   let limit = query.limit * 1
   var class_list = []
   try {
-    var sql = "select id,title,content,summary,publisher,level,DATE_FORMAT(publish_time, '%Y-%m-%d %H:%i:%S') as publish_date,pictures from client_homework_information " +
+    var sql = "select id,title,content,summary,publisher,publisher_avatar,level,DATE_FORMAT(publish_time, '%Y-%m-%d %H:%i:%S') as publish_date,pictures from client_homework_information " +
       " where publish_type=3" +
       " and school_code='" + user.school_code + "'" +
       " and level >="+level+

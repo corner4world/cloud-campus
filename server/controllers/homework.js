@@ -7,7 +7,7 @@ module.exports = async ctx => {
   let limit = query.limit * 1
   var class_list = []
   try {
-    var sql = "select id,hi.title,content,summary,publisher,level,DATE_FORMAT(publish_time, '%Y-%m-%d %H:%i:%S') as publish_date,s.title as subject_name,pictures from client_homework_information as hi"+
+    var sql = "select id,hi.title,content,summary,publisher,publisher_avatar,level,DATE_FORMAT(publish_time, '%Y-%m-%d %H:%i:%S') as publish_date,s.title as subject_name,pictures from client_homework_information as hi"+
         " inner join client_subject as s on hi.homework_type_value = s.value"+
         " where publish_time > (SELECT DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s'))"+
         " and publish_type=2"+
@@ -18,7 +18,7 @@ module.exports = async ctx => {
         " order by publish_date desc"
     //历史纪录
     if(history){
-      sql = "select id,hi.title,content,summary,publisher,level,DATE_FORMAT(publish_time, '%Y-%m-%d %H:%i:%S') as publish_date,s.title as subject_name,pictures from client_homework_information as hi" +
+      sql = "select id,hi.title,content,summary,publisher,publisher_avatar,level,DATE_FORMAT(publish_time, '%Y-%m-%d %H:%i:%S') as publish_date,s.title as subject_name,pictures from client_homework_information as hi" +
         " inner join client_subject as s on hi.homework_type_value = s.value" +
         " where publish_time < (SELECT DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s'))" +
         " and publish_type=2" +
