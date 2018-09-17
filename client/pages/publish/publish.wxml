@@ -7,15 +7,30 @@
                 bind:fail="onFail" bind:complete="onComplete" 
                 bind:preview="onPreview"
                 bind:remove="onRemove">
-        <view class="add_pic">
-        <view>添加图片（选）</view>
-         </view>
+        
+        <image src='/images/publish/add_pic.png'></image>
+        
     </wux-upload>
-  
-    <input placeholder="输入标题"  class="add_title" value="" maxlength="8"  name="title"/>
-    <view  class="addConent">
-        <textarea  placeholder="填写正文" maxlength="10000"  value="" name="content"/>
+    <view class="page-body">
+    <view class="page-section">
+       <view class="weui-cells__title">标题</view>
+       <view class="weui-cells weui-cells_after-title">
+           <view class="weui-cell weui-cell_input">
+             <input class="weui-input" auto-focus  value="" maxlength="8"  name="title"/>
+           </view>
+       </view>
     </view>
+
+    <view class="page-section">
+        <view class="weui-cells__title">正文</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <textarea maxlength="-1"  value="" name="content" style='height:600rpx;width:100%'/>
+          </view>
+        </view>
+     </view>
+    </view>
+
     <!-- 作业类型选择 -->
     <view hidden="{{homework_type_hidden}}" style='margin-top:200rpx'>
       <wux-cell title="作业类型选择" extra="{{ homework_type_title }}" bind:click="homework_type_choose" ></wux-cell>
@@ -24,7 +39,7 @@
     <view hidden="{{class_hidden}}" style=''>
       <wux-cell title="班级选择" extra="{{ class_title }}" bind:click="class_choose" ></wux-cell>
     </view>
-    <button loading="{{isLoading}}" hover-start-time="200" disabled="{{isdisabled}}" formType="submit">发布</button>
+    <button class="confirm-btn" loading="{{isLoading}}" hover-start-time="200" disabled="{{isdisabled}}" formType="submit">发布</button>
     </form>
 
 

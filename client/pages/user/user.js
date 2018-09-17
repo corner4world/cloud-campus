@@ -1,4 +1,5 @@
 const app = getApp()
+var config = require('../../config')
 Page({
   data: {
     items: [
@@ -15,7 +16,7 @@ Page({
       {
         icon: 'https://uploadfiles-1252875786.cos.ap-guangzhou.myqcloud.com/uploadfiles/campus-client/hot-line.png',
         text: '客户热线',
-        path: '18521708248',
+        path: '18282030093',
       },
       {
         icon: 'https://uploadfiles-1252875786.cos.ap-guangzhou.myqcloud.com/uploadfiles/campus-client/opinion.png',
@@ -84,18 +85,73 @@ Page({
         })
         break
       case 1:
-
+        //todo 关于我们
         break
     }
     
   },
   logout(){
     wx.showModal({ title: '友情提示', content: '确定要登出吗？',
-      success:function(){
-        wx.reLaunch({
-          url: '/pages/login/login',
+      success:function(res){
+        if(res.confirm){
+          wx.reLaunch({
+            url: '/pages/login/login',
+          })
+        }
+      }
+    })
+  },
+  changeAvatar:function(){
+    var that = this
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+        const tempFilePaths = res.tempFilePaths[0]
+        console.log(tempFilePaths)
+        wx.uploadFile({
+          url: config.host + '/weapp/upload',
+          filePath: tempFilePaths,
+          name: 'file',
+          success(res){
+            var data = JSON.parse(res.data)
+            var avatar = data.data.imgUrl
+            that.setData({
+              avatar: avatar
+            })
+            that.confirm('avatar',avatar)
+          }
         })
       }
     })
   },
+  confirm: function (field, value) {
+    var that = this
+    wx.request({
+      method: 'post',
+      data: {
+        user: app.user,
+        field: field,
+        value: value
+      },
+      url: config.host + '/weapp/account_modify',
+      success: function (res) {
+        var status = res.data.data.status
+        var user = res.data.data.user
+        if (status && res.statusCode === 200 && res.data.code != -1) {
+          app.user = user
+          wx.showToast({
+            title: '修改成功',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      },
+      fail: function (res) {
+        wx.hideToast();
+        app.showErrorModal(res.errMsg, '服务器维护中');
+      }
+    })
+  }
 })

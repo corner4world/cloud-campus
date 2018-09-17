@@ -7,5 +7,6 @@
     "wux-select": "../../ui/wux/select/index",
     "wux-upload": "../../ui/wux/upload/index"
 
-  }
+  },
+  "disableScroll": true
 }

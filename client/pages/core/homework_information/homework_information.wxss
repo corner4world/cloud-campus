@@ -17,6 +17,7 @@
   padding: 0;
   box-sizing: border-box;
 } 
+
 .ellipsis {
   display: -webkit-box;
   overflow: hidden;

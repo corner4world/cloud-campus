@@ -1,0 +1,24 @@
+
+<block wx:if="{{notice.pictures.length}}">
+<swiper indicator-dots="true" style='height:390rpx;' autoplay="true" interval="2000" circular="true">
+  <swiper-item wx:for="{{notice.pictures}}" wx:key="{{this}}" id="{{notice.pictures}}" bindtap="previewImage">
+    <image class="toutu" mode="aspectFill" src='{{item}}'></image>
+  </swiper-item >
+ </swiper>
+ </block>
+<!--标题  -->
+<text class="biaoti">{{notice.title}}</text>
+<!--标题分割线  -->
+<text class='line'></text>
+<text class='writer'>发布者@{{notice.publisher}}</text>
+<!--详情页-->
+<view class="container">
+  <view class="c-top">
+    <view class="t-info">
+      <view class="ti-content">
+          <text decode="{{true}}" space="{{true}}">{{notice.content}}</text> 
+      </view>
+    </view>
+  </view>
+  <text style='margin-left:460rpx'>{{notice.publish_date}}</text>   
+</view>

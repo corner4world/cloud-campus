@@ -1,53 +1,48 @@
   <!--index.wxml-->
+<swiper indicator-dots="true" style='height:390rpx;' autoplay="true" interval="2000" circular="true">
+  <swiper-item>
+    <image class="toutu" mode="aspectFill" src='https://uploadfiles-1252875786.cos.ap-guangzhou.myqcloud.com/uploadfiles/campus-client/index.jpeg'></image>
+  </swiper-item >
+ </swiper>
 <view class="container">
   <!--功能导航-->
   <swiper class="main-swpier" indicator-dots="true" indicator-active-color="#73b4ef">
-  <swiper-item class="main-core" wx:for="{{cores}}"  wx:for-item="core" wx:key="id" >
-    <block wx:for="{{core}}" wx:key="id">
-      <navigator class="main-core-item" url="{{item.url}}">
-        <image class="core-item-icon" src="{{item.img_active}}"></image>
-        <text class="core-item-name">{{item.name}}</text>
-      </navigator>
-    </block>
-  </swiper-item >
+    <swiper-item class="main-core" wx:for="{{cores}}"  wx:for-item="core" wx:key="id" >
+      <block wx:for="{{core}}" wx:key="id">
+        <navigator class="main-core-item" url="{{item.url}}">
+          <image class="core-item-icon" src="{{item.img_active}}"></image>
+          <text class="core-item-name">{{item.name}}</text>
+        </navigator>
+      </block>
+    </swiper-item >
   </swiper>
 
   <!--卡片列表-->
   <!-- <view wx:else class="main-card">-->
   <view class="main-card">
-    <view wx:for="{{card}}" wx:key="{{index}}" style='margin-top:25rpx'>
-
-            <wux-card title="{{item.title}}" full="{{ true }}" extra="{{item.publisher}}" thumb="/images/index/latest.png">
-                <view slot="body"><text>{{item.summary}}</text>
-                
-                <!-- 图片-->
-                  <view class="" wx:if="{{item.pictures.length}}">
-                    <view class="" style='margin-top:15rpx'>
-                        <view class="weui-cell__bd">
-                            <view class="weui-uploader">
-                                <view class="weui-uploader__bd">
-                                    <view class="weui-uploader__files" >
-                                        <block wx:for-items="{{ item.pictures}}" wx:for-item="pic" wx:key="{{ index }}">
-                                            <view class="weui-uploader__file" id="{{item.pictures}}" bindtap="previewImage" data-current="{{ pic }}">
-                                                <image class="weui-uploader__img" src="{{ pic }}" />
-                                            </view>
-                                        </block>
-                                    </view>
-                                </view>
-                            </view>
+    <view wx:for="{{card}}" wx:key="{{index}}">
+        <navigator url="/pages/core/notice_detail/notice_detail?id={{item.id}}">
+            <view class="content">
+                <view class="c-bottom">
+                    <view class="user">
+                        <image class="u-img" src="http://img.zcool.cn/community/0142885afa4dd4a801216045a2977b.jpg@1280w_1l_2o_100sh.jpg"></image>
+                        <view class="u-box">
+                            <text class="u-name">{{item.publisher}}</text>
                         </view>
                     </view>
+                    <view class="right">
+                        <text class="iconfont icon-liulan1 r-icon-browse"> {{item.publish_date}}</text>
+                    </view>
                 </view>
-                
-                </view>
-
-                <view slot="footer">{{item.publish_date}}</view>
-            </wux-card>
-        
-    </view>    
-  </view> <!-- main card -->
+            </view>
+            <wux-media thumb="{{item.pictures.length ? item.pictures[0]:'/images/campus-life/activity.png'}}" align="left" title="{{item.title}}" label="{{item.summary}}">
+            </wux-media>
+        </navigator>
+     </view>
+</view> <!-- main card -->
 
 </view>
 <view hidden='{{buttons_hidden}}'>
 <wux-floating-button id="wux-floating-button"  visible="{{ visible }}" position="{{ position }}" theme="{{ colors[2] }}" buttons="{{ buttons }}"  bind:click="buttonClicked" />
 </view>
+

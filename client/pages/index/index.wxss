@@ -1,7 +1,6 @@
 /**index.wxss**/
 .container{
   padding-bottom: 0;
-  background-color: #f0eff5;
   background-repeat: no-repeat;
   background-size: 100% auto; 
   background-position: bottom center;
@@ -16,7 +15,7 @@
   align-content: flex-start;
   background: #fff;
   border-bottom: 1rpx solid #e5e5e5;
-  padding: 15rpx 10rpx 10rpx;
+  padding: 15rpx 5rpx 10rpx;
   min-height: 350rpx;
   overflow: hidden;
   
@@ -44,346 +43,183 @@
   margin: 5rpx;
 }
 .main-swpier{
-  height:390rpx;
+  height:180rpx;
   margin-bottom:20rpx;
 }
 .main-swpier .wx-swiper-dots.wx-swiper-dots-horizontal{
   bottom: 0;
-  margin-bottom: -5rpx;
+  margin-bottom: -30rpx;
 }
 /**卡片列表**/
 .main-card {
   padding-bottom: 300rpx;
 }
-.main-card-item{
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  border-top: 1rpx solid #e5e5e5;
-  border-bottom: 1rpx solid #e5e5e5;
-  margin-bottom: 20rpx;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: bottom center;
-  overflow: hidden;
-}
-.main-card-item#kb{
-  /*background-image: url('/images/index/kb-bg.png');*/
-  /*微信暂不支持静态bgimg文件，改用服务器url*/
-  background-image: url('https://we.cqu.pt/app/images/index/kb-bg.png');
-}
-.main-card-item#ykt{
-  /*background-image: url('/images/index/ykt-bg.png');*/
-  /*微信暂不支持静态bgimg文件，改用服务器url*/
-  background-image: url('https://we.cqu.pt/app/images/index/ykt-bg.png');
-}
-.main-card-item#jy{
-  /*background-image: url('/images/index/jy-bg.png');*/
-  /*微信暂不支持静态bgimg文件，改用服务器url*/
-  background-image: url('https://we.cqu.pt/app/images/index/jy-bg.png');
-}
-.main-card-item#sdf{
-  /*background-image: url('/images/index/sdf-bg.png');*/
-  /*微信暂不支持静态bgimg文件，改用服务器url*/
-  background-image: url('https://we.cqu.pt/app/images/index/sdf-bg.png');
-}
-.main-card-item navigator{
-  display: flex;
-  flex-direction: column;
-}
 page .navigator-hover{
   background-color: rgba(100,100,100,0.1);
   opacity: 0.8;
 }
-.card-item-hd{
-  display: flex;
-  align-items: center;
-  height: 75rpx;
-  border-bottom: 1rpx solid #e5e5e5;
-  margin-left: 30rpx;
-}
-.card-item-icon{
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 10rpx;
-}
-.card-item-name{
-  letter-spacing: 2px;
-}
-.card-item-more{
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 25rpx;
-}
-.card-item-open{
-  width: 30rpx;
-  height: 30rpx;
-}
-.card-item-bd{
-  padding: 20rpx 25rpx 30rpx 0;
-  margin-left: 30rpx;
-  display: flex;
-  flex-direction: column;
-}
-.card-info-hd{
-  display: flex;
-  justify-content: space-between;
-}
-.card-info-left{
-  display: flex;
-  flex-direction: column;
-}
-.card-info-right{
-  display: flex;
-  color: #acacac;
-  flex-direction: column;
-}
-.card-info-name{
-  font-size: 16pt;
-  line-height: 1.2;
-  letter-spacing: 1px;
-  color: #acacac;
-}
-.card-info-number{
-  line-height: 175%;
-  text-indent: 1px;
-  color: #aaa;
-}
-.main-ending{
-  display: none;
-  /*display: flex;*/
-  align-items: center;
-  justify-content: center;
+
+
+
+/*-----------*/
+@import '../../ui/weui/weui.wxss';
+@import '../../ui/iconfont/iconfont.wxss';
+.toutu {
   width: 100%;
-  margin-top: 75rpx;
-  overflow: hidden;
+  height: 400rpx;
 }
-.main-ending-text{
-  width: 72pt;
-  color: #ccc;
-  font-size: 8pt;
-  padding: 0 16rpx;
-  text-align: center;
-  white-space: nowrap;
-}
-.main-ending-line{
-  width: 100%;
-  height: 0;
-  border-top: 1rpx solid #e5e5e5;
-}
-/**今日课表**/
-.main-card-item#kb .card-item-bd{
-  padding: 0;
-  margin-right: 25rpx;
-}
-.kb-nothing{
-  align-items: center;
-  justify-content: center;
-  font-size: 11pt;
-  min-height: 150rpx;
-}
-.kb-open{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #7f848a;
-  height: 90rpx;
-  border-top: 1rpx solid #e5e5e5;
-  margin-top: -1rpx;
-}
-.kb-item{
-  display: flex;
-  height: 120rpx;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px dotted #e5e5e5;
-}
-.kb-item-left{
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  padding-right: 30rpx;
-  overflow: hidden;
-}
-.kb-item-what{
-  font-size: 12pt;
-  line-height: 200%;
-  color: #777;
-  white-space: nowrap;
-  word-break: break-all;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-.kb-item-when{
-  line-height: 125%;
-  color: #bbb;
-}
-.kb-item-where{
-  flex: 0 0 auto;
-  font-size: 14pt;
-  color: #999;
-  letter-spacing: 1px;
-}
-/**一卡通**/
-.ykt-balance{
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  font-weight: bold;
-  padding: 25rpx 0 30rpx;
-}
-.ykt-balance-text{
-  font-size: 17pt;
-  line-height: 2;
-  color: #999;
-}
-.ykt-balance-value{
-  font-size: 58pt;
-  line-height: 1;
-  padding: 0 20rpx;
-  color: #ffbf92;
-}
-.ykt-cost{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 20rpx 0 30rpx;
-  font-weight: bold;
-  line-height: 200%;
-}
-.ykt-cost-text{
-  font-size: 10pt;
-  color: #999;
-}
-.ykt-cost-value{
-  font-size: 12pt;
-  font-weight: normal;
-  color: #777;
-  padding: 0 10rpx;
-}
-.ykt-cost-total{
-  font-size: 16pt;
-  color: #ffbf92;
-  padding: 0 10rpx;
-}
-.ykt-title{
-  font-size: 10pt;
-}
-.ykt-no-cost{
-  color: #bbb;
-}
-/**借阅信息**/
-.main-card-item#jy .card-item-bd{
-  padding-bottom: 85rpx;
-}
-.jy-list{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-.jy-item{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20rpx 15rpx 15rpx;
-}
-.jy-book{
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  box-sizing: border-box;
-  width: 176rpx;
-  height: 231rpx;
-  /*background-image: url('/images/index/jy-book.png');*/
-  /*微信暂不支持静态bgimg文件，改用服务器url*/
-  background-image: url('https://we.cqu.pt/app/images/index/jy-book.png');
-  background-size: 100% 100%;
-  padding: 5rpx 5rpx 50rpx 30rpx;
-  color: #fff;
-  margin-bottom: 10rpx;
-}
-.jy-pickup-time{
-  text-align: right;
-  font-size: 8pt;
-  word-wrap: break-word;
-  white-space: nowrap;
-}
-.jy-pickup-time-text{
-  padding-left: 4rpx;
-}
-.jy-book-name{
-  height: 126rpx;
-  font-size: 28rpx;
-  font-weight: bold;
-  line-height: 150%;
-  word-wrap: break-word;
-  word-break: break-all;
-  text-overflow: ellipsis;
-  overflow: hidden;
+
+.ellipsis {
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-box-orient: vertical;
+  -webkit-line-clamp:1
 }
-.jy-timing, jy-return-time{
-  line-height: 200%;
+.ellipsis-2 {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2
 }
-.jy-timing-value{
-  font-size: 13pt;
-  font-weight: bold;
-  color: #729fc3;
-  padding: 0 8rpx;
+.ellipsis-3 {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3
 }
-.jy-timing-text{
-  font-size: 10pt;
-  color: #acacac;
+.weui-loadmore__tips_in-line {
+  background-color: #f2f2f2
 }
-.jy-return-time-value{
-  font-size: 12pt;
-  color: #7f848a;
+.weui-loadmore {
+  background-color: #fff;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
 }
-.jy-return-time-text{
-  font-size: 10pt;
-  color: #acacac;
-  padding-left: 8rpx;
+.touch-active:active {
+  background-color: #f2f2f2
 }
-/**水电费**/
-.main-card-item#sdf .card-item-bd{
-  padding-bottom: 80rpx;
+.weui-bg-transparent {
+    background-color: transparent;
+    width:85%;
+    margin: 15px auto 0 auto;
+    padding: 0
 }
-.sdf-hd{
-  color: #acacac;
-  margin: 40rpx 0 20rpx;
+
+/*评论*/
+.item {
+    background-color: #ffffff;
+    margin-bottom: 15px
 }
-.sdf-bd{
-  display: flex;
-  justify-content: space-between;
-  padding: 30rpx 0;
+.content {
+    padding: 15px;
 }
-.sdf-key{
-  padding: 0 10rpx;
+.i-top {
+    width:100%;
+    height: 230px;
+    overflow: hidden;
+    /*margin-bottom: 15px;*/
+    display: flex;
+    justify-content: center;
+    position: relative
 }
-.sdf-value{
-  color: #ffbf92;
-  font-size: 46pt;
-  font-weight: bold;
-  padding: 0 15rpx;
+.i-img {
+    width:100%
 }
-.sdf-text{
-  color: #acacac;
-  font-size: 13pt;
+.i-video {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 9
 }
-.toWrite {
-  width: 100rpx;
-  height: 100rpx;
-  background: url(http://bmob-cdn-7744.b0.upaiyun.com/2016/11/29/360d32564024a5ab80e4477169949473.png) no-repeat;
-  padding: 0;
-  background-size: cover;
-  position: fixed;
-  right: 60rpx;
-  bottom: 100rpx;
-  border-bottom: 0;
-  border-top: 0;
+.c-top {
+    display: flex;
+    flex-direction: column
+}
+.title {
+    font-size: 16px;
+}
+.info {
+    margin: 8px 0;
+    font-size: 14px;
+    color:#888;
+    line-height: 20px;
+}
+.c-bottom {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-top: 10px;
+}
+.c-bottom::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -15px;
+    right: -15px;
+    height: 1px;
+    background-color: #dadada;
+    transform: scaleY(.3)
+}
+
+
+.user {
+    display: flex;
+    align-items: center;
+}
+.u-box {
+    display: flex;
+    flex-direction: column;
+}
+.u-img {
+    width:20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 8px
+}
+.u-name {
+    font-size: 12px;
+    color:#888;
+}
+.u-time {
+    font-size: 10px;
+    color:#888;
+}
+.r-icon-like {
+    color:#be181b;
+}
+.r-icon-comment {
+    color:#2856b6;
+}
+.iconfont {
+    margin-left: 15px;
+    font-size: 12px
+}
+.iconfont text {
+    color:#888;
+    margin-left: 3px
+}
+
+.menu {
+    position: fixed;
+    right: 5%;
+    bottom: 10%;
+    background-color: orangered;
+    color: #fff;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 0 2px 10px rgba(0, 0, 0, 0.2)
+}
+.menu .iconfont {
+    font-size: 26px;
+    margin: 0
 }

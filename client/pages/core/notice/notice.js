@@ -2,14 +2,15 @@ var config = require('../../../config')
 var app = getApp();
 Page({
   data: {
-    title: '公告新闻',
     notice: [],
     hidden: false,
     limit: 5,
+    notice_type:0
+
   },
   onPullDownRefresh: function () {
     this.fetchData(5);
-    //wx.stopPullDownRefresh();
+    wx.stopPullDownRefresh();
   },
   fetchData: function (limit) {
     var that = this;
@@ -20,7 +21,8 @@ Page({
       method: 'post',
       data: {
         user:app.user,
-        limit: limit
+        limit: limit,
+        notice_type:that.data.notice_type
       },
       url: config.host + '/weapp/notice',
       success: function (res) {
@@ -39,7 +41,7 @@ Page({
             hidden: true
           })
           wx.showToast({
-            title: '暂无最新公告和新闻',
+            title: '暂无最新数据',
             icon: 'none',
             duration: 2000
           })
@@ -51,16 +53,12 @@ Page({
       }
     })
   },
-  previewImage(e) {
-    const { current } = e.currentTarget.dataset
-    var urls = e.currentTarget.id
-    urls = urls.split(",")
-    wx.previewImage({
-      current,
-      urls,
-    })
-  },
   onLoad: function (options) {
+    var that = this
+    var notice_type = options.notice_type
+    that.setData({
+      notice_type: notice_type
+    })
     this.fetchData(5);
   },
   fetchHistoryData: function () {

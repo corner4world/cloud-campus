@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "wux-card": "../../../ui/wux/card/index",
-    "wux-wing-blank": "../../../ui/wux/wing-blank/index",
-    "wux-divider": "../../../ui/wux/divider/index"
-  }
-}

@@ -80,7 +80,7 @@ Page({
     this.setData({
       userid: e.detail.value
     });
-    if (e.detail.value.length >= 12) {
+    if (e.detail.value.length >= 11) {
       wx.hideKeyboard();
     }
   },
@@ -170,59 +170,4 @@ Page({
       url: '/pages/visitor/visitor',
     })
   },
-  //激活验证 添加用户 //todo 方法迁移至个人中心 修改密码
-  register:function(){
-    var that = this;
-    if (!that.data.phone || !that.data.password) {
-      app.showErrorModal('账号及密码不能为空', '提醒');
-      return false;
-    }
-    if (that.data.phone.length < 11) {
-      app.showErrorModal('手机号格式不正确', '提醒');
-      return false;
-    }
-    if (that.data.password.length < 6) {
-      app.showErrorModal('密码至少6位', '提醒');
-      return false;
-    }
-    app.showLoadToast('激活中');
-    wx.request({
-      method: 'post',
-      data: {
-        level:that.data.level,
-        phone: that.data.phone,
-        password: that.data.password
-      },
-      url: config.host + '/weapp/register',
-      success: function (res) {
-        var status = res.data.data.status
-        if (status == 1 && res.statusCode === 200 && res.data.code != -1) {
-          wx.showToast({
-            title: '激活成功!',
-            icon: 'none',
-            duration: 2000
-          })
-          that.hideHelp();
-        } 
-        else if (status == 0 && res.statusCode === 200 && res.data.code != -1){
-          wx.showToast({
-            title: '账号已经激活 请登录',
-            icon: 'none',
-            duration: 2000
-          })
-        }
-        else {
-          wx.showToast({
-            title: '手机号未录入系统 请联系学校',
-            icon: 'none',
-            duration: 2000
-          })
-        }
-      },
-      fail: function (res) {
-        wx.hideToast();
-        app.showErrorModal(res.errMsg, '登录失败,服务器维护中');
-      }
-    })
-  }
 });

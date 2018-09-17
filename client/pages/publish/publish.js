@@ -25,7 +25,7 @@ Page({
       class_category:[],
       homework_type:[],
     })
-    console.log(options.publish_type)
+
     if (options.publish_type == 2){
       this.setData({
         class_hidden: false,
@@ -125,16 +125,16 @@ Page({
             var publish_type = that.data.publish_type
             switch (publish_type * 1){
               case 0:
-                url ="/pages/core/administrative/administrative"
+                url ="/pages/core/notice/notice?notice_type=0"
                 break
               case 1:
-                url = "/pages/core/notice/notice"
+                url = "/pages/core/notice/notice?notice_type=1"
                 break
               case 2:
-                url = "/pages/core/homework/homework"
+                url = "/pages/core/homework_information/homework_information?hi_type=2"
                 break
               case 3:
-                url = "/pages/core/class_inform/class_inform"
+                url = "/pages/core/homework_information/homework_information?hi_type=3"
                 break
               default:
                 url = "/pages/index/index"

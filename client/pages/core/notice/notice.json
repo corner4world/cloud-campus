@@ -1,6 +1,8 @@
 {
   "usingComponents": {
     "wux-card": "../../../ui/wux/card/index",
-    "wux-divider": "../../../ui/wux/divider/index"
-  }
+    "wux-divider": "../../../ui/wux/divider/index",
+    "wux-media": "../../../ui/wux/media/index"
+  },
+  "navigationBarTitleText": "公告新闻"
 }

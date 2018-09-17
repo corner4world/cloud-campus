@@ -50,10 +50,10 @@ Page({
   //下拉更新
   onPullDownRefresh: function(){
     this.getCardData()
-    //wx.stopPullDownRefresh();
+    wx.stopPullDownRefresh();
   },
   onShow: function(){
-    this.getCardData()
+    //this.getCardData()
   },
   onLoad: function(){
     //this.login();
@@ -117,6 +117,9 @@ Page({
   //获得最新的公告和作业信息
   getCardData:function(){
     var that = this
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       method: 'post',
       data: {
@@ -128,11 +131,16 @@ Page({
         if (card.length && res.statusCode === 200) {
           that.setData({
               card:card
-            })
+          })
+          wx.hideLoading()
         }
       },
       fail: function (res) {
-        wx.hideToast();
+        wx.showToast({
+          title: '网络连接异常',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
   }

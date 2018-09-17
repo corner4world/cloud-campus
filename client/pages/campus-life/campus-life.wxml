@@ -18,8 +18,6 @@
 <wux-divider text="校园活动" />  
 <view wx:for="{{campus_life}}" wx:key="{{index}}">
   <navigator url="/pages/campus-life/detail/campus-life-detail?id={{item.id}}">
-      <wux-media thumb="{{item.show_pic == null ?'/images/campus-life/activity.png':item.show_pic}}" align="left" title="{{item.title}}" label="{{item.marks}}">
-      </wux-media>
       <!--评论 -->
       <view class="content">
           <view class="c-bottom">
@@ -37,6 +35,8 @@
               </view>
           </view>
       </view>
+      <wux-media thumb="{{item.show_pic == null ?'/images/campus-life/activity.png':item.show_pic}}" align="left" title="{{item.title}}" label="{{item.marks}}">
+      </wux-media>
   </navigator>
 </view>
 

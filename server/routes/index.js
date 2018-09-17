@@ -12,8 +12,7 @@ const { auth: { authorizationMiddleware, validationMiddleware } } = require('../
 
 //学校
 router.post('/school', controllers.school)
-//激活账号接口 -todo 暂未使用
-router.post('/register', controllers.register)
+
 // 登录接口
 router.post('/login', controllers.login)
 //首页导航功能接口
@@ -26,12 +25,13 @@ router.post('/phone', controllers.phone)
 
 //公告
 router.post('/notice', controllers.notice)
-//行政简讯 notice_type:1
-router.post('/administrative', controllers.administrative)
+router.post('/notice_detail', controllers.notice_detail)
 //作业 
 router.post('/homework', controllers.homework)
 //消息
 router.post('/class_inform', controllers.class_inform)
+
+router.post('/homework_information_detail', controllers.homework_information_detail)
 //首页卡片数据(最新)
 router.post('/index_latest', controllers.index_latest)
 //班级

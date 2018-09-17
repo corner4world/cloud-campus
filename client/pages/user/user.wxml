@@ -1,5 +1,5 @@
 <view class="container">
-	<view  bindtap="bindViewTap" class="userinfo">
+	<view  bindtap="changeAvatar" class="userinfo">
 		<image class="userinfo-avatar" src="{{avatar}}" background-size="cover"></image>
 		<text class="">{{username}}</text>
 	</view>

@@ -11,7 +11,7 @@ Page({
   },
   onPullDownRefresh: function () {
     this.fetchData(5);
-    //wx.stopPullDownRefresh();
+    wx.stopPullDownRefresh();
   },
   fetchData: function (limit) {
     var that = this;
@@ -95,4 +95,11 @@ Page({
       }
     })
   },
+  fetchNews:function(){
+    var user = {level:5,school_code:app.school_code}
+    app.user = user
+    wx.navigateTo({
+      url: '/pages/core/notice/notice?notice_type=1',
+    })
+  }
 })
