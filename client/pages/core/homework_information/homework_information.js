@@ -44,8 +44,7 @@ Page({
         if (homework_information.length && res.statusCode === 200 && res.data.code != -1) {
           if (that.data.homework_history){
                 that.setData({
-                  homeworkHistoryData: homework_information,
-                  homework_information:[]
+                  homeworkHistoryData: homework_information
               })
             }else{
                 that.setData({

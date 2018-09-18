@@ -16,7 +16,7 @@
         <view class="weui-cells__title">标题</view>
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_input">
-              <input class="weui-input" auto-focus  value="" maxlength="8"  name="title"/>
+              <input class="weui-input" auto-focus  value="" maxlength="-1"  name="title" style='width:100%'/>
             </view>
         </view>
       </view>
@@ -25,17 +25,17 @@
           <view class="weui-cells__title">正文</view>
           <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_input">
-              <textarea maxlength="-1"  value="" name="content" style='height:400rpx;width:100%'/>
+              <textarea  wx:if="{{textarea_show}}" maxlength="-1"  value="{{content}}"  name="content"  style='height:400rpx;width:100%' bindconfirm="saveContent" bindblur="saveContent"/>
             </view>
           </view>
       </view>
 
       <!-- 作业类型选择 -->
-      <view hidden="{{homework_type_hidden}}" style='margin-top:20rpx'>
+      <view hidden="{{homework_type_hidden}}" style='margin-top:20rpx;'>
         <wux-cell title="作业类型选择" extra="{{ homework_type_title }}" bind:click="homework_type_choose" ></wux-cell>
       </view>
       <!-- 班级选择 -->
-      <view hidden="{{class_hidden}}" style='margin-top:20rpx'>
+      <view hidden="{{class_hidden}}" style='margin-top:20rpx;z-index:99' >
         <wux-cell title="班级选择" extra="{{ class_title }}" bind:click="class_choose" ></wux-cell>
       </view>
       <button class="confirm-btn" loading="{{isLoading}}" hover-start-time="200" disabled="{{isdisabled}}" formType="submit">发布</button>

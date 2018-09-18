@@ -60,12 +60,12 @@
     <template is="nodata" />
   </block>
   
-  <!--评论盒子-->
+  <!--评论盒子
   <view class="comment-fixed">
     <view class="cf-box">
       <textarea class="cf-content" maxlength="200" bindblur="textAreaBlur" auto-height value='{{content}}' />
       <text class="cf-send touch-active" bindtap="send">发送</text>
     </view>
   </view>
-
+-->
 </view>

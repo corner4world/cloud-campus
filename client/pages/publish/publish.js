@@ -24,6 +24,8 @@ Page({
       publish_type:options.publish_type,
       class_category:[],
       homework_type:[],
+      textarea_show:true,
+      content:''
     })
 
     if (options.publish_type == 2){
@@ -83,8 +85,15 @@ Page({
       }
     })
   },
+  saveContent:function(e){
+    var content = e.detail.value
+    this.setData({
+      content: content
+    })
+  },
   sendNewMood: function (e) {
-    var content = e.detail.value.content;
+    var that = this
+    var content = that.data.content;
     var title = e.detail.value.title;
     var class_value = that.data.class_value
     if (content == "" || title == "") {
@@ -168,6 +177,10 @@ Page({
     wx.stopPullDownRefresh()
   },
   class_choose() {
+    var that = this
+    that.setData({
+      textarea_show: false
+    })
     $wuxSelect('#class-select').open({
       value: this.data.class_value,
       multiple: true,
@@ -176,11 +189,22 @@ Page({
         this.setData({
           class_value: value,
           class_title: index.map((n) => options[n].title),
+          textarea_show: true,
         })
       },
+      onCancel: function () {
+        that.setData({
+          textarea_show: true
+        })
+      }
     })
+
   },
   homework_type_choose() {
+    var that = this
+    that.setData({
+      textarea_show:false
+    })
     $wuxSelect('#homework_type-select').open({
       value: this.data.homework_type_value,
       multiple: false,
@@ -189,8 +213,14 @@ Page({
         this.setData({
           homework_type_value: value,
           homework_type_title: options[index].title,
+          textarea_show: true
         })
       },
+      onCancel:function(){
+        that.setData({
+          textarea_show: true
+        })
+      }
     })
   },
   onSuccess(e) {
