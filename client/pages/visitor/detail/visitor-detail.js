@@ -97,56 +97,6 @@ Page({
     })
 
   },
-  //发送评论 事件处理
-  send: function () {
-    var that = this, conArr = [];
-    var content = that.data.content.trim()
-    if (content == "") {
-      app.showErrorModal('内容不能为空', '提醒');
-    }
-    else {
-      wx.request({
-        method: 'post',
-        data: {
-          id: that.data.id,
-          //user:app.user,
-          content: content,
-          operation: "comment_insert"
-        },
-        url: config.host + '/weapp/like_comment',
-        success: function (res) {
-          var status = res.data.data.status
-          if (status == 1 && res.statusCode === 200 && res.data.code != -1) {
-            wx.showToast({
-              title: '评论成功!',
-              icon: 'none',
-              duration: 2000
-            })
-            conArr.push({
-              avatar: "http://pbqg2m54r.bkt.clouddn.com/logo.png",
-              uName: "雨碎江南",
-              create_date: "2018-08-09",
-              content: that.data.content
-            })
-            that.setData({
-              comments: that.data.comments.concat(conArr),
-              content: "",//清空文本域值
-            })
-          } else if (status != 1 && res.statusCode === 200 && res.data.code != -1) {
-            wx.showToast({
-              title: '未知错误,评论失败,请稍后重试',
-              icon: 'none',
-              duration: 2000
-            })
-          }
-        },
-        fail: function (res) {
-          wx.hideToast();
-          app.showErrorModal(res.errMsg, '服务器维护中,请稍后重试');
-        }
-      })
-    }
-  },
   fetchComment: function (offset, limit) {
     var that = this
     wx.request({
