@@ -4,12 +4,16 @@ import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.Condition;
 import com.google.common.collect.Maps;
 import com.mysiteforme.admin.base.BaseController;
+import com.mysiteforme.admin.base.MySysUser;
 import com.mysiteforme.admin.entity.BlogChannel;
 import com.mysiteforme.admin.entity.BlogTags;
+import com.mysiteforme.admin.entity.User;
 import com.mysiteforme.admin.entity.VO.ZtreeVO;
 import com.mysiteforme.admin.lucene.LuceneSearch;
 import com.mysiteforme.admin.service.BlogChannelService;
 import com.xiaoleilu.hutool.date.DateUtil;
+
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -100,6 +104,8 @@ public class BlogArticleController extends BaseController{
             }
 
         }
+        User user = getCurrentUser();
+        map.put("schoolCode", user.getSchoolCode());
         Page<BlogArticle> pageData = blogArticleService.selectDetailArticle(map,new Page<>(page,limit));
         layerData.setData(pageData.getRecords());
         layerData.setCount(pageData.getTotal());
@@ -142,6 +148,8 @@ public class BlogArticleController extends BaseController{
             sort =  (Integer)o +1;
         }
         blogArticle.setSort(sort);
+        User user = getCurrentUser();
+        blogArticle.setSchoolCode(user.getSchoolCode());
         blogArticleService.saveOrUpdateArticle(blogArticle);
         if(blogArticle.getBlogTags() != null && blogArticle.getBlogTags().size()>0){
             Map<String,Object> map = Maps.newHashMap();

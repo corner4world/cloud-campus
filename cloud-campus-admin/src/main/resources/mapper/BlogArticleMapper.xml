@@ -118,6 +118,9 @@
         <if test="id != null and id != 0">
             and a.id = #{id}
         </if>
+        <if test="schoolCode != null and schoolCode != ''">
+            and a.school_code = #{schoolCode}
+        </if>
         <if test="title != null and title != ''">
             and a.title like concat('%',#{title},'%')
         </if>

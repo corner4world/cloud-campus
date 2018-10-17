@@ -77,7 +77,7 @@
                 {type:'checkbox'},
                 {field:'loginName', title: '登录名称'},
                 {field:'nickName',  title: '昵称',    width:'10%'},
-                {field:'school_code', title: '学校代码',    width:'10%' },
+                {field:'schoolCode', title: '学校代码',    width:'10%' },
                 {field:'email',     title: '邮箱',    width:'10%' },
                 {field:'tel',       title: '电话',    width:'10%'},
                 {field:'locked',    title: '会员状态',width:'6%',templet:'#userStatus'},

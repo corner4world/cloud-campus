@@ -52,6 +52,7 @@ public class User extends DataEntity<User> {
 	/**
 	 * 学校代码
 	 */
+	@TableField(value = "school_code",strategy= FieldStrategy.IGNORED)
 	private String school_code;
     /**
      * 邮箱地址
@@ -115,12 +116,13 @@ public class User extends DataEntity<User> {
 		this.tel = tel;
 	}
 
-	public String getSchool_code() {
+
+	public String getSchoolCode() {
 		return school_code;
 	}
 
-	public void setSchool_code(String school_code) {
-		this.school_code = school_code;
+	public void setSchoolCode(String schoolCode) {
+		this.school_code = schoolCode;
 	}
 
 	public String getEmail() {

@@ -82,7 +82,7 @@ public class AuthRealm extends AuthorizingRealm {
         }
         byte[] salt = Encodes.decodeHex(user.getSalt());
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                new ShiroUser(user.getId(),user.getLoginName(),user.getNickName(), user.getIcon()),
+                new ShiroUser(user.getId(),user.getLoginName(),user.getNickName(), user.getIcon(),user.getSchoolCode()),
                 user.getPassword(), //密码
                 ByteSource.Util.bytes(salt),
                 getName()  //realm name
@@ -119,12 +119,14 @@ public class AuthRealm extends AuthorizingRealm {
         public String loginName;
         public String nickName;
         public String icon;
+        public String schoolCode;
 
-        public ShiroUser(Long id, String loginName, String nickName,String icon) {
+        public ShiroUser(Long id, String loginName, String nickName,String icon,String schoolCode) {
             this.id = id;
             this.loginName = loginName;
             this.nickName = nickName;
             this.icon=icon;
+            this.schoolCode=schoolCode;
         }
 
         public String getloginName() {
@@ -140,9 +142,11 @@ public class AuthRealm extends AuthorizingRealm {
             return id;
         }
 
+        public String getSchoolCode() {
+			return schoolCode;
+		}
 
-
-        /**
+		/**
          * 本函数输出将作为默认的<shiro:principal/>输出.
          */
         @Override

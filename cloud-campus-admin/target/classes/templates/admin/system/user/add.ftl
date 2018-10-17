@@ -49,7 +49,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">学校代码</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" name="school_code" lay-verify="school_code" >
+                <input type="text" class="layui-input" name="schoolCode" lay-verify="schoolCode" >
             </div>
         </div>
         <div class="layui-inline">

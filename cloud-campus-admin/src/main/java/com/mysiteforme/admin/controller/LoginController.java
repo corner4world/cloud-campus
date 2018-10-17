@@ -86,6 +86,7 @@ public class LoginController extends BaseController {
 		}else {
 			/*就是代表当前的用户。*/
 			Subject user = SecurityUtils.getSubject();
+			
 			UsernamePasswordToken token = new UsernamePasswordToken(username,password,Boolean.valueOf(rememberMe));
 			try {
 				user.login(token);

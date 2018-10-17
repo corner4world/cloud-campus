@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jp.mapper.SysRoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jp.entity.SysRole">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="del_state" property="delState" />
+        <collection property="menuSet"  ofType="com.jp.entity.SysMenu">
+            <result property="id" column="menu.id"/>
+            <result property="name" column="menu.name"/>
+            <result property="href" column="menu.href"/>
+            <result property="permission" column="menu.permission"/>
+            <result column="color" property="menu.color" />
+            <result property="icon" column="menu.icon"/>
+        </collection>
+    </resultMap>
+
+</mapper>

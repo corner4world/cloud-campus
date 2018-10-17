@@ -43,6 +43,7 @@ public class BlogArticle extends DataEntity<BlogArticle> {
      * 文章类型
      */
 	private String category;
+	
     /**
      * 外链地址
      */
@@ -52,7 +53,20 @@ public class BlogArticle extends DataEntity<BlogArticle> {
      * 来源
      */
 	private String resources;
-    /**
+	/**
+	 * 学校代码
+	 */
+	@TableField("school_code")
+	private String  schoolCode;
+    public String getSchoolCode() {
+		return schoolCode;
+	}
+
+	public void setSchoolCode(String schoolCode) {
+		this.schoolCode = schoolCode;
+	}
+
+	/**
      * 发布时间
      */
 	@TableField("publist_time")

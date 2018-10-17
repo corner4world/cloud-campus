@@ -7,7 +7,7 @@
         <result property="loginName" column="login_name"/>
         <result property="nickName" column="nick_name"/>
         <result property="tel" column="tel"/>
-        <result property="school_code" column="school_code"/>	
+        <result property="schoolCode" column="school_code"/>	
         <result property="email" column="email"/>
         <result property="password"  column="password"/>
         <result property="salt"  column="salt"/>

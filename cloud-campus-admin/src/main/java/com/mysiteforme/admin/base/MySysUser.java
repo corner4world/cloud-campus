@@ -8,9 +8,7 @@ import org.apache.shiro.SecurityUtils;
  * todo:
  */
 public class MySysUser {
-    /**
-     * 取出Shiro中的当前用户LoginName.
-     */
+
     public static String icon() {
         return ShiroUser().getIcon();
     }
@@ -26,7 +24,11 @@ public class MySysUser {
     public static String nickName(){
         return ShiroUser().getNickName();
     }
-
+    
+    public static String schoolCode() {
+        return ShiroUser().getSchoolCode();
+    }
+    
     public static ShiroUser ShiroUser() {
         ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
         return user;

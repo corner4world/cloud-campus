@@ -12,12 +12,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @MapperScan("com.mysiteforme.admin.dao")
 public class MysiteformeApplication extends SpringBootServletInitializer {
-
-//	@Override
-//	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-//		return application.sources(MysiteformeApplication.class);
-//	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(MysiteformeApplication.class, args);
 	}
