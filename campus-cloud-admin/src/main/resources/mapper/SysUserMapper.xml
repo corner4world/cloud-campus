@@ -11,6 +11,7 @@
         <result column="salt" property="salt" />
         <result column="locked" property="locked" />
         <result column="email" property="email" />
+        <result column="create_date" property="createDate" />
         <result column="del_state" property="delState" />
         <collection property="roles"  ofType="com.jp.entity.SysRole">
             <result property="id" column="role.id"/>
@@ -34,6 +35,7 @@
         u.password,
         u.salt,
         u.locked,
+        u.create_date,
         u.del_state,
         u.icon,
         r.id     		AS 	"role.id",

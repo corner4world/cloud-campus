@@ -1,0 +1,132 @@
+<!-- 内容区域 -->
+<div>
+    <div class="row-content am-cf">
+        <div class="row">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title  am-cf">用户列表</div>
+                    </div>
+                    <div class="widget-body  am-fr">
+                        <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+                            <div class="am-form-group">
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <button type="button" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</button>
+                                        <button type="button" class="am-btn am-btn-default am-btn-secondary"><span class="am-icon-save"></span> 保存</button>
+                                        <button type="button" class="am-btn am-btn-default am-btn-warning"><span class="am-icon-archive"></span> 审核</button>
+                                        <button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+                            <div class="am-form-group tpl-table-list-select">
+                                <select data-am-selected="{btnSize: 'sm'}">
+								  <option value="option1">所有类别</option>
+								  <option value="option2">IT业界</option>
+								  <option value="option3">数码产品</option>
+								  <option value="option3">笔记本电脑</option>
+								  <option value="option3">平板电脑</option>
+								  <option value="option3">只能手机</option>
+								  <option value="option3">超极本</option>
+								</select>
+                            </div>
+                        </div>
+                        <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
+                            <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
+                                <input type="text" class="am-form-field ">
+                                <span class="am-input-group-btn">
+								    <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="button"></button>
+								 </span>
+                            </div>
+                        </div>
+
+                        <div class="am-u-sm-12" id="content">
+                            <div id="app">
+								<template>
+								  <el-table :data="tableData" style="width: 100%">
+								    <el-table-column prop="date" label="日期" sortable width="180" :filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]" :filter-method="filterHandler">
+								    </el-table-column>
+								    <el-table-column prop="name" label="姓名" width="180">
+								    </el-table-column>
+								    <el-table-column prop="address" label="地址" :formatter="formatter">
+								    </el-table-column>
+								    <el-table-column prop="tag" label="标签" width="100" :filters="[{ text: '家', value: '家' }, { text: '公司', value: '公司' }]" :filter-method="filterTag" filter-placement="bottom-end">
+								      <template slot-scope="scope">
+								        <el-tag :type="scope.row.tag === '家' ? 'primary' : 'success'" disable-transitions>{{scope.row.tag}}</el-tag>
+								      </template>
+								    </el-table-column>
+								  </el-table>
+								</template>
+							</div>
+                        </div>
+                        <div class="am-u-lg-12 am-cf">
+
+                            <div class="am-fr">
+                                <ul class="am-pagination tpl-pagination">
+                                    <li class="am-disabled"><a href="#">«</a></li>
+                                    <li class="am-active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#">»</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/amazeui.min.js"></script>
+<script>
+	$(function(){
+		$.post("sysUser/list_data",null,function(data){
+			console.log(data);
+		})
+	})
+	var Main = {
+	    data() {
+	      return {
+	        tableData: [{
+	          date: '2016-05-02',
+	          name: '王小虎',
+	          address: '上海市普陀区金沙江路 1518 弄',
+	          tag: '家'
+	        }, {
+	          date: '2016-05-04',
+	          name: '王小虎',
+	          address: '上海市普陀区金沙江路 1517 弄',
+	          tag: '公司'
+	        }, {
+	          date: '2016-05-01',
+	          name: '王小虎',
+	          address: '上海市普陀区金沙江路 1519 弄',
+	          tag: '家'
+	        }, {
+	          date: '2016-05-03',
+	          name: '王小虎',
+	          address: '上海市普陀区金沙江路 1516 弄',
+	          tag: '公司'
+	        }]
+	      }
+	    },
+	    methods: {
+	      formatter(row, column) {
+	        return row.address;
+	      },
+	      filterTag(value, row) {
+	        return row.tag === value;
+	      },
+	      filterHandler(value, row, column) {
+	        const property = column['property'];
+	        return row[property] === value;
+	      }
+	    }
+	  }
+	var Ctor = Vue.extend(Main)
+	new Ctor().$mount('#app')
+</script>

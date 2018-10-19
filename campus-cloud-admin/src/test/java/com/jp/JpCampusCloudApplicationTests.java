@@ -1,5 +1,7 @@
 package com.jp;
 
+import java.util.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +26,9 @@ public class JpCampusCloudApplicationTests {
 	@Test
 	public void insert() {
 		SysUser user = new SysUser();
-		user.setUsername("admin");
+		user.setUsername("jiaopan");
 		user.setPassword("1");
+		user.setCreateDate(new Date());
 		userService.save(user);
 	}
 }

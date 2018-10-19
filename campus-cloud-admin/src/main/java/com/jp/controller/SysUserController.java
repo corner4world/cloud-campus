@@ -32,9 +32,13 @@ public class SysUserController {
 	private ISysUserService userService; 
 	
 	@RequiresPermissions("sys:user:list")
-	@PostMapping("/list")
+	@PostMapping("list")
+	public String list(Model model){
+		return "admin/user/list";
+	}
+	@PostMapping("/list_data")
 	@ResponseBody
-	public Page<SysUser> list(Model model,@RequestParam(value="page",defaultValue="1")Integer page,
+	public Page<SysUser> list_data(Model model,@RequestParam(value="page",defaultValue="1")Integer page,
 										  @RequestParam(value="size",defaultValue="10")Integer size){
 		Wrapper<SysUser> entity = new EntityWrapper<SysUser>();
 		Page<SysUser> users = userService.selectPage(new Page<>(page, size),entity);

@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import com.google.common.collect.Sets;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -35,6 +36,19 @@ public class SysUser extends Model<SysUser> {
     private Integer locked;
     private String email;
     /**
+     * 创建时间
+     */
+    @TableField("create_date")
+    private Date createDate;
+    public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	/**
      * 删除标识
      */
     @TableField("del_state")

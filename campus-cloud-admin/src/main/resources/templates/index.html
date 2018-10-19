@@ -17,7 +17,12 @@
     <link rel="stylesheet" href="/assets/css/amazeui.datatables.min.css" />
     <link rel="stylesheet" href="/assets/css/app.css">
     <script src="/assets/js/jquery.min.js"></script>
-
+	<!-- import CSS -->
+  	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  	<!-- import Vue before Element -->
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<!-- import JavaScript -->
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 </head>
 
 <body data-type="index">
@@ -168,7 +173,7 @@
             </div>
 
         </header>
-        <!-- 风格切换 -->
+        <!-- 风格切换 
         <div class="tpl-skiner">
             <div class="tpl-skiner-toggle am-icon-cog">
             </div>
@@ -182,6 +187,7 @@
                 </div>
             </div>
         </div>
+        -->
         <!-- 侧边导航栏 -->
         <div class="left-sidebar">
             <!-- 用户信息 -->
@@ -199,73 +205,8 @@
             </div>
 
             <!-- 菜单 -->
-            <ul class="sidebar-nav">
+            <ul class="sidebar-nav" id="menu">
                 <li class="sidebar-nav-heading">Components <span class="sidebar-nav-heading-info"> 附加组件</span></li>
-                <li class="sidebar-nav-link">
-                    <a href="#" class="active" id="index">
-                        <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
-                    </a>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="tables.html">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 表格
-                    </a>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="calendar.html">
-                        <i class="am-icon-calendar sidebar-nav-link-logo"></i> 日历
-                    </a>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="form.html">
-                        <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 表单
-
-                    </a>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="chart.html">
-                        <i class="am-icon-bar-chart sidebar-nav-link-logo"></i> 图表
-
-                    </a>
-                </li>
-
-                <li class="sidebar-nav-heading">Page<span class="sidebar-nav-heading-info"> 常用页面</span></li>
-                <li class="sidebar-nav-link">
-                    <a href="javascript:;" class="sidebar-nav-sub-title">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 数据列表
-                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
-                    </a>
-                    <ul class="sidebar-nav sidebar-nav-sub">
-                        <li class="sidebar-nav-link">
-                            <a href="table-list.html">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文字列表
-                            </a>
-                        </li>
-
-                        <li class="sidebar-nav-link">
-                            <a href="table-list-img.html">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 图文列表
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="sign-up.html">
-                        <i class="am-icon-clone sidebar-nav-link-logo"></i> 注册
-                        <span class="am-badge am-badge-secondary sidebar-nav-link-logo-ico am-round am-fr am-margin-right-sm">6</span>
-                    </a>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="login.html">
-                        <i class="am-icon-key sidebar-nav-link-logo"></i> 登录
-                    </a>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="404.html">
-                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 404错误
-                    </a>
-                </li>
-
             </ul>
         </div>
 
@@ -281,15 +222,41 @@
     <script src="/assets/js/dataTables.responsive.min.js"></script>
     <script src="/assets/js/app.js"></script>
 	<script>
-		$("#index").click(function(){
-			$("#content").html("内容");
-		})
 		$(function(){
-			$.post("admin/show_menu",null,function(res){
-				console.log(res);
+			$.post("show_menu",null,function(res){
+				var menus = res;
+				var lis = "";
+				for(var i in res){
+					var menu = res[i];
+					var children = menu.children;
+					if(children.length > 0){
+						lis = lis + '<li class="sidebar-nav-link">'+
+						'<a href="javascript:;" class="sidebar-nav-sub-title">'+
+                         '<i class="am-icon-table sidebar-nav-link-logo"></i> '+ menu.title +
+                        '<span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span></a>'+
+                        '<ul class="sidebar-nav sidebar-nav-sub">';
+                        var subli = ""
+                        for(var index in children){
+                        	var m = children[index];
+                        	subli = subli + '<li class="sidebar-nav-link">'+
+                                    '<a href="#" onclick="enter(this)" id="'+m.href+'"><span class="am-icon-angle-right sidebar-nav-link-logo"></span>'+m.title+'</a></li>'
+                        }
+                        lis = lis + subli + '</ul></li>';
+					}
+					else{
+						lis = lis + '<li class="sidebar-nav-link">'+
+						          '<a href="#" onclick="enter(this)" id="'+menu.href+'"><i class="am-icon-table sidebar-nav-link-logo"></i>'+menu.title+'</a></li>';
+					}
+				}
+				$('#menu').append(lis)
 		    })
 		})
-		
+		function enter(e){
+			var url = e.id;
+			$.post(url,null,function(res){
+				$('#content').html(res);
+			});
+		}
 	</script>
 </body>
 

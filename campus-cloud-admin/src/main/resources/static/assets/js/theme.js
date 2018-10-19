@@ -1,6 +1,6 @@
 var saveSelectColor = {
     'Name': 'SelcetColor',
-    'Color': 'theme-black'
+    'Color': 'theme-white'
 }
 
 
